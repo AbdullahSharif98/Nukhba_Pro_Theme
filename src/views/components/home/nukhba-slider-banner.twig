@@ -1,0 +1,56 @@
+{#
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.slides               | object[] | list of slides                                                                |
+| component.slides[].image       | string   | slide image                                                                   |
+| component.slides[].url         | ?string  | slide link                                                                    |
+| component.slides[].alt         | ?string  | slide alt                                                                     |
+| component.desktop_height       | int      | Banner height on desktop                                                      |
+| component.mobile_height        | int      | Banner height on mobile                                                       |
+| component.autoplay_delay       | int      | Delay between slides in seconds                                               |
+| component.transition_speed     | int      | Transition speed in milliseconds                                              |
+| position                       | int      | Sorting number start from zero                                                |
+#}
+{% set desktop_height = component.desktop_height ?: 420 %}
+{% set mobile_height = component.mobile_height ?: 240 %}
+{% set autoplay_delay_ms = (component.autoplay_delay ?: 5) * 1000 %}
+{% set transition_speed = component.transition_speed ?: 600 %}
+{% set banner_style = '--nukhba-banner-desktop-height:' ~ desktop_height ~ 'px;--nukhba-banner-mobile-height:' ~ mobile_height ~ 'px;' %}
+{% set slider_config = {
+  lazy: false,
+  speed: transition_speed,
+  autoplay: {
+    delay: autoplay_delay_ms,
+    disableOnInteraction: false
+  }
+} %}
+
+<section class="s-block s-block--full-bg nukhba-hero-block nukhba-hero-slider">
+  <salla-slider
+    id="nukhba-slider-banner-{{ position }}"
+    auto-play
+    static-when-single
+    slider-config='{{ slider_config|json_encode|raw }}'
+    {{ component.slides|length > 1 ? '' : 'show-controls="false"' }}
+    type="fullwidth">
+    <div slot="items">
+      {% for slide in component.slides %}
+        {% set slide_alt = slide.alt ?: store.name %}
+        <div class="swiper-slide">
+          {% if slide.url %}
+            <a href="{{ slide.url }}" class="nukhba-hero-frame" aria-label="{{ slide_alt|e('html_attr') }}" style="{{ banner_style }}">
+              <picture class="nukhba-hero-picture">
+                <img src="{{ slide.image }}" alt="{{ slide_alt }}" loading="lazy" width="1920" height="{{ desktop_height }}">
+              </picture>
+            </a>
+          {% else %}
+            <div class="nukhba-hero-frame" style="{{ banner_style }}">
+              <picture class="nukhba-hero-picture">
+                <img src="{{ slide.image }}" alt="{{ slide_alt }}" loading="lazy" width="1920" height="{{ desktop_height }}">
+              </picture>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </salla-slider>
+</section>

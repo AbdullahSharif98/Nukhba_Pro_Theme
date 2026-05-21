@@ -1,0 +1,54 @@
+{#
+| Variable      | Type    | Description                               |
+|---------------|---------|-------------------------------------------|
+| product       | Product | Selected product object                   |
+| rank          | ?string | Optional decorative rank number           |
+| chip          | ?string | Optional small badge                      |
+| compact       | bool    | Smaller card mode                         |
+| dark          | bool    | Dark section mode                         |
+| show_rating   | bool    | Show rating row                           |
+| show_button   | bool    | Show add-to-cart button                   |
+#}
+{% if product %}
+  {% set card_image = product.image.url ?: product.thumbnail ?: ('images/placeholder.png'|asset) %}
+  {% set card_alt = product.image.alt ?: product.name %}
+  {% set card_price = product.starting_price ?: (product.is_on_sale ? product.sale_price : product.price) %}
+  <article class="nukhba-product-card{{ compact ? ' is-compact' : '' }}{{ dark ? ' is-dark' : '' }}">
+    {% if rank %}
+      <span class="nukhba-product-card__rank" aria-hidden="true">{{ rank }}</span>
+    {% endif %}
+    {% if chip %}
+      <span class="nukhba-product-card__chip">{{ chip }}</span>
+    {% endif %}
+    <a href="{{ product.url }}" class="nukhba-product-card__image" aria-label="{{ card_alt|e('html_attr') }}">
+      <img src="{{ card_image }}" alt="{{ card_alt }}" loading="lazy" width="480" height="480" />
+    </a>
+    <div class="nukhba-product-card__content">
+      <h3 class="nukhba-product-card__title">
+        <a href="{{ product.url }}">{{ product.name }}</a>
+      </h3>
+      {% if show_rating and product.rating.stars %}
+        <div class="nukhba-product-card__rating">
+          <i class="sicon-star2"></i>
+          <span>{{ product.rating.stars }}</span>
+        </div>
+      {% endif %}
+      <div class="nukhba-product-card__price">
+        <strong>{{ card_price|money }}</strong>
+        {% if product.is_on_sale and product.regular_price %}
+          <span>{{ product.regular_price|money }}</span>
+        {% endif %}
+      </div>
+      {% if show_button is not defined or show_button %}
+        <salla-add-product-button
+          fill="outline"
+          width="wide"
+          product-id="{{ product.id }}"
+          product-status="{{ product.status }}"
+          product-type="{{ product.type }}">
+          <span>{{ product.add_to_cart_label ?: trans('pages.cart.add_to_cart') }}</span>
+        </salla-add-product-button>
+      {% endif %}
+    </div>
+  </article>
+{% endif %}

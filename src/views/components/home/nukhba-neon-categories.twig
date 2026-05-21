@@ -1,0 +1,41 @@
+{#
+| component               | object   | Fields from twilight.json             |
+| component.section_title | ?string  | Optional title                        |
+| component.cards         | object[] | Category showcase cards               |
+#}
+{% set base_background_color = component.base_background_color ?: '#222831' %}
+{% set gradient_color_one = component.gradient_color_one ?: '#7943ff' %}
+{% set gradient_color_two = component.gradient_color_two ?: '#38bdf8' %}
+{% set card_background_color = component.card_background_color ?: '#0f172a' %}
+{% set overlay_start_color = component.overlay_start_color ?: '#0f172a' %}
+{% set overlay_end_color = component.overlay_end_color ?: '#0f172a' %}
+{% set text_color = component.text_color ?: '#ffffff' %}
+{% set enable_overlay_fade = component.enable_overlay_fade is same as(false) ? false : true %}
+{% set section_text_alignment = component.section_text_alignment ?: 'right' %}
+{% set card_text_alignment = component.card_text_alignment ?: 'right' %}
+<section class="s-block nukhba-showcase nukhba-neon-categories-block"
+         style="--nukhba-neon-base-bg: {{ base_background_color }}; --nukhba-neon-gradient-one: {{ gradient_color_one }}; --nukhba-neon-gradient-two: {{ gradient_color_two }}; --nukhba-neon-card-bg: {{ card_background_color }}; --nukhba-neon-overlay-start: {{ overlay_start_color }}; --nukhba-neon-overlay-end: {{ overlay_end_color }}; --nukhba-neon-text-color: {{ text_color }};">
+  <div class="container">
+    <div class="nukhba-showcase__heading nukhba-showcase__heading--align-{{ section_text_alignment|e('html_attr') }}">
+      <h2>{{ component.section_title ?: 'Shop by Category' }}</h2>
+    </div>
+    <div class="nukhba-neon-grid">
+      {% for card in component.cards|slice(0, 6) %}
+        <a href="{{ card.url ?: '#' }}" class="nukhba-neon-card{{ card.is_featured ? ' is-featured' : '' }}" aria-label="{{ (card.title ?: store.name)|e('html_attr') }}">
+          {% if card.image %}
+            <img src="{{ card.image }}" alt="{{ card.title ?: store.name }}" loading="lazy" width="720" height="420" />
+          {% endif %}
+          {% if enable_overlay_fade %}
+            <div class="nukhba-neon-card__overlay"></div>
+          {% endif %}
+          {% if card.overline or card.title %}
+            <div class="nukhba-neon-card__copy nukhba-copy-align-{{ card_text_alignment|e('html_attr') }}">
+              {% if card.overline %}<span>{{ card.overline }}</span>{% endif %}
+              {% if card.title %}<h3>{{ card.title }}</h3>{% endif %}
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

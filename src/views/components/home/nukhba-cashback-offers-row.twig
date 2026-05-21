@@ -1,0 +1,31 @@
+{#
+| component               | object   | Fields from twilight.json             |
+| component.section_title | ?string  | Optional title                        |
+| component.cards         | object[] | Cashback cards                        |
+#}
+<section class="s-block nukhba-showcase nukhba-cashback-offers-block">
+  <div class="container">
+    {% if component.section_title %}
+      <div class="nukhba-showcase__heading">
+        <h2>{{ component.section_title }}</h2>
+      </div>
+    {% endif %}
+    <div class="nukhba-cashback-grid">
+      {% for card in component.cards %}
+        <a href="{{ card.url ?: '#' }}" class="nukhba-cashback-card" aria-label="{{ (card.title ?: store.name)|e('html_attr') }}">
+          <div class="nukhba-cashback-card__copy">
+            {% if card.overline %}<span>{{ card.overline }}</span>{% endif %}
+            {% if card.title %}<h3>{{ card.title }}</h3>{% endif %}
+            {% if card.description %}<p>{{ card.description }}</p>{% endif %}
+            {% if card.brand %}<strong>{{ card.brand }}</strong>{% endif %}
+          </div>
+          {% if card.image %}
+            <div class="nukhba-cashback-card__media">
+              <img src="{{ card.image }}" alt="{{ card.title ?: store.name }}" loading="lazy" width="320" height="250" />
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

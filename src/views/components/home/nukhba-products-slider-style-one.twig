@@ -1,0 +1,58 @@
+{#
+| component                      | object    | Fields from twilight.json               |
+| component.products             | Product[] | Selected products                       |
+| component.installment_images   | object[]  | Installment logos                       |
+| position                       | int       | Sorting position                        |
+#}
+{% set chip_values = [
+  component.chip_one ?: null,
+  component.chip_two ?: null,
+  component.chip_three ?: null
+] %}
+{% set source_type = component.source_type ?: 'selected' %}
+{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set slider_source = source_type == 'categories' ? 'categories' : (source_type == 'brands' ? 'brands' : 'selected') %}
+{% set slider_values = source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : selected_ids) %}
+{% set slider_limit = component.products_limit ?: 8 %}
+
+<section class="s-block nukhba-products-slider-block nukhba-products-slider-block--one">
+  <div class="container">
+    {% if component.section_title %}
+      <div class="nukhba-products-slider-heading">
+        <h2>{{ component.section_title }}</h2>
+        {% if component.section_subtitle %}<p>{{ component.section_subtitle }}</p>{% endif %}
+      </div>
+    {% endif %}
+
+    {% if slider_values %}
+      <salla-products-slider
+        class="nukhba-products-slider nukhba-products-slider--one"
+        source="{{ slider_source }}"
+        limit="{{ slider_limit }}"
+        source-value="[{{ slider_values }}]"
+        autoplay
+        slider-id="nukhba-products-slider-style-one-{{ position }}"
+        product-card-component="nukhba-product-card-one"
+        data-card-variant="one"
+        data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
+        data-right-label-bg="{{ component.right_label_bg|default('#ef4444')|e('html_attr') }}"
+        data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"
+        data-left-label-text="{{ component.left_label_text|default('')|e('html_attr') }}"
+        data-left-label-bg="{{ component.left_label_bg|default('#6b8f71')|e('html_attr') }}"
+        data-left-label-color="{{ component.left_label_color|default('#ffffff')|e('html_attr') }}"
+        data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
+        data-meta-badge="{{ component.meta_badge|default('')|e('html_attr') }}"
+        data-meta-text="{{ component.meta_text|default('')|e('html_attr') }}"
+        data-installment-title="{{ component.installment_title|default('')|e('html_attr') }}"
+        data-installment-logos="{{ component.installment_images|default([])|json_encode|e('html_attr') }}"
+        data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
+        data-text-color="{{ component.text_color|default('#111827')|e('html_attr') }}"
+        data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
+        data-old-price-color="{{ component.old_price_color|default('#6b7280')|e('html_attr') }}"
+        data-button-text="{{ component.button_text|default('')|e('html_attr') }}">
+      </salla-products-slider>
+    {% endif %}
+  </div>
+</section>

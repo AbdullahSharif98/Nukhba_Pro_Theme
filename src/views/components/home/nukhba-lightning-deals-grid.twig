@@ -1,0 +1,39 @@
+{#
+| component               | object   | Fields from twilight.json                 |
+| component.section_title | ?string  | Section title                             |
+| component.items         | object[] | Deal cards                                |
+#}
+<section class="s-block nukhba-showcase nukhba-lightning-block">
+  <div class="container">
+    <div class="nukhba-showcase__heading nukhba-showcase__heading--centered">
+      <h2>{{ component.section_title ?: 'عروض برق' }}</h2>
+    </div>
+    <div class="nukhba-lightning-grid">
+      {% for item in component.items %}
+        <a href="{{ item.url ?: '#' }}" class="nukhba-lightning-card{{ item.is_muted ? ' is-muted' : '' }}" aria-label="{{ (item.title ?: store.name)|e('html_attr') }}">
+          <div class="nukhba-lightning-card__head">
+            <span>{{ item.badge ?: 'عروض خاصة' }}</span>
+          </div>
+          <div class="nukhba-lightning-card__body">
+            {% if item.image %}
+              <div class="nukhba-lightning-card__image">
+                <img src="{{ item.image }}" alt="{{ item.title ?: store.name }}" loading="lazy" width="260" height="220" />
+              </div>
+            {% endif %}
+            <div class="nukhba-lightning-card__copy">
+              {% if item.title %}<h3>{{ item.title }}</h3>{% endif %}
+              {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+              <div class="nukhba-lightning-card__price">
+                {% if item.old_price %}<span>{{ item.old_price }}</span>{% endif %}
+                {% if item.price %}<strong>{{ item.price }}</strong>{% endif %}
+              </div>
+            </div>
+          </div>
+          {% if item.cta_label %}
+            <span class="nukhba-lightning-card__cta">{{ item.cta_label }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

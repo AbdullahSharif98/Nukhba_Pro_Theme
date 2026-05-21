@@ -1,0 +1,43 @@
+{#
+| component               | object    | Fields from twilight.json             |
+| component.top_banners   | object[]  | Top promo banners                     |
+| component.products      | Product[] | Bottom selected products              |
+| component.section_title | ?string   | Optional title                        |
+#}
+{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+<section class="s-block nukhba-showcase nukhba-promo-banners-products-block">
+  <div class="container">
+    {% if component.section_title %}
+      <div class="nukhba-showcase__heading">
+        <h2>{{ component.section_title }}</h2>
+      </div>
+    {% endif %}
+    <div class="nukhba-promo-banners-products__top">
+      {% for banner in component.top_banners|slice(0, 2) %}
+        <a href="{{ banner.url ?: '#' }}" class="nukhba-inline-promo" aria-label="{{ (banner.title ?: store.name)|e('html_attr') }}">
+          {% if banner.image %}
+            <img src="{{ banner.image }}" alt="{{ banner.title ?: store.name }}" loading="lazy" width="860" height="260" />
+          {% endif %}
+          <div class="nukhba-inline-promo__copy">
+            {% if banner.badge %}<span>{{ banner.badge }}</span>{% endif %}
+            {% if banner.title %}<h3>{{ banner.title }}</h3>{% endif %}
+            {% if banner.description %}<p>{{ banner.description }}</p>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    {% if selected_ids %}
+      <salla-products-slider
+        class="nukhba-promo-banners-products__bottom"
+        source="selected"
+        limit="4"
+        source-value="[{{ selected_ids }}]"
+        slider-id="nukhba-promo-banners-products-{{ position }}"
+        product-card-component="nukhba-product-card-showcase"
+        data-show-rating="false"
+        data-show-button="true"
+        data-compact="true">
+      </salla-products-slider>
+    {% endif %}
+  </div>
+</section>
