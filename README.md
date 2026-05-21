@@ -4,9 +4,9 @@
   <a href="https://salla.dev"> 
     <img src="https://salla.dev/wp-content/uploads/2023/03/1-Light.png" alt="Logo"> 
   </a>
-  <h1 align="center">Nukhba Pro</h1>
+  <h1 align="center">Theme Raed</h1>
   <p align="center">
-    Nukhba Pro is a Salla theme based on Theme Raed. 
+    Theme Raed is the starting point for developing Themes for Salla Stores. 
     <br />
     <a href="https://salla.dev/"><strong>Explore our blogs »</strong></a>
     <br />

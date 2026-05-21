@@ -59,7 +59,6 @@
     {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
 
     <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
-    <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'nukhba-product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
     {% if theme.settings.get('enable_add_product_toast', true) %}
         <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
@@ -80,11 +79,6 @@
     {% hook head %}
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
-    <link rel="stylesheet" href="{{ 'nukhba-header.css' | asset }}">
-    <link rel="stylesheet" href="{{ 'nukhba-banners.css' | asset }}">
-    <link rel="stylesheet" href="{{ 'nukhba-showcase.css' | asset }}">
-    <link rel="stylesheet" href="{{ 'nukhba-product-sliders.css' | asset }}">
-    <link rel="stylesheet" href="{{ 'nukhba-radius.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
     
@@ -95,8 +89,6 @@
             --color-primary-dark: {{ theme.color.darker(0.15) }};
             --color-primary-light: {{ theme.color.lighter(0.15) }};
             --color-primary-reverse: {{ theme.color.reverse_text }};
-            --nukhba-banner-radius: {{ theme.settings.get('banner_media_radius', 12) }}px;
-            --nukhba-product-radius: {{ theme.settings.get('product_media_radius', 12) }}px;
         }
     </style>
     {# tracking services, custom css feature. #}

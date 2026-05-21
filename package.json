@@ -1,11 +1,11 @@
 {
-  "name": "nukhba-pro-theme",
+  "name": "theme-raed",
   "version": "1.0.3",
   "description": "Salla Theme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AbdullahSharif98/Nukhba_Pro_Theme.git"
+    "url": "git+https://github.com/SallaApp/theme-raed.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -15,7 +15,7 @@
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch"
   },
-  "author": "Nukhba Tech",
+  "author": "Salla",
   "dependencies": {
     "@babel/runtime": "^7.28.6",
     "animejs": "^3.2.1",
@@ -28,9 +28,9 @@
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-runtime": "^7.28.0",
     "@babel/preset-env": "^7.29.2",
-    "@salla.sa/twilight": "^2.14.429",
-    "@salla.sa/twilight-components": "^2.14.429",
-    "@salla.sa/twilight-tailwind-theme": "^2.14.429",
+    "@salla.sa/twilight": "^2.14.446",
+    "@salla.sa/twilight-components": "^2.14.446",
+    "@salla.sa/twilight-tailwind-theme": "^2.14.446",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",

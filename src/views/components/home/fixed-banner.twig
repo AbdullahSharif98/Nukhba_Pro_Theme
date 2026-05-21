@@ -9,24 +9,26 @@
 
 #}
 <section class="s-block s-block--fixed-banner wide-placeholder">
-    {% set alt_text = image.alt|trim ? image.alt : 'fixed banner' %}
-    <a href="{{ url }}" class="banner banner--fixed overflow-hidden block w-full" aria-label="Banner {{ alt_text }}">
-        <picture>
-            {% if image.small_url %}
-                <source
-                    media="(max-width: 767px)"
-                    srcset="{{ image.small_url }}"
+    <div class="container">
+        {% set alt_text = image.alt|trim ? image.alt : 'fixed banner' %}
+        <a href="{{ url }}" class="banner banner--fixed overflow-hidden" aria-label="Banner {{ alt_text }}">
+            <picture>
+                {% if image.small_url %}
+                    <source
+                        media="(max-width: 767px)"
+                        srcset="{{ image.small_url }}"
+                    />
+                {% endif %}
+                <img
+                    width="1200"
+                    height="300"
+                    src="{{ image.url }}"
+                    loading="lazy"
+                    alt="{{ alt_text }}"
+                    style="height:auto;max-width:100%;object-fit: contain;"
+                    fetchpriority="high"
                 />
-            {% endif %}
-            <img
-                width="1920"
-                height="540"
-                src="{{ image.url }}"
-                loading="lazy"
-                alt="{{ alt_text }}"
-                style="width:100%;height:auto;object-fit:cover;"
-                fetchpriority="high"
-            />
-        </picture>
-    </a>
+            </picture>
+        </a>
+    </div>
 </section>

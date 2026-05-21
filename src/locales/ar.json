@@ -1,10 +1,7 @@
 {
   "blocks": {
     "header": {
-      "cart": "السلة",
-      "wishlist": "المفضلة",
-      "search": "البحث",
-      "menu_label": "القائمة"
+      "cart": "السلة"
     },
     "appBanner": {
       "download_now": "حمله الان"

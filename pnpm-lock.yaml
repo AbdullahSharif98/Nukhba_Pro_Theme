@@ -37,13 +37,13 @@ importers:
         specifier: ^7.29.2
         version: 7.29.2(@babel/core@7.29.0)
       '@salla.sa/twilight':
-        specifier: ^2.14.429
+        specifier: ^2.14.446
         version: 2.14.446(@jitsu/protocols@1.10.4)(@types/dlv@1.1.5)(webpack@5.103.0)
       '@salla.sa/twilight-components':
-        specifier: ^2.14.429
+        specifier: ^2.14.446
         version: 2.14.446(@jitsu/protocols@1.10.4)(@types/dlv@1.1.5)(webpack@5.103.0)
       '@salla.sa/twilight-tailwind-theme':
-        specifier: ^2.14.429
+        specifier: ^2.14.446
         version: 2.14.446
       '@tailwindcss/forms':
         specifier: ^0.5.11

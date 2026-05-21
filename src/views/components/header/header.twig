@@ -6,175 +6,68 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 {% set important_links = theme.settings.get('important_links') %}
-{% set custom_logo = theme.settings.get('header_custom_logo') %}
-{% set show_social = theme.settings.get('header_show_social', true) %}
-{% set show_contacts = theme.settings.get('header_show_contacts', true) %}
-{% set show_localization = theme.settings.get('header_show_localization', true) %}
-{% set show_search = theme.settings.get('header_show_search', true) %}
-{% set show_wishlist = theme.settings.get('header_show_wishlist', true) %}
-{% set show_account = theme.settings.get('header_show_account', true) %}
-{% set show_cart = theme.settings.get('header_show_cart', true) %}
-{% set show_scope = theme.settings.get('header_show_scope', true) %}
-{% set header_menu_mode = theme.settings.get('header_menu_mode', 'default') %}
-{% set professional_menu_entries = theme.settings.get('header_professional_menu_entries', []) %}
-{% set professional_explore_title = theme.settings.get('header_professional_explore_title', 'استكشف') %}
-{% set professional_side_title = theme.settings.get('header_professional_side_title', 'الأفضل لك') %}
-{% set logo_src = custom_logo ? custom_logo : (store.logo ? store.logo|cdn(260) : ('images/nukhbatech-logo.png'|asset)) %}
-
-<header class="store-header nukhba-header">
-  <div class="nukhba-topbar">
-    <div class="container nukhba-topbar__inner">
-      <div class="nukhba-topbar__group">
-        {% if important_links %}
-          <div class="nukhba-topbar__links">
+<header class="store-header">
+  {# Top Nav #}
+  <div class="top-navbar">
+    <div class="container flex justify-between">
+      <div class="flex-1 flex items-center gap-2">
+          {# Footer Menu #}
+          {% if important_links %}
             <salla-menu source="footer" topnav></salla-menu>
-          </div>
-        {% endif %}
-
-        {% if show_contacts %}
-          <salla-contacts is-header></salla-contacts>
-        {% endif %}
-      </div>
-
-      <div class="nukhba-topbar__group nukhba-topbar__group--end">
-        {% if show_social %}
-          <salla-social class="nukhba-topbar__social"></salla-social>
-        {% endif %}
-
-        {% if show_scope and store.scope %}
-          <button class="nukhba-chip"
-                  onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-            <i class="sicon-location"></i>
-            <span>{{ store.scope.name }}</span>
-          </button>
-        {% endif %}
-
-        {% if show_localization and (store.settings.is_multilingual or store.settings.currencies_enabled) %}
-          <div class="nukhba-localization">
-            <salla-localization-modal show-trigger></salla-localization-modal>
-          </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-  <div id="mainnav" class="main-nav-container nukhba-main-nav shadow-none bg-white flex items-center">
-    <div class="inner bg-inherit w-full">
-      <div class="container">
-        <div class="nukhba-header__main">
-          <a class="navbar-brand nukhba-brand" href="{{ store.url }}">
-            <img fetchpriority="high" width="260" height="88" loading="eager" src="{{ logo_src }}" alt="{{ store.name }} logo">
-            {% if is_page('index') %}
-              <h1 class="sr-only">{{ store.name }}</h1>
-            {% else %}
-              <h2 class="sr-only">{{ store.name }}</h2>
-            {% endif %}
-          </a>
-
-          {% if show_search %}
-            <div class="nukhba-header__search hidden lg:block">
-              <salla-search inline oval height="52"></salla-search>
-            </div>
           {% endif %}
 
-          <div class="nukhba-header__actions">
-            <a class="lg:hidden mburger mburger--collapse leading-none" href="#mobile-menu" aria-label="{{ trans('blocks.header.menu_label') }}">
-              <i class="sicon-menu text-2xl"></i>
-            </a>
+          {# Language & Currency Component #}
+          <div class="header-buttons">
+              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+                  <salla-localization-modal show-trigger></salla-localization-modal>
+              {% endif %}
+          </div>
 
-            {% if show_search %}
-              <button type="button"
-                      class="nukhba-icon-link lg:hidden"
-                      data-header-search-toggle
-                      aria-label="{{ trans('blocks.header.search') }}">
-                <i class="nukhba-icon-link__icon sicon-search"></i>
+          {# Scopes | Branches #}
+          {% if store.scope %}
+              <button class="btn--rounded-gray"
+                      onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+                  <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
               </button>
-            {% endif %}
+          {% endif %}
 
-            {% if show_wishlist %}
-              <a class="nukhba-icon-link nukhba-icon-link--wishlist"
-                 href="{{ store.url }}/wishlist"
-                 aria-label="{{ trans('blocks.header.wishlist') }}">
-                <i class="nukhba-icon-link__icon sicon-heart"></i>
-                <span class="nukhba-icon-link__count" data-header-wishlist-count hidden>0</span>
-              </a>
-            {% endif %}
-
-            {% if show_account %}
-              <div class="nukhba-user-menu">
-                <salla-user-menu avatar-only show-header show-trigger></salla-user-menu>
-              </div>
-            {% endif %}
-
-            {% if show_cart %}
-              <salla-cart-summary class="nukhba-cart-summary">
-                <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-              </salla-cart-summary>
-            {% endif %}
+          {# Search bar #}
+          <div class="header-search flex-1">
+            <salla-search inline oval height="36"></salla-search>
           </div>
-        </div>
-
-        {% if show_search %}
-          <div class="nukhba-mobile-search lg:hidden" data-header-search-panel hidden>
-            <salla-search inline oval height="44"></salla-search>
-          </div>
-        {% endif %}
-
-        <div class="nukhba-header__navigation">
-          <div class="nukhba-header__menu-label">
-            <i class="sicon-menu"></i>
-          </div>
-          <custom-main-menu
-            data-menu-mode="{{ header_menu_mode|e('html_attr') }}"
-            data-professional-entries="{{ professional_menu_entries|json_encode|e('html_attr') }}"
-            data-professional-explore-title="{{ professional_explore_title|e('html_attr') }}"
-            data-professional-side-title="{{ professional_side_title|e('html_attr') }}"></custom-main-menu>
-        </div>
       </div>
+
+      <salla-contacts is-header></salla-contacts>
     </div>
   </div>
 
-  <script>
-    (() => {
-      if (window.__nukhbaHeaderInitialized) {
-        return;
-      }
-
-      window.__nukhbaHeaderInitialized = true;
-
-      const initHeader = () => {
-        const searchPanel = document.querySelector('[data-header-search-panel]');
-        const updateWishlistCount = () => {
-          const wishlistItems = salla?.config?.isGuest?.() ? [] : (salla.storage.get('salla::wishlist', []) || []);
-          const count = wishlistItems.length;
-
-          document.querySelectorAll('[data-header-wishlist-count]').forEach((element) => {
-            element.textContent = count;
-            element.hidden = count < 1;
-          });
-        };
-
-        updateWishlistCount();
-        salla?.wishlist?.event?.onAdded?.(updateWishlistCount);
-        salla?.wishlist?.event?.onRemoved?.(updateWishlistCount);
-
-        document.querySelectorAll('[data-header-search-toggle]').forEach((button) => {
-          button.addEventListener('click', () => {
-            if (!searchPanel) {
-              return;
-            }
-
-            const isHidden = searchPanel.hasAttribute('hidden');
-            searchPanel.toggleAttribute('hidden', !isHidden);
-          });
-        });
-      };
-
-      if (window.salla?.onReady) {
-        window.salla.onReady(initHeader);
-      } else {
-        document.addEventListener('DOMContentLoaded', initHeader, { once: true });
-      }
-    })();
-  </script>
+  {# Main Nav #}
+  <div id="mainnav" class="main-nav-container shadow-default bg-white flex items-center">
+      <div class="inner bg-inherit w-full">
+          <div class="container">
+              <div class="flex items-stretch justify-between relative">
+                  <div class="flex items-center">
+                      <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
+                        <i class="sicon-menu text-primary text-2xl"></i>
+                      </a>
+                      <a class="navbar-brand" href="{{ store.url }}">
+                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo|cdn(175) }}" alt="{{ store.name }} logo">
+                          {% if is_page('index') %}
+                            <h1 class="sr-only">{{ store.name }}</h1>
+                          {% else %}
+                            <h2 class="sr-only">{{ store.name }}</h2>
+                          {% endif %}
+                      </a>
+                      <custom-main-menu></custom-main-menu>
+                  </div>
+                  <div class="flex items-center justify-end my-2.5">
+                      <salla-user-menu avatar-only show-header show-trigger></salla-user-menu>
+                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
+                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
+                      </salla-cart-summary>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </header>

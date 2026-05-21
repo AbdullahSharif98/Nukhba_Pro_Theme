@@ -1,10 +1,7 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart",
-      "wishlist": "Wishlist",
-      "search": "Search",
-      "menu_label": "Menu"
+      "cart": "Cart"
     },
     "appBanner": {
       "download_now": "download now"
