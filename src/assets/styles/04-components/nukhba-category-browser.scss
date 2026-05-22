@@ -1,9 +1,11 @@
 .nukhba-category-browser {
   padding: 1.25rem 0;
-  background: var(--nukhba-category-browser-bg, #e9f6f4);
 
   .container {
     position: relative;
+    padding: 1.25rem 1rem;
+    border-radius: 1.25rem;
+    background: var(--nukhba-category-browser-bg, #e9f6f4);
   }
 }
 
@@ -113,6 +115,11 @@
 }
 
 @media (max-width: 639px) {
+  .nukhba-category-browser .container {
+    padding: 1rem .75rem;
+    border-radius: 1rem;
+  }
+
   .nukhba-category-browser__shape,
   .nukhba-category-browser__shape-inner {
     width: min(100%, 8.5rem);
