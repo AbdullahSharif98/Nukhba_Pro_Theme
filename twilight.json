@@ -916,6 +916,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000021",
+            "name": "nukhba-pro-moving-products",
             "title": {
                 "en": "Nukhba Pro moving products",
                 "ar": "منتجات متحركة نخبة برو"
@@ -1084,22 +1085,22 @@
                     "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "خلفية ليبل أعلى اليمين",
                     "id": "right_label_bg",
                     "value": "#f30f0f",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون نص ليبل أعلى اليمين",
                     "id": "right_label_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "type": "string",
@@ -1112,22 +1113,22 @@
                     "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "خلفية ليبل أعلى اليسار",
                     "id": "left_label_bg",
                     "value": "#6b8f71",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون نص ليبل أعلى اليسار",
                     "id": "left_label_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "type": "static",
@@ -1135,31 +1136,31 @@
                     "id": "nukhba-pro-line-2"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون نصوص البطاقة",
                     "id": "text_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون السعر الحالي",
                     "id": "price_color",
                     "value": "#19763e",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون السعر قبل الخصم",
                     "id": "old_price_color",
                     "value": "#111827",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "type": "string",
@@ -1337,6 +1338,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000022",
+            "name": "nukhba-split-banners",
             "title": {
                 "en": "Split banners with slider",
                 "ar": "بنرات منقسمة مع سلايدر"
@@ -1478,6 +1480,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000023",
+            "name": "nukhba-category-browser",
             "title": {
                 "en": "Category browser shapes",
                 "ar": "تصفح الأقسام بالأشكال"
@@ -1546,40 +1549,40 @@
                     "selected": true
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية القسم",
                     "id": "section_bg_color",
                     "value": "#e9f6f4",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية الشكل",
                     "id": "card_bg_color",
                     "value": "#fffaf1",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الإطار",
                     "id": "frame_color",
                     "value": "#7cb8cf",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون النص",
                     "id": "text_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "id": "categories",
@@ -1598,6 +1601,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000024",
+            "name": "nukhba-three-zones-showcase",
             "title": {
                 "en": "Three zones showcase",
                 "ar": "ثلاث مناطق عرض"
@@ -1613,58 +1617,58 @@
                     "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1'></div>"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية القسم",
                     "id": "section_bg_color",
                     "value": "#eef7f7",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية البطاقات",
                     "id": "panel_bg_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون عناوين الأقسام",
                     "id": "title_color",
                     "value": "#374151",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون النصوص",
                     "id": "text_color",
                     "value": "#4b5563",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية الليبل",
                     "id": "badge_bg_color",
                     "value": "#155e75",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون نص الليبل",
                     "id": "badge_text_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "type": "string",
@@ -1864,6 +1868,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000025",
+            "name": "nukhba-banner-products-showcase",
             "title": {
                 "en": "Banner products showcase",
                 "ar": "بانر مع منتجات"
@@ -2168,6 +2173,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000026",
+            "name": "nukhba-four-image-grid",
             "title": {
                 "en": "Four images grid",
                 "ar": "شبكة أربع صور"
@@ -2227,31 +2233,31 @@
                     ]
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الخلفية",
                     "id": "section_bg_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون عنوان القسم",
                     "id": "title_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون عناوين الصور",
                     "id": "card_title_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "type": "number",
@@ -2325,6 +2331,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000027",
+            "name": "nukhba-inline-image-group",
             "title": {
                 "en": "Inline image group",
                 "ar": "مجموعة صور أفقية"
@@ -2384,31 +2391,31 @@
                     ]
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الخلفية",
                     "id": "section_bg_color",
                     "value": "#e8f5f3",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون عنوان القسم",
                     "id": "title_color",
                     "value": "#0f3b46",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون نصوص البطاقات",
                     "id": "card_title_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "id": "items",
@@ -2481,6 +2488,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000028",
+            "name": "nukhba-mosaic-top-two-bottom-three",
             "title": {
                 "en": "Top two bottom three mosaic",
                 "ar": "موزاييك 2 فوق و3 تحت"
@@ -2506,22 +2514,22 @@
                     "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الخلفية",
                     "id": "section_bg_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون العنوان",
                     "id": "title_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "id": "items",
@@ -2566,6 +2574,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000029",
+            "name": "nukhba-mosaic-right-featured",
             "title": {
                 "en": "Right featured mosaic",
                 "ar": "موزاييك يمين مميز"
@@ -2591,22 +2600,22 @@
                     "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الخلفية",
                     "id": "section_bg_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون العنوان",
                     "id": "title_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "id": "items",
@@ -2651,6 +2660,7 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000030",
+            "name": "nukhba-two-row-image-cards",
             "title": {
                 "en": "Two rows image cards",
                 "ar": "بطاقات صور من صفين"
@@ -2676,40 +2686,40 @@
                     "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية القسم",
                     "id": "section_bg_color",
                     "value": "#ffffff",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية البطاقة",
                     "id": "card_bg_color",
                     "value": "#dbe6ef",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون العنوان",
                     "id": "title_color",
                     "value": "#0f172a",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون الوصف",
                     "id": "text_color",
                     "value": "#1f2937",
                     "required": false,
-                    "format": "color"
+                    "format": "text"
                 },
                 {
                     "id": "items",
