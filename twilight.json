@@ -1,10 +1,10 @@
 {
     "name": {
-        "ar": "رائد",
-        "en": "Theme Raed"
+        "ar": "نخبة برو",
+        "en": "Nukhba Pro"
     },
-    "repository": "https://github.com/SallaApp/theme-raed",
-    "author_email": "support@salla.sa",
+    "repository": "https://github.com/AbdullahSharif98/Nukhba_Pro_Theme",
+    "author_email": "info@nukhbatech.net",
     "features": [
         "mega-menu",
         "fonts",
@@ -1407,16 +1407,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 },
                 {
@@ -1462,16 +1502,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -1722,16 +1802,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 },
                 {
@@ -1755,9 +1875,36 @@
                     "item_label": "بطاقة",
                     "value": [],
                     "fields": [
-                        { "type": "string", "icon": "sicon-image", "label": "الصورة", "id": "right_cards.image", "value": null, "required": true, "format": "image", "description": "المقاس الموصى به: 420×280 بكسل" },
-                        { "type": "string", "icon": "sicon-format-text-alt", "label": "الاسم", "multilanguage": true, "id": "right_cards.title", "value": null, "required": false, "format": "text" },
-                        { "type": "string", "icon": "sicon-typography", "label": "الوصف", "multilanguage": true, "id": "right_cards.description", "value": null, "required": false, "format": "textarea" },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "right_cards.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "المقاس الموصى به: 420×280 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "الاسم",
+                            "multilanguage": true,
+                            "id": "right_cards.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "الوصف",
+                            "multilanguage": true,
+                            "id": "right_cards.description",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea"
+                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
@@ -1770,16 +1917,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -1795,10 +1982,46 @@
                     "item_label": "بطاقة",
                     "value": [],
                     "fields": [
-                        { "type": "string", "icon": "sicon-image", "label": "الصورة", "id": "center_cards.image", "value": null, "required": true, "format": "image", "description": "المقاس الموصى به: 420×280 بكسل" },
-                        { "type": "string", "icon": "sicon-ticket", "label": "ليبل أعلى البطاقة", "multilanguage": true, "id": "center_cards.badge", "value": null, "required": false, "format": "text" },
-                        { "type": "string", "icon": "sicon-format-text-alt", "label": "الاسم", "multilanguage": true, "id": "center_cards.title", "value": null, "required": false, "format": "text" },
-                        { "type": "string", "icon": "sicon-typography", "label": "الوصف", "multilanguage": true, "id": "center_cards.description", "value": null, "required": false, "format": "textarea" },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "center_cards.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "المقاس الموصى به: 420×280 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-ticket",
+                            "label": "ليبل أعلى البطاقة",
+                            "multilanguage": true,
+                            "id": "center_cards.badge",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "الاسم",
+                            "multilanguage": true,
+                            "id": "center_cards.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "الوصف",
+                            "multilanguage": true,
+                            "id": "center_cards.description",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea"
+                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
@@ -1811,16 +2034,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -1836,8 +2099,26 @@
                     "item_label": "صورة",
                     "value": [],
                     "fields": [
-                        { "type": "string", "icon": "sicon-image", "label": "الصورة", "id": "left_banners.image", "value": null, "required": true, "format": "image", "description": "المقاس الموصى به: 900×520 بكسل" },
-                        { "type": "string", "icon": "sicon-format-text-alt", "label": "النص البديل", "multilanguage": true, "id": "left_banners.alt", "value": null, "required": false, "format": "text" },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "left_banners.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "المقاس الموصى به: 900×520 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص البديل",
+                            "multilanguage": true,
+                            "id": "left_banners.alt",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
@@ -1850,16 +2131,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -1905,16 +2226,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 },
                 {
@@ -2112,14 +2473,46 @@
                         }
                     ],
                     "options": [
-                        { "label": "4", "value": 4, "key": "nukhba-banner-limit-4" },
-                        { "label": "8", "value": 8, "key": "nukhba-banner-limit-8" },
-                        { "label": "12", "value": 12, "key": "nukhba-banner-limit-12" },
-                        { "label": "16", "value": 16, "key": "nukhba-banner-limit-16" },
-                        { "label": "20", "value": 20, "key": "nukhba-banner-limit-20" },
-                        { "label": "24", "value": 24, "key": "nukhba-banner-limit-24" },
-                        { "label": "28", "value": 28, "key": "nukhba-banner-limit-28" },
-                        { "label": "32", "value": 32, "key": "nukhba-banner-limit-32" }
+                        {
+                            "label": "4",
+                            "value": 4,
+                            "key": "nukhba-banner-limit-4"
+                        },
+                        {
+                            "label": "8",
+                            "value": 8,
+                            "key": "nukhba-banner-limit-8"
+                        },
+                        {
+                            "label": "12",
+                            "value": 12,
+                            "key": "nukhba-banner-limit-12"
+                        },
+                        {
+                            "label": "16",
+                            "value": 16,
+                            "key": "nukhba-banner-limit-16"
+                        },
+                        {
+                            "label": "20",
+                            "value": 20,
+                            "key": "nukhba-banner-limit-20"
+                        },
+                        {
+                            "label": "24",
+                            "value": 24,
+                            "key": "nukhba-banner-limit-24"
+                        },
+                        {
+                            "label": "28",
+                            "value": 28,
+                            "key": "nukhba-banner-limit-28"
+                        },
+                        {
+                            "label": "32",
+                            "value": 32,
+                            "key": "nukhba-banner-limit-32"
+                        }
                     ],
                     "source": "Manual"
                 },
@@ -2157,16 +2550,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 }
             ]
@@ -2220,16 +2653,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 },
                 {
@@ -2313,16 +2786,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -2378,16 +2891,56 @@
                     "searchable": true,
                     "source": "custom",
                     "sources": [
-                        { "label": "منتج", "key": "products", "value": "products" },
-                        { "label": "تصنيف", "key": "categories", "value": "categories" },
-                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
                     ]
                 },
                 {
@@ -2470,16 +3023,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -2542,8 +3135,26 @@
                     "item_label": "صورة",
                     "value": [],
                     "fields": [
-                        { "type": "string", "icon": "sicon-image", "label": "الصورة", "id": "items.image", "value": null, "required": true, "format": "image", "description": "المقاس الموصى به: 900×430 للصف العلوي و560×300 للسفلي" },
-                        { "type": "string", "icon": "sicon-format-text-alt", "label": "النص البديل", "multilanguage": true, "id": "items.alt", "value": null, "required": false, "format": "text" },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "items.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "المقاس الموصى به: 900×430 للصف العلوي و560×300 للسفلي"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص البديل",
+                            "multilanguage": true,
+                            "id": "items.alt",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
@@ -2556,16 +3167,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -2628,8 +3279,26 @@
                     "item_label": "صورة",
                     "value": [],
                     "fields": [
-                        { "type": "string", "icon": "sicon-image", "label": "الصورة", "id": "items.image", "value": null, "required": true, "format": "image", "description": "أول 4 صور صغيرة والخامسة هي الصورة الكبيرة" },
-                        { "type": "string", "icon": "sicon-format-text-alt", "label": "النص البديل", "multilanguage": true, "id": "items.alt", "value": null, "required": false, "format": "text" },
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "items.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "أول 4 صور صغيرة والخامسة هي الصورة الكبيرة"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص البديل",
+                            "multilanguage": true,
+                            "id": "items.alt",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
@@ -2642,16 +3311,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -2774,16 +3483,56 @@
                             "searchable": true,
                             "source": "custom",
                             "sources": [
-                                { "label": "منتج", "key": "products", "value": "products" },
-                                { "label": "تصنيف", "key": "categories", "value": "categories" },
-                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
-                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
-                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
-                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
-                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
-                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
-                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
-                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
                             ]
                         }
                     ]
@@ -2907,7 +3656,7 @@
             ]
         }
     ],
-    "support_url": "https://salla.com/",
+    "support_url": "https://nukhbatech.net/",
     "description": {
         "ar": "مجموعة كبيرة من المزايا لدعم تجارتك وتقديم تجربة تسوق مثيرة لعملائك",
         "en": "A wide range of features to support your business and provide an exciting shopping experience for your customers"
