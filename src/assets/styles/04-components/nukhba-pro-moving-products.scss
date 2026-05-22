@@ -4,6 +4,10 @@
   .swiper-slide {
     height: auto;
   }
+
+  .swiper {
+    overflow: visible;
+  }
 }
 
 .nukhba-pro-products__heading {
@@ -74,14 +78,14 @@ nukhba-pro-product-card {
 .nukhba-pro-card__media img {
   display: block;
   width: 100%;
-  height: 17rem;
+  height: var(--nukhba-pro-card-image-height, 272px);
   object-fit: contain;
 }
 
 .nukhba-pro-card__wishlist {
   position: absolute;
   inset-inline-start: 1rem;
-  top: 52%;
+  top: 3.35rem;
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -109,13 +113,17 @@ nukhba-pro-product-card {
 .nukhba-pro-card__content h3 {
   margin: 0;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
   font-weight: 800;
-  min-height: 3.4rem;
+  min-height: 3.2rem;
 }
 
 .nukhba-pro-card__content h3 a {
   color: inherit;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .nukhba-pro-card__price-box,
@@ -272,12 +280,12 @@ nukhba-pro-product-card {
 
 @media (max-width: 767px) {
   .nukhba-pro-card__media img {
-    height: 13rem;
+    height: var(--nukhba-pro-card-image-height-mobile, 208px);
   }
 
   .nukhba-pro-card__content h3 {
-    min-height: auto;
     font-size: .95rem;
+    min-height: 3rem;
   }
 
   .nukhba-pro-card__price-head strong {
@@ -285,6 +293,6 @@ nukhba-pro-product-card {
   }
 
   .nukhba-pro-card__wishlist {
-    top: 48%;
+    top: 3rem;
   }
 }

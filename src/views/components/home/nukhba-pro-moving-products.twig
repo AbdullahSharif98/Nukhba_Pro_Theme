@@ -21,8 +21,18 @@
 {% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
 {% set has_products = (not needs_source_value) or slider_values %}
 {% set slider_limit = component.products_limit ?: 8 %}
+{% set desktop_per_view = component.desktop_products_per_view ?: 4 %}
+{% set mobile_per_view = component.mobile_products_per_view ?: 1 %}
+{% set tablet_per_view = desktop_per_view > 2 ? 2 : desktop_per_view %}
+{% set desktop_height = component.desktop_image_height ?: 272 %}
+{% set mobile_height = component.mobile_image_height ?: 208 %}
 
-<section class="s-block nukhba-pro-products">
+<section
+  class="s-block nukhba-pro-products"
+  style="
+    --nukhba-pro-card-image-height: {{ desktop_height }}px;
+    --nukhba-pro-card-image-height-mobile: {{ mobile_height }}px;
+  ">
   <div class="container">
     {% if component.section_title or component.section_subtitle %}
       <div class="nukhba-pro-products__heading">
@@ -43,6 +53,14 @@
         autoplay
         slider-id="nukhba-pro-moving-products-{{ position }}"
         product-card-component="nukhba-pro-product-card"
+        slider-config='{
+          "spaceBetween": 18,
+          "breakpoints": {
+            "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 12 },
+            "640": { "slidesPerView": {{ tablet_per_view }}, "spaceBetween": 14 },
+            "992": { "slidesPerView": {{ desktop_per_view }}, "spaceBetween": 18 }
+          }
+        }'
         data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
         data-right-label-bg="{{ component.right_label_bg|default('#f30f0f')|e('html_attr') }}"
         data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"

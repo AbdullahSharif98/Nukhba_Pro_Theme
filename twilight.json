@@ -1070,6 +1070,50 @@
                     "value": 8
                 },
                 {
+                    "type": "number",
+                    "icon": "sicon-layout-grid-rearrange",
+                    "label": "عدد الظهور في الكمبيوتر",
+                    "id": "desktop_products_per_view",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 6,
+                    "value": 4
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-layout-grid-rearrange",
+                    "label": "عدد الظهور في الجوال",
+                    "id": "mobile_products_per_view",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 3,
+                    "value": 1
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الكمبيوتر",
+                    "id": "desktop_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 180,
+                    "maximum": 520,
+                    "value": 272
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الجوال",
+                    "id": "mobile_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 140,
+                    "maximum": 420,
+                    "value": 208
+                },
+                {
                     "type": "static",
                     "format": "line",
                     "id": "nukhba-pro-line-1"
