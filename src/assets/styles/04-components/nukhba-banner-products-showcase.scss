@@ -1,0 +1,210 @@
+.nukhba-banner-products-showcase {
+  padding: 1rem 0;
+}
+
+.nukhba-banner-products-showcase__hero-link {
+  display: block;
+}
+
+.nukhba-banner-products-showcase__hero {
+  min-height: var(--nukhba-banner-showcase-height, 300px);
+  padding: 1.4rem 1rem 6.5rem;
+  border-radius: 1.75rem;
+  background-color: #f5f4d7;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.nukhba-banner-products-showcase__hero-content {
+  text-align: center;
+
+  h2 {
+    margin: 0 0 .35rem;
+    color: #1f6f78;
+    font-size: clamp(1.6rem, 2.4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+.nukhba-banner-products-showcase__products {
+  margin-top: -5.25rem;
+  position: relative;
+  z-index: 2;
+  padding-inline: .5rem;
+}
+
+.nukhba-banner-products-showcase__slider .swiper-slide {
+  height: auto;
+}
+
+.nukhba-banner-products-showcase__slider .swiper {
+  padding: .5rem .15rem 2rem;
+}
+
+.nukhba-banner-products-showcase__slider .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: .35rem;
+}
+
+.nukhba-banner-products-showcase__list {
+  display: block;
+}
+
+.nukhba-banner-products-showcase__list::part(wrapper),
+.nukhba-banner-products-showcase__list::part(container),
+.nukhba-banner-products-showcase__list::part(list) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+nukhba-banner-product-card {
+  display: block;
+  height: 100%;
+  padding: .25rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: .9rem;
+  align-items: start;
+  min-height: 100%;
+  padding: 1rem;
+  border: 2px solid #195a66;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, .05);
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__media {
+  overflow: hidden;
+  border-radius: .9rem;
+  background: #fff;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__media img {
+  display: block;
+  width: 100%;
+  height: 8.2rem;
+  object-fit: contain;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__body {
+  display: grid;
+  gap: .55rem;
+  min-width: 0;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__title {
+  color: #111827;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__title a {
+  color: inherit;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__prices {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: .55rem;
+  flex-wrap: wrap;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__price {
+  color: #111827;
+  font-size: 1.95rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__old-price {
+  color: #dc2626;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-decoration: line-through;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__action {
+  position: absolute;
+  inset-inline-start: .85rem;
+  bottom: .85rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__action::part(button) {
+  width: 2.8rem;
+  min-width: 2.8rem;
+  height: 2.8rem;
+  border-radius: .8rem;
+  border-color: #dbe5ec;
+  background: #fff;
+  color: #1f2937;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, .08);
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card__action i {
+  font-size: 1.15rem;
+}
+
+@media (min-width: 992px) {
+  .nukhba-banner-products-showcase__list::part(wrapper),
+  .nukhba-banner-products-showcase__list::part(container),
+  .nukhba-banner-products-showcase__list::part(list) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .nukhba-banner-products-showcase__hero {
+    min-height: var(--nukhba-banner-showcase-height-mobile, 180px);
+    padding: 1rem .8rem 4.8rem;
+    border-radius: 1.15rem;
+  }
+
+  .nukhba-banner-products-showcase__products {
+    margin-top: -3.6rem;
+    padding-inline: 0;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card {
+    grid-template-columns: 84px 1fr;
+    gap: .7rem;
+    padding: .8rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card__media img {
+    height: 6.5rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card__title {
+    font-size: .92rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card__price {
+    font-size: 1.45rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card__old-price {
+    font-size: .95rem;
+  }
+
+  .nukhba-banner-products-showcase__list::part(wrapper),
+  .nukhba-banner-products-showcase__list::part(container),
+  .nukhba-banner-products-showcase__list::part(list) {
+    gap: .75rem;
+  }
+}

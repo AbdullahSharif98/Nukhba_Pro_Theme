@@ -1,0 +1,314 @@
+class NukhbaProProductCard extends HTMLElement {
+  connectedCallback() {
+    if (this.__initialized) return;
+
+    this.product = this.product || this.parseProduct();
+    this.slider = this.closest('salla-products-slider');
+
+    if (!this.product) {
+      this.__retryCount = (this.__retryCount || 0) + 1;
+      if (this.__retryCount <= 20) {
+        requestAnimationFrame(() => this.connectedCallback());
+      }
+      return;
+    }
+
+    this.__initialized = true;
+
+    if (window.app?.status === 'ready') {
+      this.onReady();
+    } else {
+      document.addEventListener('theme::ready', () => this.onReady(), { once: true });
+    }
+  }
+
+  parseProduct() {
+    const raw = this.getAttribute('product');
+    if (!raw) return null;
+
+    try {
+      return JSON.parse(raw);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  onReady() {
+    this.placeholder = salla.url.asset(salla.config.get('theme.settings.placeholder'));
+    this.isInWishlist = !salla.config.isGuest() && salla.storage.get('salla::wishlist', []).includes(Number(this.product.id));
+
+    salla.lang.onLoaded(() => {
+      this.startingPrice = salla.lang.get('pages.products.starting_price');
+      this.addToCartText = salla.lang.get('pages.cart.add_to_cart');
+      this.bookNowText = salla.lang.get('pages.cart.book_now');
+      this.preOrderText = salla.lang.get('pages.products.pre_order_now');
+      this.outOfStockText = salla.lang.get('pages.products.out_of_stock');
+      this.donationText = salla.lang.get('pages.products.donation_exceed');
+      this.render();
+    });
+
+    this.render();
+  }
+
+  getSetting(name, fallback = '') {
+    const value = this.slider?.getAttribute(`data-${name}`);
+    return value === null || value === undefined || value === '' ? fallback : value;
+  }
+
+  getJSONSetting(name, fallback = []) {
+    const raw = this.getSetting(name, '');
+    if (!raw) return fallback;
+
+    try {
+      const value = JSON.parse(raw);
+      return Array.isArray(value) ? value : fallback;
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  escapeHTML(value = '') {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  getImageUrl() {
+    return this.product?.image?.url || this.product?.thumbnail || this.placeholder || '';
+  }
+
+  getImageAlt() {
+    return this.escapeHTML(this.product?.image?.alt || this.product?.name || '');
+  }
+
+  getMoney(price) {
+    if (!price || price === 0) {
+      return salla.config.get('store.settings.product.show_price_as_dash') ? '-' : '';
+    }
+
+    return salla.money(price);
+  }
+
+  getActualPrice() {
+    return this.product?.starting_price || (this.product?.is_on_sale ? this.product?.sale_price : this.product?.price);
+  }
+
+  getOldPrice() {
+    return this.product?.is_on_sale && this.product?.regular_price ? this.product.regular_price : null;
+  }
+
+  getDiscountPercent() {
+    const oldPrice = this.getOldPrice();
+    const actualPrice = this.getActualPrice();
+
+    if (!oldPrice || !actualPrice || oldPrice <= actualPrice) {
+      return null;
+    }
+
+    return Math.round(((oldPrice - actualPrice) / oldPrice) * 100);
+  }
+
+  getButtonText() {
+    if (this.getSetting('button-text')) {
+      return this.getSetting('button-text');
+    }
+
+    if (this.product?.add_to_cart_label) {
+      return this.product.add_to_cart_label;
+    }
+
+    if (this.product?.has_preorder_campaign) {
+      return this.preOrderText || 'اطلب الآن';
+    }
+
+    if (this.product?.status === 'sale' && this.product?.type === 'booking') {
+      return this.bookNowText || 'احجز الآن';
+    }
+
+    if (this.product?.status === 'sale') {
+      return this.addToCartText || 'إضافة إلى السلة';
+    }
+
+    if (this.product?.type !== 'donating') {
+      return this.outOfStockText || 'نفدت الكمية';
+    }
+
+    return this.donationText || 'الحد الأقصى للتبرع';
+  }
+
+  getStyleAttr(color) {
+    return color ? ` style="color:${color};"` : '';
+  }
+
+  getInstallmentLogosHTML() {
+    const logos = this.getJSONSetting('installment-logos');
+    const items = logos
+      .filter((logo) => logo?.image)
+      .map((logo) => `
+        <span class="nukhba-pro-card__installment-logo">
+          <img src="${logo.image}" alt="${this.escapeHTML(logo.alt || this.product?.name || '')}" loading="lazy" width="90" height="34" />
+        </span>
+      `)
+      .join('');
+
+    return items ? `<div class="nukhba-pro-card__installment-logos">${items}</div>` : '';
+  }
+
+  getChipsHTML() {
+    const chips = this.getJSONSetting('chip-values');
+    if (!chips.length) return '';
+
+    return `
+      <div class="nukhba-pro-card__chips">
+        ${chips.map((chip) => `<span>${this.escapeHTML(chip)}</span>`).join('')}
+      </div>
+    `;
+  }
+
+  getHighlightHTML(textStyle) {
+    const badge = this.getSetting('highlight-badge');
+    const text = this.getSetting('highlight-text');
+
+    if (!badge && !text) return '';
+
+    return `
+      <div class="nukhba-pro-card__highlight">
+        ${text ? `<p${textStyle}>${this.escapeHTML(text)}</p>` : ''}
+        ${badge ? `<span class="nukhba-pro-card__highlight-badge">${this.escapeHTML(badge)}</span>` : ''}
+      </div>
+    `;
+  }
+
+  getWishlistButton() {
+    return `
+      <button
+        class="nukhba-pro-card__wishlist ${this.isInWishlist ? 'is-active' : ''}"
+        type="button"
+        aria-label="wishlist"
+        data-id="${this.product.id}"
+        onclick="salla.wishlist.toggle(${this.product.id})">
+        <i class="sicon-heart"></i>
+      </button>
+    `;
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const discountPercent = this.getDiscountPercent();
+    const textStyle = this.getStyleAttr(this.getSetting('text-color'));
+    const priceStyle = this.getStyleAttr(this.getSetting('price-color'));
+    const oldPriceStyle = this.getStyleAttr(this.getSetting('old-price-color'));
+    const priceNote = this.getSetting('price-note') || (this.product?.starting_price ? this.startingPrice : '');
+    const installmentTitle = this.getSetting('installment-title');
+    const rightLabelText = this.getSetting('right-label-text');
+    const leftLabelText = this.getSetting('left-label-text');
+
+    this.classList.add('nukhba-pro-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-pro-card">
+        <div class="nukhba-pro-card__labels">
+          ${rightLabelText ? `<span class="nukhba-pro-card__label is-right" style="background:${this.getSetting('right-label-bg', '#f30f0f')};color:${this.getSetting('right-label-color', '#ffffff')};">${this.escapeHTML(rightLabelText)}</span>` : ''}
+          ${leftLabelText ? `<span class="nukhba-pro-card__label is-left" style="background:${this.getSetting('left-label-bg', '#6b8f71')};color:${this.getSetting('left-label-color', '#ffffff')};">${this.escapeHTML(leftLabelText)}</span>` : ''}
+        </div>
+
+        <a href="${this.product.url}" class="nukhba-pro-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="480" height="420" />
+        </a>
+
+        ${this.getWishlistButton()}
+
+        <div class="nukhba-pro-card__content">
+          <h3${textStyle}>
+            <a href="${this.product.url}"${textStyle}>${this.escapeHTML(this.product.name)}</a>
+          </h3>
+
+          <div class="nukhba-pro-card__price-box">
+            <div class="nukhba-pro-card__price-head">
+              ${discountPercent ? `<span class="nukhba-pro-card__discount">%${discountPercent} خصم</span>` : ''}
+              <strong${priceStyle}>${this.getMoney(actualPrice)}</strong>
+            </div>
+            <div class="nukhba-pro-card__price-foot">
+              ${priceNote ? `<span${textStyle}>${this.escapeHTML(priceNote)}</span>` : ''}
+              ${oldPrice ? `<small${oldPriceStyle}>${this.getMoney(oldPrice)}</small>` : ''}
+            </div>
+          </div>
+
+          ${this.getHighlightHTML(textStyle)}
+
+          ${installmentTitle ? `<p class="nukhba-pro-card__installment-title"${textStyle}>${this.escapeHTML(installmentTitle)}</p>` : ''}
+          ${this.getInstallmentLogosHTML()}
+          ${this.getChipsHTML()}
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-pro-card__button"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${this.product.type === 'booking' ? 'calendar-time' : 'shopping-bag'}"></i>
+            <span>${this.escapeHTML(this.getButtonText())}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+
+    this.querySelectorAll('.nukhba-pro-card__wishlist').forEach((button) => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('is-active');
+      });
+    });
+  }
+}
+
+if (!customElements.get('nukhba-pro-product-card')) {
+  customElements.define('nukhba-pro-product-card', NukhbaProProductCard);
+}
+
+class NukhbaBannerProductCard extends NukhbaProProductCard {
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+
+    this.classList.add('nukhba-banner-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-banner-product-card">
+        <a href="${this.product.url}" class="nukhba-banner-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="360" height="260" />
+        </a>
+
+        <div class="nukhba-banner-product-card__body">
+          <div class="nukhba-banner-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </div>
+
+          <div class="nukhba-banner-product-card__prices">
+            ${oldPrice ? `<small class="nukhba-banner-product-card__old-price">${this.getMoney(oldPrice)}</small>` : ''}
+            <strong class="nukhba-banner-product-card__price">${this.getMoney(actualPrice)}</strong>
+          </div>
+        </div>
+
+        <salla-add-product-button
+          fill="outline"
+          class="nukhba-banner-product-card__action"
+          product-id="${this.product.id}"
+          product-status="${this.product.status}"
+          product-type="${this.product.type}">
+          <i class="sicon-plus"></i>
+        </salla-add-product-button>
+      </article>
+    `;
+  }
+}
+
+if (!customElements.get('nukhba-banner-product-card')) {
+  customElements.define('nukhba-banner-product-card', NukhbaBannerProductCard);
+}

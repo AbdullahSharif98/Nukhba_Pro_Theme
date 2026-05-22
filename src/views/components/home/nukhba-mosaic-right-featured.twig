@@ -1,0 +1,40 @@
+{#
+| component       | object   | Contains merchant settings for fields from twilight.json            |
+| component.items | object[] | Image entries                                                       |
+| position        | int      | Sorting number starts from zero                                     |
+#}
+{% set items = component.items|default([])|slice(0, 5) %}
+
+<section
+  class="s-block nukhba-image-mosaic"
+  style="
+    --nukhba-mosaic-bg: {{ component.section_bg_color|default('#ffffff') }};
+    --nukhba-mosaic-title: {{ component.title_color|default('#1f2937') }};
+  ">
+  <div class="container">
+    {% if component.section_title %}
+      <div class="s-block__title">
+        <div class="right-side">
+          <h2>{{ component.section_title }}</h2>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if items|length >= 5 %}
+      <div class="nukhba-image-mosaic__layout nukhba-image-mosaic__layout--right-featured">
+        <div class="nukhba-image-mosaic__grid-left">
+          {% for item in items|slice(0, 4) %}
+            <a href="{{ item.url ?: '#' }}" class="nukhba-image-mosaic__tile is-small" aria-label="{{ (item.alt ?: 'mosaic-featured-' ~ loop.index) | e('html_attr') }}">
+              <img src="{{ item.image }}" alt="{{ item.alt ?: store.name }}" loading="lazy" width="560" height="300" />
+            </a>
+          {% endfor %}
+        </div>
+
+        {% set featured = items|slice(4, 1)|first %}
+        <a href="{{ featured.url ?: '#' }}" class="nukhba-image-mosaic__tile is-featured" aria-label="{{ (featured.alt ?: 'mosaic-featured-main') | e('html_attr') }}">
+          <img src="{{ featured.image }}" alt="{{ featured.alt ?: store.name }}" loading="lazy" width="900" height="760" />
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,68 @@
+{#
+| component                    | object    | Fields from twilight.json                        |
+| component.products           | Product[] | Selected products                                |
+| component.categories         | Category[]| Selected categories                              |
+| component.brands             | Brand[]   | Selected brands                                  |
+| component.installment_images | object[]  | Installment logos                                |
+| position                     | int       | Sorting position                                 |
+#}
+{% set chip_values = [
+  component.chip_one ?: null,
+  component.chip_two ?: null,
+  component.chip_three ?: null,
+  component.chip_four ?: null
+] %}
+{% set source_type = component.source_type ?: 'latest' %}
+{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set slider_source = source_type == 'selected' ? 'selected' : (source_type == 'categories' ? 'categories' : (source_type == 'brands' ? 'brands' : source_type)) %}
+{% set slider_values = source_type == 'selected' ? selected_ids : (source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : '')) %}
+{% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
+{% set has_products = (not needs_source_value) or slider_values %}
+{% set slider_limit = component.products_limit ?: 8 %}
+
+<section class="s-block nukhba-pro-products">
+  <div class="container">
+    {% if component.section_title or component.section_subtitle %}
+      <div class="nukhba-pro-products__heading">
+        {% if component.section_title %}
+          <h2>{{ component.section_title }}</h2>
+        {% endif %}
+        {% if component.section_subtitle %}
+          <p>{{ component.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if has_products %}
+      <salla-products-slider
+        class="nukhba-pro-products__slider"
+        source="{{ slider_source }}"
+        limit="{{ slider_limit }}"
+        autoplay
+        slider-id="nukhba-pro-moving-products-{{ position }}"
+        product-card-component="nukhba-pro-product-card"
+        data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
+        data-right-label-bg="{{ component.right_label_bg|default('#f30f0f')|e('html_attr') }}"
+        data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"
+        data-left-label-text="{{ component.left_label_text|default('')|e('html_attr') }}"
+        data-left-label-bg="{{ component.left_label_bg|default('#6b8f71')|e('html_attr') }}"
+        data-left-label-color="{{ component.left_label_color|default('#ffffff')|e('html_attr') }}"
+        data-text-color="{{ component.text_color|default('#1f2937')|e('html_attr') }}"
+        data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
+        data-old-price-color="{{ component.old_price_color|default('#111827')|e('html_attr') }}"
+        data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
+        data-highlight-badge="{{ component.highlight_badge|default('')|e('html_attr') }}"
+        data-highlight-text="{{ component.highlight_text|default('')|e('html_attr') }}"
+        data-installment-title="{{ component.installment_title|default('')|e('html_attr') }}"
+        data-installment-logos="{{ component.installment_images|default([])|json_encode|e('html_attr') }}"
+        data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
+        data-button-text="{{ component.button_text|default('')|e('html_attr') }}"
+        {% if needs_source_value %}
+          source-value="[{{ slider_values }}]"
+        {% endif %}
+      ></salla-products-slider>
+    {% endif %}
+  </div>
+</section>

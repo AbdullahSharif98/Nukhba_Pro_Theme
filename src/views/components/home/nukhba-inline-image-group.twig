@@ -1,0 +1,52 @@
+{#
+| component            | object   | Contains merchant settings for fields from twilight.json            |
+| component.items      | object[] | Image cards                                                         |
+| position             | int      | Sorting number starts from zero                                     |
+#}
+
+<section
+  class="s-block nukhba-inline-image-group"
+  style="
+    --nukhba-inline-group-bg: {{ component.section_bg_color|default('#e8f5f3') }};
+    --nukhba-inline-group-title: {{ component.title_color|default('#0f3b46') }};
+    --nukhba-inline-group-text: {{ component.card_title_color|default('#1f2937') }};
+  ">
+  <div class="container">
+    {% if component.section_title or component.display_all_url %}
+      <div class="s-block__title">
+        {% if component.section_title %}
+          <div class="right-side">
+            <h2>{{ component.section_title }}</h2>
+          </div>
+        {% endif %}
+        {% if component.display_all_url %}
+          <a href="{{ component.display_all_url }}" class="nukhba-inline-image-group__display-all">
+            {{ component.display_all_text|default(trans('blocks.home.display_all')) }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="nukhba-inline-image-group__track">
+      {% for item in component.items %}
+        <a
+          href="{{ item.url ?: '#' }}"
+          class="nukhba-inline-image-group__card"
+          aria-label="{{ (item.title ?: 'inline-image-group-' ~ loop.index) | e('html_attr') }}">
+          <div class="nukhba-inline-image-group__image-wrap">
+            <img
+              src="{{ item.image }}"
+              alt="{{ item.title ?: store.name }}"
+              loading="lazy"
+              width="360"
+              height="360" />
+          </div>
+          <div class="nukhba-inline-image-group__copy">
+            {% if item.overline %}<small>{{ item.overline }}</small>{% endif %}
+            {% if item.title %}<h3>{{ item.title }}</h3>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+{#
+| component            | object     | Contains merchant settings for fields from twilight.json            |
+| component.categories | Category[] | Selected categories                                                 |
+| position             | int        | Sorting number starts from zero                                     |
+#}
+{% set shape_style = component.shape_style ?: 'arched' %}
+
+<section
+  class="s-block nukhba-category-browser nukhba-category-browser--{{ shape_style }}"
+  style="
+    --nukhba-category-browser-bg: {{ component.section_bg_color|default('#e9f6f4') }};
+    --nukhba-category-browser-card-bg: {{ component.card_bg_color|default('#fffaf1') }};
+    --nukhba-category-browser-frame: {{ component.frame_color|default('#7cb8cf') }};
+    --nukhba-category-browser-text: {{ component.text_color|default('#1f2937') }};
+  ">
+  <div class="container">
+    <salla-slider
+      type="carousel"
+      class="nukhba-category-browser__slider"
+      {% if component.title %}
+        block-title="{{ component.title }}"
+      {% endif %}
+      controls-outer
+      show-controls="{{ component.show_controls ? 'true' : 'false' }}"
+      id="nukhba-category-browser-{{ position }}">
+      <div slot="items">
+        {% for category in component.categories %}
+          <div class="swiper-slide slide--category-browser">
+            <a href="{{ category.url }}" class="nukhba-category-browser__item" aria-label="{{ category.name|e('html_attr') }}">
+              <span class="nukhba-category-browser__shape">
+                <span class="nukhba-category-browser__shape-inner">
+                  <img
+                    src="{{ category.image ?: ('images/placeholder.png' | asset) }}"
+                    alt="{{ category.name|e('html_attr') }}"
+                    width="260"
+                    height="260"
+                    loading="lazy" />
+                </span>
+              </span>
+              <h3>{{ category.name }}</h3>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
+  </div>
+</section>

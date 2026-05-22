@@ -1,0 +1,290 @@
+.nukhba-pro-products {
+  padding: 1rem 0;
+
+  .swiper-slide {
+    height: auto;
+  }
+}
+
+.nukhba-pro-products__heading {
+  margin-bottom: 1.25rem;
+
+  h2 {
+    margin: 0 0 .35rem;
+    font-size: clamp(1.5rem, 2vw, 2.2rem);
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.8;
+  }
+}
+
+nukhba-pro-product-card {
+  display: block;
+  height: 100%;
+  padding: .3rem;
+}
+
+.nukhba-pro-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border: 1px solid #dfe3e8;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .06);
+}
+
+.nukhba-pro-card__labels {
+  position: absolute;
+  inset-inline: .9rem;
+  inset-block-start: .9rem;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  pointer-events: none;
+}
+
+.nukhba-pro-card__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  max-width: calc(50% - .25rem);
+  padding: .25rem .8rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.nukhba-pro-card__media {
+  display: block;
+  padding: 2.9rem 1rem .8rem;
+  background: #fff;
+}
+
+.nukhba-pro-card__media img {
+  display: block;
+  width: 100%;
+  height: 17rem;
+  object-fit: contain;
+}
+
+.nukhba-pro-card__wishlist {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: 52%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #d7dde4;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .96);
+  color: #111827;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, .08);
+
+  &.is-active {
+    color: #d62828;
+    border-color: #f3b0b0;
+  }
+}
+
+.nukhba-pro-card__content {
+  display: grid;
+  gap: .8rem;
+  padding: 0 1rem 1rem;
+}
+
+.nukhba-pro-card__content h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 800;
+  min-height: 3.4rem;
+}
+
+.nukhba-pro-card__content h3 a {
+  color: inherit;
+}
+
+.nukhba-pro-card__price-box,
+.nukhba-pro-card__installment-logos,
+.nukhba-pro-card__chips {
+  border-radius: 14px;
+  background: #f5f6f7;
+}
+
+.nukhba-pro-card__price-box {
+  padding: .9rem;
+}
+
+.nukhba-pro-card__price-head,
+.nukhba-pro-card__price-foot,
+.nukhba-pro-card__highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+}
+
+.nukhba-pro-card__price-head strong {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 900;
+  color: #19763e;
+}
+
+.nukhba-pro-card__price-foot span {
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+.nukhba-pro-card__price-foot small {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+  text-decoration: line-through;
+}
+
+.nukhba-pro-card__discount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .38rem .8rem;
+  border-radius: 12px;
+  background: #19763e;
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nukhba-pro-card__highlight {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nukhba-pro-card__highlight p {
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 700;
+}
+
+.nukhba-pro-card__highlight-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: .15rem .7rem;
+  border-radius: 10px;
+  background: #fff200;
+  color: #f32727;
+  font-size: .95rem;
+  font-weight: 900;
+}
+
+.nukhba-pro-card__installment-title {
+  margin: 0;
+  text-align: center;
+  font-size: .94rem;
+  font-weight: 700;
+}
+
+.nukhba-pro-card__installment-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  flex-wrap: wrap;
+  padding: .7rem .8rem;
+}
+
+.nukhba-pro-card__installment-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  min-height: 2rem;
+  padding: .1rem;
+  border-radius: .75rem;
+  background: #fff;
+}
+
+.nukhba-pro-card__installment-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 2rem;
+  object-fit: contain;
+}
+
+.nukhba-pro-card__chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  flex-wrap: wrap;
+  padding: .7rem;
+  background: #eef8f2;
+}
+
+.nukhba-pro-card__chips span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: .22rem .8rem;
+  border: 1px solid #91b59b;
+  border-radius: 999px;
+  background: #fff;
+  color: #3d4c42;
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.nukhba-pro-card__button {
+  margin-top: .1rem;
+}
+
+.nukhba-pro-card__button::part(button) {
+  min-height: 3.3rem;
+  border-radius: 12px;
+  border-color: #19763e;
+  background: #19763e;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.nukhba-pro-card__button span {
+  margin-inline-start: .45rem;
+}
+
+@media (max-width: 767px) {
+  .nukhba-pro-card__media img {
+    height: 13rem;
+  }
+
+  .nukhba-pro-card__content h3 {
+    min-height: auto;
+    font-size: .95rem;
+  }
+
+  .nukhba-pro-card__price-head strong {
+    font-size: 1.7rem;
+  }
+
+  .nukhba-pro-card__wishlist {
+    top: 48%;
+  }
+}

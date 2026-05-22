@@ -12,6 +12,7 @@ module.exports = {
         app     : [asset('styles/app.scss'), asset('js/wishlist.js'), asset('js/app.js'), asset('js/blog.js')],
         home    : asset('js/home.js'),
         'product-card' : asset('js/partials/product-card.js'),
+        'nukhba-pro-product-card' : asset('js/partials/nukhba-pro-product-card.js'),
         'main-menu' : asset('js/partials/main-menu.js'),
         'wishlist-card': asset('js/partials/wishlist-card.js'),
         'add-product-toast': asset('js/partials/add-product-toast.js'),

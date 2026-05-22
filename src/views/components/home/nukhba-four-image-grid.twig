@@ -1,0 +1,53 @@
+{#
+| component            | object   | Contains merchant settings for fields from twilight.json            |
+| component.items      | object[] | Four image cards                                                    |
+| position             | int      | Sorting number starts from zero                                     |
+#}
+{% set radius = component.image_radius ?: 32 %}
+
+<section
+  class="s-block nukhba-four-image-grid"
+  style="
+    --nukhba-four-grid-bg: {{ component.section_bg_color|default('#ffffff') }};
+    --nukhba-four-grid-title: {{ component.title_color|default('#1f2937') }};
+    --nukhba-four-grid-text: {{ component.card_title_color|default('#1f2937') }};
+    --nukhba-four-grid-radius: {{ radius }}px;
+  ">
+  <div class="container">
+    {% if component.section_title or component.display_all_url %}
+      <div class="s-block__title">
+        {% if component.section_title %}
+          <div class="right-side">
+            <h2>{{ component.section_title }}</h2>
+          </div>
+        {% endif %}
+        {% if component.display_all_url %}
+          <a href="{{ component.display_all_url }}" class="nukhba-four-image-grid__display-all">
+            {{ component.display_all_text|default(trans('blocks.home.display_all')) }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="nukhba-four-image-grid__cards">
+      {% for item in component.items|slice(0, 4) %}
+        <a
+          href="{{ item.url ?: '#' }}"
+          class="nukhba-four-image-grid__card"
+          aria-label="{{ (item.title ?: 'four-image-card-' ~ loop.index) | e('html_attr') }}">
+          <div class="nukhba-four-image-grid__image-wrap">
+            <img
+              src="{{ item.image }}"
+              alt="{{ item.title ?: store.name }}"
+              loading="lazy"
+              width="640"
+              height="420" />
+          </div>
+          {% if item.title %}
+            <h3>{{ item.title }}</h3>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
