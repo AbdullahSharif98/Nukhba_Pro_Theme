@@ -1,12 +1,16 @@
 .nukhba-category-browser {
   padding: 1.25rem 0;
+}
 
-  .container {
-    position: relative;
-    padding: 1.25rem 1rem;
-    border-radius: 1.25rem;
-    background: var(--nukhba-category-browser-bg, #e9f6f4);
-  }
+.nukhba-category-browser__inner {
+  position: relative;
+  padding: 1.25rem 1rem;
+  border-radius: 1.25rem;
+  background: var(--nukhba-category-browser-bg, #e9f6f4);
+}
+
+.nukhba-category-browser--full .nukhba-category-browser__inner {
+  width: 100%;
 }
 
 .nukhba-category-browser__slider {
@@ -115,7 +119,7 @@
 }
 
 @media (max-width: 639px) {
-  .nukhba-category-browser .container {
+  .nukhba-category-browser__inner {
     padding: 1rem .75rem;
     border-radius: 1rem;
   }

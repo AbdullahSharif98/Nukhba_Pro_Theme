@@ -4,16 +4,17 @@
 | position             | int        | Sorting number starts from zero                                     |
 #}
 {% set shape_style = component.shape_style ?: 'arched' %}
+{% set width_mode = component.width_mode ?: 'full' %}
 
 <section
-  class="s-block nukhba-category-browser nukhba-category-browser--{{ shape_style }}"
+  class="s-block nukhba-category-browser nukhba-category-browser--{{ shape_style }} nukhba-category-browser--{{ width_mode == 'normal' ? 'normal' : 'full' }}"
   style="
     --nukhba-category-browser-bg: {{ component.section_bg_color|default('#e9f6f4') }};
     --nukhba-category-browser-card-bg: {{ component.card_bg_color|default('#fffaf1') }};
     --nukhba-category-browser-frame: {{ component.frame_color|default('#7cb8cf') }};
     --nukhba-category-browser-text: {{ component.text_color|default('#1f2937') }};
   ">
-  <div class="container">
+  <div class="{{ width_mode == 'normal' ? 'container ' : '' }}nukhba-category-browser__inner">
     <salla-slider
       type="carousel"
       class="nukhba-category-browser__slider"

@@ -1629,6 +1629,34 @@
                     "selected": true
                 },
                 {
+                    "type": "items",
+                    "icon": "sicon-width",
+                    "label": "وضع العرض",
+                    "id": "width_mode",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-category-width-full"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-category-width-full"
+                        },
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-category-width-normal"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
                     "type": "string",
                     "icon": "sicon-palette",
                     "label": "لون خلفية القسم",
