@@ -1,0 +1,68 @@
+{#
+| component                      | object   | Contains merchant settings for fields from twilight.json            |
+| component.items                | object[] | List of moving photos                                               |
+| component.items[].image        | string   | Image url                                                           |
+| component.items[].url          | ?string  | Link url                                                            |
+| component.items[].alt          | ?string  | Alt text                                                            |
+| position                       | int      | Sorting number starts from zero                                     |
+#}
+{% set desktop_height = component.desktop_height ?: 320 %}
+{% set mobile_height = component.mobile_height ?: 190 %}
+{% set autoplay_delay = component.autoplay_delay ?: 2000 %}
+{% set transition_speed = component.transition_speed ?: 800 %}
+{% set rounded_enabled = component.rounded_enabled is same as(false) ? false : true %}
+{% set corner_radius = component.corner_radius ?: 4 %}
+
+<section
+  class="s-block nukhba-moving-photos"
+  style="
+    --nukhba-moving-photos-height: {{ desktop_height }}px;
+    --nukhba-moving-photos-height-mobile: {{ mobile_height }}px;
+    --nukhba-moving-photos-radius: {{ rounded_enabled ? corner_radius : 0 }}%;
+  ">
+  <div class="container">
+    {% if component.title %}
+      <div class="s-block__title">
+        <h2>{{ component.title }}</h2>
+      </div>
+    {% endif %}
+
+    <salla-slider
+      type="carousel"
+      class="nukhba-moving-photos__slider"
+      auto-play
+      show-controls="false"
+      pagination="{{ component.show_pagination ? 'true' : 'false' }}"
+      id="nukhba-moving-photos-{{ position }}"
+      slider-config='{
+        "loop": true,
+        "spaceBetween": 12,
+        "speed": {{ transition_speed }},
+        "autoplay": { "delay": {{ autoplay_delay }}, "disableOnInteraction": false },
+        "breakpoints": {
+          "0": { "slidesPerView": 1.15, "spaceBetween": 10 },
+          "480": { "slidesPerView": 2.1, "spaceBetween": 10 },
+          "768": { "slidesPerView": 3.2, "spaceBetween": 12 },
+          "1200": { "slidesPerView": 4.2, "spaceBetween": 12 }
+        }
+      }'>
+      <div slot="items">
+        {% for item in component.items %}
+          <div class="swiper-slide nukhba-moving-photos__slide">
+            <a
+              href="{{ item.url }}"
+              class="nukhba-moving-photos__link"
+              aria-label="{{ (item.alt ?: 'nukhba-moving-photo-' ~ loop.index) | e('html_attr') }}">
+              <img
+                src="{{ item.image }}"
+                alt="{{ item.alt ?: store.name }}"
+                loading="lazy"
+                width="600"
+                height="{{ desktop_height }}" />
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
+  </div>
+</section>

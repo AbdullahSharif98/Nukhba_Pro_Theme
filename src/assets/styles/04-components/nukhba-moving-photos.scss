@@ -1,0 +1,39 @@
+.nukhba-moving-photos__slider {
+  .swiper {
+    padding-bottom: 1.75rem;
+  }
+
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 0;
+  }
+
+  .swiper-slide.nukhba-moving-photos__slide {
+    height: auto;
+  }
+}
+
+.nukhba-moving-photos__link {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--nukhba-moving-photos-radius, 18px);
+  background: #f7f7f7;
+}
+
+.nukhba-moving-photos__link img {
+  display: block;
+  width: 100%;
+  height: var(--nukhba-moving-photos-height, 320px);
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .nukhba-moving-photos__slider {
+    .swiper {
+      padding-bottom: 1.35rem;
+    }
+  }
+
+  .nukhba-moving-photos__link img {
+    height: var(--nukhba-moving-photos-height-mobile, 190px);
+  }
+}
