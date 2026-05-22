@@ -388,3 +388,68 @@ class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
 if (!customElements.get('nukhba-three-zones-product-card')) {
   customElements.define('nukhba-three-zones-product-card', NukhbaThreeZonesProductCard);
 }
+
+function patchThreeZonesProductLists() {
+  document.querySelectorAll('salla-products-list.nukhba-three-zones-showcase__product-list').forEach((list) => {
+    const root = list.shadowRoot;
+    if (!root || root.getElementById('nukhba-three-zones-grid-style')) {
+      return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'nukhba-three-zones-grid-style';
+    style.textContent = `
+      .s-products-list-wrapper,
+      .s-products-list-content,
+      .s-products-list-list,
+      [part="wrapper"],
+      [part="container"],
+      [part="list"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-auto-flow: row !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+
+      .s-product-card-entry,
+      nukhba-three-zones-product-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+      }
+
+      @media (max-width: 479px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+
+    root.appendChild(style);
+  });
+}
+
+function scheduleThreeZonesProductListPatch(retries = 20) {
+  patchThreeZonesProductLists();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleThreeZonesProductListPatch(retries - 1), 400);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleThreeZonesProductListPatch(), { once: true });
+} else {
+  scheduleThreeZonesProductListPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleThreeZonesProductListPatch());
