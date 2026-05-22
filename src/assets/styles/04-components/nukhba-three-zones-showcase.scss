@@ -68,6 +68,19 @@
   gap: 1rem;
 }
 
+.nukhba-three-zones-showcase__product-list {
+  display: block;
+}
+
+.nukhba-three-zones-showcase__product-list::part(wrapper),
+.nukhba-three-zones-showcase__product-list::part(container),
+.nukhba-three-zones-showcase__product-list::part(list) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
 .nukhba-three-zones-showcase__card,
 .nukhba-three-zones-showcase__stack-item {
   display: block;
@@ -95,7 +108,7 @@
 }
 
 .nukhba-three-zones-showcase__image-wrap img {
-  height: 12rem;
+  height: var(--nukhba-showcase-right-image-height, 220px);
 }
 
 .nukhba-three-zones-showcase__copy {
@@ -144,8 +157,122 @@
 }
 
 .nukhba-three-zones-showcase__stack-item img {
+  height: var(--nukhba-showcase-left-image-height, 260px);
+  min-height: 0;
+}
+
+nukhba-three-zones-product-card {
+  display: block;
   height: 100%;
-  min-height: 14rem;
+  min-width: 0;
+}
+
+.nukhba-three-zones-showcase__product-list .s-products-list-wrapper,
+.nukhba-three-zones-showcase__product-list .s-products-list-content,
+.nukhba-three-zones-showcase__product-list .s-products-list-list {
+  min-width: 0;
+}
+
+.nukhba-three-zones-product-card {
+  display: block;
+}
+
+.nukhba-three-zones-product-card__inner {
+  position: relative;
+  display: grid;
+  height: 100%;
+  padding: .85rem;
+  border-radius: 1.35rem;
+  background: var(--nukhba-showcase-panel-bg, #fff);
+}
+
+.nukhba-three-zones-product-card__labels {
+  position: absolute;
+  top: .85rem;
+  inset-inline: .85rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  pointer-events: none;
+}
+
+.nukhba-three-zones-product-card__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  max-width: calc(50% - .25rem);
+  padding: .2rem .8rem;
+  border-radius: .55rem;
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.nukhba-three-zones-product-card__media {
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #f8fafc;
+}
+
+.nukhba-three-zones-product-card__media img {
+  display: block;
+  width: 100%;
+  height: var(--nukhba-showcase-center-image-height, 220px);
+  object-fit: contain;
+}
+
+.nukhba-three-zones-product-card__content {
+  display: grid;
+  gap: .45rem;
+  padding: .8rem .1rem .1rem;
+  text-align: center;
+}
+
+.nukhba-three-zones-product-card__title {
+  color: var(--nukhba-showcase-title, #374151);
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.nukhba-three-zones-product-card__title a {
+  color: inherit;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.nukhba-three-zones-product-card__price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.nukhba-three-zones-product-card__price-current {
+  color: var(--nukhba-showcase-title, #374151);
+  font-size: 1.55rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.nukhba-three-zones-product-card__price-old {
+  color: #dc2626;
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: line-through;
+}
+
+.nukhba-three-zones-product-card__price-note {
+  color: var(--nukhba-showcase-text, #4b5563);
+  font-size: .92rem;
+  line-height: 1.4;
 }
 
 @media (min-width: 1200px) {
@@ -161,6 +288,12 @@
 
 @media (max-width: 991px) {
   .nukhba-three-zones-showcase__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nukhba-three-zones-showcase__product-list::part(wrapper),
+  .nukhba-three-zones-showcase__product-list::part(container),
+  .nukhba-three-zones-showcase__product-list::part(list) {
     grid-template-columns: 1fr;
   }
 
@@ -181,6 +314,14 @@
     height: 10rem;
   }
 
+  .nukhba-three-zones-product-card__media img {
+    height: min(var(--nukhba-showcase-center-image-height, 220px), 180px);
+  }
+
+  .nukhba-three-zones-showcase__stack-item img {
+    height: min(var(--nukhba-showcase-left-image-height, 260px), 220px);
+  }
+
   .nukhba-three-zones-showcase__copy {
     h3 {
       font-size: 1.05rem;
@@ -189,5 +330,17 @@
     p {
       font-size: .92rem;
     }
+  }
+
+  .nukhba-three-zones-product-card__title {
+    font-size: 1rem;
+  }
+
+  .nukhba-three-zones-product-card__price-current {
+    font-size: 1.35rem;
+  }
+
+  .nukhba-three-zones-product-card__price-old {
+    font-size: .92rem;
   }
 }

@@ -1751,6 +1751,39 @@
                     "format": "text"
                 },
                 {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع صور قسم اليمين",
+                    "id": "right_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 120,
+                    "maximum": 500,
+                    "value": 220
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع صور القسم الأوسط",
+                    "id": "center_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 120,
+                    "maximum": 500,
+                    "value": 220
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع صور قسم اليسار",
+                    "id": "left_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 160,
+                    "maximum": 700,
+                    "value": 260
+                },
+                {
                     "type": "string",
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان قسم اليمين",
@@ -1972,121 +2005,203 @@
                     ]
                 },
                 {
-                    "id": "center_cards",
-                    "type": "collection",
-                    "format": "collection",
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "نوع المنتجات للوسط",
+                    "id": "center_source_type",
+                    "format": "dropdown-list",
                     "required": true,
-                    "minLength": 4,
-                    "maxLength": 4,
-                    "label": "بطاقات الوسط",
-                    "item_label": "بطاقة",
+                    "selected": [
+                        {
+                            "label": "أحدث المنتجات",
+                            "value": "latest",
+                            "key": "nukhba-three-zones-center-latest"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "أحدث المنتجات",
+                            "value": "latest",
+                            "key": "nukhba-three-zones-center-latest"
+                        },
+                        {
+                            "label": "منتجات مختارة",
+                            "value": "selected",
+                            "key": "nukhba-three-zones-center-selected"
+                        },
+                        {
+                            "label": "منتجات من تصنيف",
+                            "value": "categories",
+                            "key": "nukhba-three-zones-center-categories"
+                        },
+                        {
+                            "label": "منتجات من ماركة",
+                            "value": "brands",
+                            "key": "nukhba-three-zones-center-brands"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "value": "offers",
+                            "key": "nukhba-three-zones-center-offers"
+                        },
+                        {
+                            "label": "منتجات من وسم",
+                            "value": "tags",
+                            "key": "nukhba-three-zones-center-tags"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "عدد منتجات الوسط",
+                    "id": "center_products_limit",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 4,
+                    "maximum": 12,
+                    "value": 4
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتجات المختارة للوسط",
+                    "id": "center_products",
+                    "format": "dropdown-list",
+                    "description": null,
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 12,
+                    "minLength": 1,
                     "value": [],
-                    "fields": [
+                    "conditions": [
                         {
-                            "type": "string",
-                            "icon": "sicon-image",
-                            "label": "الصورة",
-                            "id": "center_cards.image",
-                            "value": null,
-                            "required": true,
-                            "format": "image",
-                            "description": "المقاس الموصى به: 420×280 بكسل"
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-ticket",
-                            "label": "ليبل أعلى البطاقة",
-                            "multilanguage": true,
-                            "id": "center_cards.badge",
-                            "value": null,
-                            "required": false,
-                            "format": "text"
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "الاسم",
-                            "multilanguage": true,
-                            "id": "center_cards.title",
-                            "value": null,
-                            "required": false,
-                            "format": "text"
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "الوصف",
-                            "multilanguage": true,
-                            "id": "center_cards.description",
-                            "value": null,
-                            "required": false,
-                            "format": "textarea"
-                        },
-                        {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "الرابط",
-                            "id": "center_cards.url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
+                            "id": "center_source_type",
+                            "operation": "=",
+                            "value": "selected"
                         }
                     ]
+                },
+                {
+                    "id": "center_categories",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "تصنيفات الوسط",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "center_source_type",
+                            "operation": "=",
+                            "value": "categories"
+                        }
+                    ]
+                },
+                {
+                    "id": "center_brands",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "ماركات الوسط",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "searchable": true,
+                    "source": "brands",
+                    "conditions": [
+                        {
+                            "id": "center_source_type",
+                            "operation": "=",
+                            "value": "brands"
+                        }
+                    ]
+                },
+                {
+                    "id": "center_tags",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "وسوم الوسط",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "searchable": true,
+                    "source": "tags",
+                    "conditions": [
+                        {
+                            "id": "center_source_type",
+                            "operation": "=",
+                            "value": "tags"
+                        }
+                    ]
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليمين للوسط",
+                    "multilanguage": true,
+                    "id": "center_right_badge_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليمين للوسط",
+                    "id": "center_right_badge_bg",
+                    "value": "#f30f0f",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليمين للوسط",
+                    "id": "center_right_badge_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليسار للوسط",
+                    "multilanguage": true,
+                    "id": "center_left_badge_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليسار للوسط",
+                    "id": "center_left_badge_bg",
+                    "value": "#6b8f71",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليسار للوسط",
+                    "id": "center_left_badge_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
                 },
                 {
                     "id": "left_banners",

@@ -325,3 +325,53 @@ class NukhbaBannerProductCard extends NukhbaProProductCard {
 if (!customElements.get('nukhba-banner-product-card')) {
   customElements.define('nukhba-banner-product-card', NukhbaBannerProductCard);
 }
+
+class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
+  getBadge(name) {
+    const text = this.getSetting(`${name}-badge-text`);
+    if (!text) return '';
+
+    const bg = this.getSetting(`${name}-badge-bg`, name === 'right' ? '#f30f0f' : '#6b8f71');
+    const color = this.getSetting(`${name}-badge-color`, '#ffffff');
+    return `<span class="nukhba-three-zones-product-card__label" style="background:${bg};color:${color};">${this.escapeHTML(text)}</span>`;
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const priceNote = this.product?.starting_price ? (this.startingPrice || '') : '';
+
+    this.classList.add('nukhba-three-zones-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-three-zones-product-card__inner">
+        <div class="nukhba-three-zones-product-card__labels">
+          ${this.getBadge('right')}
+          ${this.getBadge('left')}
+        </div>
+
+        <a href="${this.product.url}" class="nukhba-three-zones-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="420" height="320" />
+        </a>
+
+        <div class="nukhba-three-zones-product-card__content">
+          <div class="nukhba-three-zones-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </div>
+
+          <div class="nukhba-three-zones-product-card__price">
+            ${oldPrice ? `<small class="nukhba-three-zones-product-card__price-old">${this.getMoney(oldPrice)}</small>` : ''}
+            <strong class="nukhba-three-zones-product-card__price-current">${this.getMoney(actualPrice)}</strong>
+          </div>
+
+          ${priceNote ? `<div class="nukhba-three-zones-product-card__price-note">${this.escapeHTML(priceNote)}</div>` : ''}
+        </div>
+      </article>
+    `;
+  }
+}
+
+if (!customElements.get('nukhba-three-zones-product-card')) {
+  customElements.define('nukhba-three-zones-product-card', NukhbaThreeZonesProductCard);
+}

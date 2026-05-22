@@ -1,10 +1,19 @@
 {#
 | component               | object   | Contains merchant settings for fields from twilight.json            |
 | component.right_cards   | object[] | Right side cards                                                    |
-| component.center_cards  | object[] | Center side cards                                                   |
 | component.left_banners  | object[] | Left side stacked banners                                           |
 | position                | int      | Sorting number starts from zero                                     |
 #}
+
+{% set center_source_type = component.center_source_type ?: 'latest' %}
+{% set center_selected_ids = component.center_products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set center_category_ids = component.center_categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set center_brand_ids = component.center_brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set center_tag_ids = component.center_tags|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set center_products_source = center_source_type %}
+{% set center_products_value = center_source_type == 'selected' ? center_selected_ids : (center_source_type == 'categories' ? center_category_ids : (center_source_type == 'brands' ? center_brand_ids : (center_source_type == 'tags' ? center_tag_ids : ''))) %}
+{% set center_needs_source_value = center_source_type in ['selected', 'categories', 'brands', 'tags'] %}
+{% set center_has_products = (not center_needs_source_value) or center_products_value %}
 
 <section
   class="s-block nukhba-three-zones-showcase"
@@ -15,6 +24,9 @@
     --nukhba-showcase-badge-text: {{ component.badge_text_color|default('#ffffff') }};
     --nukhba-showcase-title: {{ component.title_color|default('#374151') }};
     --nukhba-showcase-text: {{ component.text_color|default('#4b5563') }};
+    --nukhba-showcase-right-image-height: {{ component.right_image_height|default(220) }}px;
+    --nukhba-showcase-center-image-height: {{ component.center_image_height|default(220) }}px;
+    --nukhba-showcase-left-image-height: {{ component.left_image_height|default(260) }}px;
   ">
   <div class="container">
     <div class="nukhba-three-zones-showcase__grid">
@@ -25,7 +37,7 @@
           </header>
         {% endif %}
 
-        <div class="nukhba-three-zones-showcase__cards">
+        <div class="nukhba-three-zones-showcase__cards nukhba-three-zones-showcase__cards--right">
           {% for item in component.right_cards|slice(0, 4) %}
             <a href="{{ item.url }}" class="nukhba-three-zones-showcase__card" aria-label="{{ item.title|default('right-card-' ~ loop.index)|e('html_attr') }}">
               <div class="nukhba-three-zones-showcase__image-wrap">
@@ -58,22 +70,23 @@
           {% endif %}
         </header>
 
-        <div class="nukhba-three-zones-showcase__cards">
-          {% for item in component.center_cards|slice(0, 4) %}
-            <a href="{{ item.url }}" class="nukhba-three-zones-showcase__card" aria-label="{{ item.title|default('center-card-' ~ loop.index)|e('html_attr') }}">
-              {% if item.badge %}
-                <span class="nukhba-three-zones-showcase__badge">{{ item.badge }}</span>
-              {% endif %}
-              <div class="nukhba-three-zones-showcase__image-wrap">
-                <img src="{{ item.image }}" alt="{{ item.title|default(store.name)|e('html_attr') }}" loading="lazy" width="420" height="280" />
-              </div>
-              <div class="nukhba-three-zones-showcase__copy">
-                {% if item.title %}<h3>{{ item.title }}</h3>{% endif %}
-                {% if item.description %}<p>{{ item.description }}</p>{% endif %}
-              </div>
-            </a>
-          {% endfor %}
-        </div>
+        {% if center_has_products %}
+          <salla-products-list
+            class="nukhba-three-zones-showcase__product-list"
+            source="{{ center_products_source }}"
+            limit="{{ component.center_products_limit|default(4) }}"
+            product-card-component="nukhba-three-zones-product-card"
+            data-right-badge-text="{{ component.center_right_badge_text|default('')|e('html_attr') }}"
+            data-right-badge-bg="{{ component.center_right_badge_bg|default('#f30f0f')|e('html_attr') }}"
+            data-right-badge-color="{{ component.center_right_badge_color|default('#ffffff')|e('html_attr') }}"
+            data-left-badge-text="{{ component.center_left_badge_text|default('')|e('html_attr') }}"
+            data-left-badge-bg="{{ component.center_left_badge_bg|default('#6b8f71')|e('html_attr') }}"
+            data-left-badge-color="{{ component.center_left_badge_color|default('#ffffff')|e('html_attr') }}"
+            {% if center_needs_source_value %}
+              source-value="[{{ center_products_value }}]"
+            {% endif %}>
+          </salla-products-list>
+        {% endif %}
       </section>
 
       <section class="nukhba-three-zones-showcase__column nukhba-three-zones-showcase__column--left">
