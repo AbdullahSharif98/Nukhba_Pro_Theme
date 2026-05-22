@@ -74,7 +74,7 @@
           <salla-products-list
             class="nukhba-three-zones-showcase__product-list"
             source="{{ center_products_source }}"
-            limit="{{ component.center_products_limit|default(4) }}"
+            limit="4"
             product-card-component="nukhba-three-zones-product-card"
             data-right-badge-text="{{ component.center_right_badge_text|default('')|e('html_attr') }}"
             data-right-badge-bg="{{ component.center_right_badge_bg|default('#f30f0f')|e('html_attr') }}"

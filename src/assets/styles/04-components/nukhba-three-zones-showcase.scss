@@ -227,7 +227,7 @@ nukhba-three-zones-product-card {
 
 .nukhba-three-zones-product-card__content {
   display: grid;
-  gap: .45rem;
+  gap: .55rem;
   padding: .8rem .1rem .1rem;
   text-align: center;
 }
@@ -275,6 +275,27 @@ nukhba-three-zones-product-card {
   line-height: 1.4;
 }
 
+.nukhba-three-zones-product-card__button {
+  margin-top: .2rem;
+}
+
+.nukhba-three-zones-product-card__button::part(button) {
+  width: 100%;
+  min-height: 2.85rem;
+  border: 0;
+  border-radius: .95rem;
+  background: #155e75;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 800;
+  gap: .45rem;
+  box-shadow: 0 10px 22px rgba(21, 94, 117, .2);
+}
+
+.nukhba-three-zones-product-card__button i {
+  font-size: .98rem;
+}
+
 @media (min-width: 1200px) {
   .nukhba-three-zones-showcase__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr) minmax(320px, .92fr);
@@ -288,12 +309,6 @@ nukhba-three-zones-product-card {
 
 @media (max-width: 991px) {
   .nukhba-three-zones-showcase__cards {
-    grid-template-columns: 1fr;
-  }
-
-  .nukhba-three-zones-showcase__product-list::part(wrapper),
-  .nukhba-three-zones-showcase__product-list::part(container),
-  .nukhba-three-zones-showcase__product-list::part(list) {
     grid-template-columns: 1fr;
   }
 
@@ -342,5 +357,18 @@ nukhba-three-zones-product-card {
 
   .nukhba-three-zones-product-card__price-old {
     font-size: .92rem;
+  }
+
+  .nukhba-three-zones-product-card__button::part(button) {
+    min-height: 2.55rem;
+    font-size: .88rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .nukhba-three-zones-showcase__product-list::part(wrapper),
+  .nukhba-three-zones-showcase__product-list::part(container),
+  .nukhba-three-zones-showcase__product-list::part(list) {
+    grid-template-columns: 1fr;
   }
 }

@@ -2060,7 +2060,7 @@
                     "format": "integer",
                     "required": false,
                     "minimum": 4,
-                    "maximum": 12,
+                    "maximum": 4,
                     "value": 4
                 },
                 {
@@ -2076,7 +2076,7 @@
                     "multichoice": true,
                     "source": "products",
                     "searchable": true,
-                    "maxLength": 12,
+                    "maxLength": 4,
                     "minLength": 1,
                     "value": [],
                     "conditions": [

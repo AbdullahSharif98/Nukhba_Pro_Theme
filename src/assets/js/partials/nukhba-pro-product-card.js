@@ -340,6 +340,8 @@ class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
     const actualPrice = this.getActualPrice();
     const oldPrice = this.getOldPrice();
     const priceNote = this.product?.starting_price ? (this.startingPrice || '') : '';
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
 
     this.classList.add('nukhba-three-zones-product-card-entry');
     this.setAttribute('id', this.product.id);
@@ -366,6 +368,17 @@ class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
           </div>
 
           ${priceNote ? `<div class="nukhba-three-zones-product-card__price-note">${this.escapeHTML(priceNote)}</div>` : ''}
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-three-zones-product-card__button"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
         </div>
       </article>
     `;
