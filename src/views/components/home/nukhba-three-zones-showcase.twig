@@ -60,13 +60,13 @@
         {% endif %}
 
         <header class="nukhba-three-zones-showcase__header nukhba-three-zones-showcase__header--center">
+          {% if component.center_title %}
+            <h2>{{ component.center_title }}</h2>
+          {% endif %}
           {% if component.center_display_all_url %}
             <a href="{{ component.center_display_all_url }}" class="nukhba-three-zones-showcase__display-all">
               {{ component.center_display_all_text|default(trans('blocks.home.display_all')) }}
             </a>
-          {% endif %}
-          {% if component.center_title %}
-            <h2>{{ component.center_title }}</h2>
           {% endif %}
         </header>
 
