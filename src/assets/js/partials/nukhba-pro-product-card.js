@@ -3,7 +3,7 @@ class NukhbaProProductCard extends HTMLElement {
     if (this.__initialized) return;
 
     this.product = this.product || this.parseProduct();
-    this.slider = this.closest('salla-products-slider');
+    this.slider = this.closest('salla-products-slider, salla-products-list');
 
     if (!this.product) {
       this.__retryCount = (this.__retryCount || 0) + 1;
@@ -272,15 +272,26 @@ if (!customElements.get('nukhba-pro-product-card')) {
 }
 
 class NukhbaBannerProductCard extends NukhbaProProductCard {
+  getLayoutStyle() {
+    return this.slider?.getAttribute('data-layout-style') || 'one_row';
+  }
+
+  getActionIcon() {
+    return this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
+  }
+
   render() {
     const actualPrice = this.getActualPrice();
     const oldPrice = this.getOldPrice();
+    const isTwoRows = this.getLayoutStyle() === 'two_rows';
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.getActionIcon();
 
     this.classList.add('nukhba-banner-product-card-entry');
     this.setAttribute('id', this.product.id);
 
     this.innerHTML = `
-      <article class="nukhba-banner-product-card">
+      <article class="nukhba-banner-product-card ${isTwoRows ? 'is-two-rows' : 'is-one-row'}">
         <a href="${this.product.url}" class="nukhba-banner-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
           <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="360" height="260" />
         </a>
@@ -294,16 +305,18 @@ class NukhbaBannerProductCard extends NukhbaProProductCard {
             ${oldPrice ? `<small class="nukhba-banner-product-card__old-price">${this.getMoney(oldPrice)}</small>` : ''}
             <strong class="nukhba-banner-product-card__price">${this.getMoney(actualPrice)}</strong>
           </div>
-        </div>
 
-        <salla-add-product-button
-          fill="outline"
-          class="nukhba-banner-product-card__action"
-          product-id="${this.product.id}"
-          product-status="${this.product.status}"
-          product-type="${this.product.type}">
-          <i class="sicon-plus"></i>
-        </salla-add-product-button>
+          <salla-add-product-button
+            fill="${isTwoRows ? 'solid' : 'outline'}"
+            width="wide"
+            class="nukhba-banner-product-card__action"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
+        </div>
       </article>
     `;
   }

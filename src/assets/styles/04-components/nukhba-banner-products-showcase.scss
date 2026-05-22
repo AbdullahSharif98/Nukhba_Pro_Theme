@@ -37,9 +37,9 @@
 }
 
 .nukhba-banner-products-showcase__products {
-  margin-top: -5.25rem;
   position: relative;
   z-index: 2;
+  margin-top: -5.25rem;
   padding-inline: .5rem;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .nukhba-banner-products-showcase__slider .swiper {
-  padding: .5rem .15rem 2rem;
+  padding: .5rem .15rem 2.2rem;
 }
 
 .nukhba-banner-products-showcase__slider .swiper-pagination-bullets.swiper-pagination-horizontal {
@@ -65,99 +65,151 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  align-items: stretch;
 }
 
 nukhba-banner-product-card {
   display: block;
   height: 100%;
+  min-width: 0;
   padding: .25rem;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card {
-  position: relative;
   display: grid;
-  grid-template-columns: 108px 1fr;
-  gap: .9rem;
-  align-items: start;
-  min-height: 100%;
-  padding: 1rem;
+  height: 100%;
   border: 2px solid #195a66;
   border-radius: 1.2rem;
   background: #fff;
   box-shadow: 0 10px 25px rgba(15, 23, 42, .05);
+  overflow: hidden;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__media {
+  display: block;
   overflow: hidden;
-  border-radius: .9rem;
   background: #fff;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__media img {
   display: block;
   width: 100%;
-  height: 8.2rem;
   object-fit: contain;
+  background: #fff;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__body {
   display: grid;
-  gap: .55rem;
+  gap: .65rem;
   min-width: 0;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__title {
   color: #111827;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.45;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__title a {
   color: inherit;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__prices {
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: .55rem;
   flex-wrap: wrap;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__price {
   color: #111827;
-  font-size: 1.95rem;
+  font-size: 1.75rem;
   font-weight: 900;
   line-height: 1;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__old-price {
   color: #dc2626;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 800;
   text-decoration: line-through;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__action {
-  position: absolute;
-  inset-inline-start: .85rem;
-  bottom: .85rem;
+  margin-top: auto;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__action::part(button) {
-  width: 2.8rem;
-  min-width: 2.8rem;
-  height: 2.8rem;
-  border-radius: .8rem;
-  border-color: #dbe5ec;
-  background: #fff;
-  color: #1f2937;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, .08);
+  width: 100%;
+  min-height: 2.9rem;
+  border-radius: .9rem;
+  font-weight: 800;
+  gap: .45rem;
+  box-shadow: none;
 }
 
 .nukhba-banner-products-showcase .nukhba-banner-product-card__action i {
-  font-size: 1.15rem;
+  font-size: 1rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row {
+  grid-template-columns: 108px 1fr;
+  gap: .9rem;
+  align-items: start;
+  padding: 1rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row .nukhba-banner-product-card__media {
+  border-radius: .9rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row .nukhba-banner-product-card__media img {
+  height: 8.2rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row .nukhba-banner-product-card__body {
+  height: 100%;
+  align-content: start;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row .nukhba-banner-product-card__action::part(button) {
+  border-color: #195a66;
+  background: #fff;
+  color: #195a66;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows {
+  grid-template-rows: auto 1fr;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__media {
+  padding: .9rem .9rem 0;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__media img {
+  height: 12rem;
+  border-radius: .9rem;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__body {
+  padding: .3rem .9rem .9rem;
+  align-content: start;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__prices {
+  justify-content: flex-start;
+}
+
+.nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__action::part(button) {
+  border-color: #195a66;
+  background: #195a66;
+  color: #fff;
 }
 
 @media (min-width: 992px) {
@@ -180,14 +232,32 @@ nukhba-banner-product-card {
     padding-inline: 0;
   }
 
-  .nukhba-banner-products-showcase .nukhba-banner-product-card {
-    grid-template-columns: 84px 1fr;
+  .nukhba-banner-products-showcase__list::part(wrapper),
+  .nukhba-banner-products-showcase__list::part(container),
+  .nukhba-banner-products-showcase__list::part(list) {
+    gap: .75rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row {
+    grid-template-columns: 82px 1fr;
     gap: .7rem;
     padding: .8rem;
   }
 
-  .nukhba-banner-products-showcase .nukhba-banner-product-card__media img {
-    height: 6.5rem;
+  .nukhba-banner-products-showcase .nukhba-banner-product-card.is-one-row .nukhba-banner-product-card__media img {
+    height: 6.4rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__media {
+    padding: .75rem .75rem 0;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__media img {
+    height: 9rem;
+  }
+
+  .nukhba-banner-products-showcase .nukhba-banner-product-card.is-two-rows .nukhba-banner-product-card__body {
+    padding: .25rem .75rem .75rem;
   }
 
   .nukhba-banner-products-showcase .nukhba-banner-product-card__title {
@@ -195,16 +265,15 @@ nukhba-banner-product-card {
   }
 
   .nukhba-banner-products-showcase .nukhba-banner-product-card__price {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
   }
 
   .nukhba-banner-products-showcase .nukhba-banner-product-card__old-price {
-    font-size: .95rem;
+    font-size: .9rem;
   }
 
-  .nukhba-banner-products-showcase__list::part(wrapper),
-  .nukhba-banner-products-showcase__list::part(container),
-  .nukhba-banner-products-showcase__list::part(list) {
-    gap: .75rem;
+  .nukhba-banner-products-showcase .nukhba-banner-product-card__action::part(button) {
+    min-height: 2.7rem;
+    font-size: .9rem;
   }
 }

@@ -50,6 +50,7 @@
             source="{{ products_source }}"
             limit="{{ limit }}"
             product-card-component="nukhba-banner-product-card"
+            data-layout-style="{{ component.layout_style ?: 'one_row' }}"
             {% if needs_source_value %}
               source-value="[{{ products_value }}]"
             {% endif %}>
@@ -61,6 +62,7 @@
             limit="{{ limit }}"
             slider-id="nukhba-banner-products-showcase-{{ position }}"
             product-card-component="nukhba-banner-product-card"
+            data-layout-style="{{ component.layout_style ?: 'one_row' }}"
             {% if component.display_all_url %}
               display-all-url="{{ component.display_all_url }}"
             {% endif %}

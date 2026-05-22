@@ -1594,7 +1594,7 @@
                     "required": true,
                     "selected": [
                         {
-                            "label": "الشكل الموجود في الصورة",
+                            "label": "الشكل الاسلامي",
                             "value": "arched",
                             "key": "nukhba-category-shape-arched"
                         }
@@ -1606,7 +1606,7 @@
                             "key": "nukhba-category-shape-circle"
                         },
                         {
-                            "label": "الشكل الموجود في الصورة",
+                            "label": "الشكل الاسلامي",
                             "value": "arched",
                             "key": "nukhba-category-shape-arched"
                         },
