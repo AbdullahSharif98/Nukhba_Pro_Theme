@@ -2639,6 +2639,34 @@
                     "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
                 },
                 {
+                    "type": "items",
+                    "icon": "sicon-layout",
+                    "label": "وضع العرض",
+                    "id": "width_mode",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-banner-width-normal"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-banner-width-normal"
+                        },
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-banner-width-full"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
                     "type": "string",
                     "icon": "sicon-image",
                     "label": "صورة البانر",
@@ -2756,6 +2784,34 @@
                             "label": "صفين",
                             "value": "two_rows",
                             "key": "nukhba-banner-products-two-rows"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-resize",
+                    "label": "حجم البطاقة",
+                    "id": "card_size",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "الحجم الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-banner-card-normal"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "الحجم الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-banner-card-normal"
+                        },
+                        {
+                            "label": "الحجم الصغير",
+                            "value": "small",
+                            "key": "nukhba-banner-card-small"
                         }
                     ],
                     "source": "Manual"

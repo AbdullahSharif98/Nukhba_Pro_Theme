@@ -20,11 +20,13 @@
 {% set mobile_height = component.mobile_height ?: 180 %}
 {% set banner_link = component.banner_url ?: '#' %}
 {% set has_banner_link = component.banner_url and component.banner_url != '#' %}
+{% set width_mode = component.width_mode ?: 'normal' %}
+{% set card_size = component.card_size ?: 'normal' %}
 
 <section
-  class="s-block nukhba-banner-products-showcase nukhba-banner-products-showcase--{{ component.layout_style ?: 'one_row' }}"
+  class="s-block nukhba-banner-products-showcase nukhba-banner-products-showcase--{{ component.layout_style ?: 'one_row' }} nukhba-banner-products-showcase--{{ width_mode == 'full' ? 'full' : 'normal' }} nukhba-banner-products-showcase--card-{{ card_size == 'small' ? 'small' : 'normal' }}"
   style="--nukhba-banner-showcase-height: {{ desktop_height }}px; --nukhba-banner-showcase-height-mobile: {{ mobile_height }}px;">
-  <div class="container">
+  <div class="{{ width_mode == 'normal' ? 'container ' : '' }}nukhba-banner-products-showcase__inner">
     {% if has_banner_link %}
       <a href="{{ banner_link }}" class="nukhba-banner-products-showcase__hero-link" aria-label="{{ (component.section_title ?: store.name)|e('html_attr') }}">
     {% endif %}
