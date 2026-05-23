@@ -1603,7 +1603,7 @@
             ]
         },
         {
-            "key": "c4c8240d-17c1-4ca4-9f7d-100000000022",
+            "key": "c4c8240d-17c1-4ca4-9f7d-100000000030",
             "name": "nukhba-moving-photos",
             "title": {
                 "en": "Nukhba moving photos",
@@ -1617,7 +1617,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "nukhba-moving-photos-preview",
-                    "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1'></div>"
+                    "value": "<div class='space-y-2'><div class='text-center text-sm font-bold'>صور متحركة نخبة برو</div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1'></div>"
                 },
                 {
                     "type": "string",
