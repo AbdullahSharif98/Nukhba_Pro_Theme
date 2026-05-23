@@ -390,6 +390,82 @@ if (!customElements.get('nukhba-three-zones-product-card')) {
   customElements.define('nukhba-three-zones-product-card', NukhbaThreeZonesProductCard);
 }
 
+class NukhbaTopThreeProductCard extends NukhbaProProductCard {
+  updateRank() {
+    const cards = Array.from(this.parentElement?.querySelectorAll('nukhba-top-three-product-card') || []);
+    const rank = cards.indexOf(this) + 1;
+    const inner = this.querySelector('.nukhba-top-three-product-card__inner');
+
+    if (rank > 0 && inner) {
+      inner.dataset.rank = String(rank);
+      this.dataset.rank = String(rank);
+    }
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
+    const ratingAverage = this.product?.rating?.average || this.product?.rating?.stars || this.product?.rating_average;
+    const ratingCount = this.product?.rating?.count || this.product?.rating_count;
+
+    this.classList.add('nukhba-top-three-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-top-three-product-card__inner">
+        ${this.getWishlistButton().replace('nukhba-pro-card__wishlist', 'nukhba-top-three-product-card__wishlist')}
+
+        <a href="${this.product.url}" class="nukhba-top-three-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="420" height="420" />
+        </a>
+
+        <div class="nukhba-top-three-product-card__content">
+          <h3 class="nukhba-top-three-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </h3>
+
+          ${ratingAverage ? `
+            <div class="nukhba-top-three-product-card__rating">
+              <i class="sicon-star2"></i>
+              <span>${this.escapeHTML(String(ratingAverage))}</span>
+              ${ratingCount ? `<small>(${this.escapeHTML(String(ratingCount))})</small>` : ''}
+            </div>` : ''}
+
+          <div class="nukhba-top-three-product-card__prices">
+            <strong class="nukhba-top-three-product-card__price">${this.getMoney(actualPrice)}</strong>
+            ${oldPrice ? `<small class="nukhba-top-three-product-card__old-price">${this.getMoney(oldPrice)}</small>` : ''}
+          </div>
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-top-three-product-card__button"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+
+    this.querySelectorAll('.nukhba-top-three-product-card__wishlist').forEach((button) => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('is-active');
+      });
+    });
+
+    requestAnimationFrame(() => this.updateRank());
+  }
+}
+
+if (!customElements.get('nukhba-top-three-product-card')) {
+  customElements.define('nukhba-top-three-product-card', NukhbaTopThreeProductCard);
+}
+
 function patchThreeZonesProductLists() {
   document.querySelectorAll('salla-products-list.nukhba-three-zones-showcase__product-list').forEach((list) => {
     const root = list.shadowRoot;
@@ -454,3 +530,78 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('theme::ready', () => scheduleThreeZonesProductListPatch());
+
+function patchTopThreeProductLists() {
+  document.querySelectorAll('salla-products-list.nukhba-top-three-products__list').forEach((list) => {
+    const root = list.shadowRoot;
+    if (!root || root.getElementById('nukhba-top-three-grid-style')) {
+      return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'nukhba-top-three-grid-style';
+    style.textContent = `
+      .s-products-list-wrapper,
+      .s-products-list-content,
+      .s-products-list-list,
+      [part="wrapper"],
+      [part="container"],
+      [part="list"] {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1.25rem !important;
+        align-items: stretch !important;
+      }
+
+      .s-product-card-entry,
+      nukhba-top-three-product-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+      }
+
+      @media (max-width: 991px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+      }
+
+      @media (max-width: 639px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+
+    root.appendChild(style);
+  });
+}
+
+function scheduleTopThreeProductListPatch(retries = 20) {
+  patchTopThreeProductLists();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleTopThreeProductListPatch(retries - 1), 400);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleTopThreeProductListPatch(), { once: true });
+} else {
+  scheduleTopThreeProductListPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());

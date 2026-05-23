@@ -4030,6 +4030,153 @@
             ]
         },
         {
+            "key": "1c8bb29b-8c0c-43d6-b6e1-4cb1121f89d7",
+            "name": "nukhba-top-three-products",
+            "title": {
+                "ar": "أفضل 3 منتجات",
+                "en": "Nukhba Top Three Products"
+            },
+            "icon": "sicon-star2",
+            "path": "home.nukhba-top-three-products",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "nukhba-top-three-preview",
+                    "value": "<div class='p-4 bg-slate-950 rounded-lg text-white text-center'><div class='text-2xl font-bold mb-3'>أفضل 3 منتجات</div><div class='grid grid-cols-3 gap-2'><div class='rounded-lg bg-white/10 py-5'>1</div><div class='rounded-lg bg-white/10 py-5'>2</div><div class='rounded-lg bg-white/10 py-5'>3</div></div></div>"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم",
+                    "id": "section_title",
+                    "icon": "sicon-title",
+                    "multilanguage": true,
+                    "value": "الأفضل مبيعًا"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون خلفية القسم",
+                    "id": "background_color",
+                    "icon": "sicon-palette",
+                    "value": "#07081c"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون الأرقام",
+                    "id": "number_color",
+                    "icon": "sicon-palette",
+                    "value": "#facc15"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون عنوان القسم",
+                    "id": "title_color",
+                    "icon": "sicon-palette",
+                    "value": "#ffffff"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون خلفية البطاقة",
+                    "id": "card_background_color",
+                    "icon": "sicon-palette",
+                    "value": "#ffffff"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون نص البطاقة",
+                    "id": "text_color",
+                    "icon": "sicon-palette",
+                    "value": "#111827"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون السعر الحالي",
+                    "id": "price_color",
+                    "icon": "sicon-palette",
+                    "value": "#111827"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون السعر قبل الخصم",
+                    "id": "old_price_color",
+                    "icon": "sicon-palette",
+                    "value": "#6b7280"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون خلفية الزر",
+                    "id": "button_bg_color",
+                    "icon": "sicon-palette",
+                    "value": "#0f172a"
+                },
+                {
+                    "type": "string",
+                    "format": "text",
+                    "label": "لون نص الزر",
+                    "id": "button_text_color",
+                    "icon": "sicon-palette",
+                    "value": "#ffffff"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "منتج الرقم 1",
+                    "id": "rank_one_products",
+                    "format": "dropdown-list",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "منتج الرقم 2",
+                    "id": "rank_two_products",
+                    "format": "dropdown-list",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "منتج الرقم 3",
+                    "id": "rank_three_products",
+                    "format": "dropdown-list",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "value": []
+                }
+            ]
+        },
+        {
             "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",
             "title": {
                 "en": "Custom testimonials",
