@@ -26,14 +26,15 @@
 {% set tablet_per_view = desktop_per_view > 2 ? 2 : desktop_per_view %}
 {% set desktop_height = component.desktop_image_height ?: 272 %}
 {% set mobile_height = component.mobile_image_height ?: 208 %}
+{% set width_mode = component.width_mode ?: 'normal' %}
 
 <section
-  class="s-block nukhba-pro-products"
+  class="s-block nukhba-pro-products nukhba-pro-products--{{ width_mode == 'full' ? 'full' : 'normal' }}"
   style="
     --nukhba-pro-card-image-height: {{ desktop_height }}px;
     --nukhba-pro-card-image-height-mobile: {{ mobile_height }}px;
   ">
-  <div class="container">
+  <div class="{{ width_mode == 'normal' ? 'container ' : '' }}nukhba-pro-products__inner">
     {% if component.section_title or component.section_subtitle %}
       <div class="nukhba-pro-products__heading">
         {% if component.section_title %}
@@ -70,6 +71,8 @@
         data-text-color="{{ component.text_color|default('#1f2937')|e('html_attr') }}"
         data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
         data-old-price-color="{{ component.old_price_color|default('#111827')|e('html_attr') }}"
+        data-discount-bg-color="{{ component.discount_bg_color|default('#19763e')|e('html_attr') }}"
+        data-discount-text-color="{{ component.discount_text_color|default('#ffffff')|e('html_attr') }}"
         data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
         data-highlight-badge="{{ component.highlight_badge|default('')|e('html_attr') }}"
         data-highlight-text="{{ component.highlight_text|default('')|e('html_attr') }}"

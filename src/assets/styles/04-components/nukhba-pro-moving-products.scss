@@ -10,6 +10,14 @@
   }
 }
 
+.nukhba-pro-products__inner {
+  width: 100%;
+}
+
+.nukhba-pro-products--full .nukhba-pro-products__inner {
+  padding-inline: 1.5rem;
+}
+
 .nukhba-pro-products__heading {
   margin-bottom: 1.25rem;
 
@@ -279,6 +287,10 @@ nukhba-pro-product-card {
 }
 
 @media (max-width: 767px) {
+  .nukhba-pro-products--full .nukhba-pro-products__inner {
+    padding-inline: 1rem;
+  }
+
   .nukhba-pro-card__media img {
     height: var(--nukhba-pro-card-image-height-mobile, 208px);
   }

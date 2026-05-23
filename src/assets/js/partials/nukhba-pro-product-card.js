@@ -202,6 +202,7 @@ class NukhbaProProductCard extends HTMLElement {
     const textStyle = this.getStyleAttr(this.getSetting('text-color'));
     const priceStyle = this.getStyleAttr(this.getSetting('price-color'));
     const oldPriceStyle = this.getStyleAttr(this.getSetting('old-price-color'));
+    const discountStyle = ` style="background:${this.getSetting('discount-bg-color', '#19763e')};color:${this.getSetting('discount-text-color', '#ffffff')};"`;
     const priceNote = this.getSetting('price-note') || (this.product?.starting_price ? this.startingPrice : '');
     const installmentTitle = this.getSetting('installment-title');
     const rightLabelText = this.getSetting('right-label-text');
@@ -230,7 +231,7 @@ class NukhbaProProductCard extends HTMLElement {
 
           <div class="nukhba-pro-card__price-box">
             <div class="nukhba-pro-card__price-head">
-              ${discountPercent ? `<span class="nukhba-pro-card__discount">%${discountPercent} خصم</span>` : ''}
+              ${discountPercent ? `<span class="nukhba-pro-card__discount"${discountStyle}>%${discountPercent} خصم</span>` : ''}
               <strong${priceStyle}>${this.getMoney(actualPrice)}</strong>
             </div>
             <div class="nukhba-pro-card__price-foot">
