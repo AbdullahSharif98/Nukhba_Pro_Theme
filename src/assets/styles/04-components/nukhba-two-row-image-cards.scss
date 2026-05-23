@@ -68,16 +68,27 @@
 
 @media (max-width: 767px) {
   .nukhba-two-row-image-cards__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: .85rem;
   }
 
   .nukhba-two-row-image-cards__card {
-    padding: 1rem;
+    gap: .75rem;
+    padding: .85rem;
     border-radius: 1.1rem;
   }
 
+  .nukhba-two-row-image-cards__copy {
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    p {
+      font-size: .9rem;
+    }
+  }
+
   .nukhba-two-row-image-cards__media img {
-    height: 10rem;
+    height: 7.75rem;
   }
 }
