@@ -22,8 +22,7 @@
         "component-store-features",
         "component-youtube",
         "menu-images",
-        "filters",
-        "component-random-testimonials"
+        "filters"
     ],
     "settings": [
         {
