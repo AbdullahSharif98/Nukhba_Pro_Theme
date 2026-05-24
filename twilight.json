@@ -1676,23 +1676,32 @@
                     "format": "text"
                 },
                 {
-                    "type": "radio",
+                    "type": "items",
                     "icon": "sicon-expand",
                     "label": "وضع العرض",
                     "id": "width_mode",
+                    "format": "dropdown-list",
                     "required": false,
-                    "format": "radio",
-                    "value": "normal",
+                    "selected": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-moving-photos-width-normal"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "العرض الطبيعي",
-                            "value": "normal"
+                            "value": "normal",
+                            "key": "nukhba-moving-photos-width-normal"
                         },
                         {
                             "label": "عرض كامل",
-                            "value": "full"
+                            "value": "full",
+                            "key": "nukhba-moving-photos-width-full"
                         }
-                    ]
+                    ],
+                    "source": "Manual"
                 },
                 {
                     "type": "number",
