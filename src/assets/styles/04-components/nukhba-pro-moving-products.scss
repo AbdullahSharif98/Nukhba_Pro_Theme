@@ -1,21 +1,29 @@
 .nukhba-pro-products {
   padding: 1rem 0;
+  overflow-x: clip;
 
   .swiper-slide {
     height: auto;
   }
 
   .swiper {
-    overflow: visible;
+    overflow: hidden;
   }
 }
 
 .nukhba-pro-products__inner {
   width: 100%;
+  overflow: hidden;
 }
 
 .nukhba-pro-products--full .nukhba-pro-products__inner {
   padding-inline: 1.5rem;
+}
+
+.nukhba-pro-products__slider {
+  display: block;
+  width: 100%;
+  overflow: hidden;
 }
 
 .nukhba-pro-products__heading {
