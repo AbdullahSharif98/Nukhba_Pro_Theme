@@ -26,15 +26,13 @@
 {% set tablet_per_view = desktop_per_view > 2 ? 2 : desktop_per_view %}
 {% set desktop_height = component.desktop_image_height ?: 272 %}
 {% set mobile_height = component.mobile_image_height ?: 208 %}
-{% set width_mode = component.width_mode ?: 'normal' %}
-
 <section
-  class="s-block nukhba-pro-products nukhba-pro-products--{{ width_mode == 'full' ? 'full' : 'normal' }}"
+  class="s-block nukhba-pro-products nukhba-pro-products--normal"
   style="
     --nukhba-pro-card-image-height: {{ desktop_height }}px;
     --nukhba-pro-card-image-height-mobile: {{ mobile_height }}px;
   ">
-  <div class="{{ width_mode == 'normal' ? 'container ' : '' }}nukhba-pro-products__inner">
+  <div class="container nukhba-pro-products__inner">
     {% if component.section_title or component.section_subtitle %}
       <div class="nukhba-pro-products__heading">
         {% if component.section_title %}
