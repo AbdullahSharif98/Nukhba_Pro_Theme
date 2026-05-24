@@ -1676,6 +1676,25 @@
                     "format": "text"
                 },
                 {
+                    "type": "radio",
+                    "icon": "sicon-expand",
+                    "label": "وضع العرض",
+                    "id": "width_mode",
+                    "required": false,
+                    "format": "radio",
+                    "value": "normal",
+                    "options": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal"
+                        },
+                        {
+                            "label": "عرض كامل",
+                            "value": "full"
+                        }
+                    ]
+                },
+                {
                     "type": "number",
                     "icon": "sicon-pencil-ruler",
                     "label": "ارتفاع الصور على الكمبيوتر",

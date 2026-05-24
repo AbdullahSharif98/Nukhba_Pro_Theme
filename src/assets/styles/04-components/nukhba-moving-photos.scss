@@ -1,3 +1,8 @@
+.nukhba-moving-photos__inner.is-full-width {
+  width: 100%;
+  padding-inline: 0;
+}
+
 .nukhba-moving-photos__slider {
   .swiper {
     padding-bottom: 1.75rem;
@@ -27,6 +32,10 @@
 }
 
 @media (max-width: 767px) {
+  .nukhba-moving-photos__inner.is-full-width {
+    padding-inline: 0;
+  }
+
   .nukhba-moving-photos__slider {
     .swiper {
       padding-bottom: 1.35rem;

@@ -12,6 +12,8 @@
 {% set transition_speed = component.transition_speed ?: 800 %}
 {% set rounded_enabled = component.rounded_enabled is same as(false) ? false : true %}
 {% set corner_radius = component.corner_radius ?: 4 %}
+{% set width_mode = component.width_mode ?: 'normal' %}
+{% set section_inner_class = width_mode == 'full' ? 'nukhba-moving-photos__inner is-full-width' : 'container nukhba-moving-photos__inner' %}
 
 <section
   class="s-block nukhba-moving-photos"
@@ -20,7 +22,7 @@
     --nukhba-moving-photos-height-mobile: {{ mobile_height }}px;
     --nukhba-moving-photos-radius: {{ rounded_enabled ? corner_radius : 0 }}%;
   ">
-  <div class="container">
+  <div class="{{ section_inner_class }}">
     {% if component.title %}
       <div class="s-block__title">
         <h2>{{ component.title }}</h2>
