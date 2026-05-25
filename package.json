@@ -9,6 +9,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "node scripts/patch-salla-twilight-watcher.cjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "production": "webpack --mode production",
     "prod": "webpack --mode production",
