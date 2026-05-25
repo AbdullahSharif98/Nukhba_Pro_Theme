@@ -1844,6 +1844,155 @@
             ]
         },
         {
+            "key": "c4c8240d-17c1-4ca4-9f7d-100000000023",
+            "name": "nukhba-category-browser",
+            "title": {
+                "en": "Category browser shapes",
+                "ar": "تصفح الأقسام بالأشكال"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.nukhba-category-browser",
+            "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "nukhba-category-browser-preview",
+                    "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1'></div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "شكل العرض",
+                    "id": "shape_style",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "selected": [
+                        {
+                            "label": "الشكل الاسلامي",
+                            "value": "arched",
+                            "key": "nukhba-category-shape-arched"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "الشكل الدائري",
+                            "value": "circle",
+                            "key": "nukhba-category-shape-circle"
+                        },
+                        {
+                            "label": "الشكل الاسلامي",
+                            "value": "arched",
+                            "key": "nukhba-category-shape-arched"
+                        },
+                        {
+                            "label": "الشكل الثماني",
+                            "value": "octagon",
+                            "key": "nukhba-category-shape-octagon"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "عرض الأسهم",
+                    "id": "show_controls",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-width",
+                    "label": "وضع العرض",
+                    "id": "width_mode",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-category-width-full"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-category-width-full"
+                        },
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-category-width-normal"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون خلفية القسم",
+                    "id": "section_bg_color",
+                    "value": "#e9f6f4",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون خلفية الشكل",
+                    "id": "card_bg_color",
+                    "value": "#fffaf1",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون الإطار",
+                    "id": "frame_color",
+                    "value": "#7cb8cf",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون النص",
+                    "id": "text_color",
+                    "value": "#1f2937",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "id": "categories",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "التصنيفات",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": true
+                }
+            ]
+        },
+        {
             "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
             "title": {
                 "en": "Brands",
