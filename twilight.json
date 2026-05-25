@@ -1676,32 +1676,23 @@
                     "format": "text"
                 },
                 {
-                    "type": "items",
+                    "type": "radio",
                     "icon": "sicon-expand",
                     "label": "وضع العرض",
                     "id": "width_mode",
-                    "format": "dropdown-list",
                     "required": false,
-                    "selected": [
-                        {
-                            "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-moving-photos-width-normal"
-                        }
-                    ],
+                    "format": "radio",
+                    "value": "normal",
                     "options": [
                         {
                             "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-moving-photos-width-normal"
+                            "value": "normal"
                         },
                         {
                             "label": "عرض كامل",
-                            "value": "full",
-                            "key": "nukhba-moving-photos-width-full"
+                            "value": "full"
                         }
-                    ],
-                    "source": "Manual"
+                    ]
                 },
                 {
                     "type": "number",
@@ -2390,11 +2381,6 @@
                             "label": "التخفيضات",
                             "value": "offers",
                             "key": "nukhba-three-zones-center-offers"
-                        },
-                        {
-                            "label": "منتجات من وسم",
-                            "value": "tags",
-                            "key": "nukhba-three-zones-center-tags"
                         }
                     ],
                     "source": "Manual"
@@ -2471,26 +2457,6 @@
                             "id": "center_source_type",
                             "operation": "=",
                             "value": "brands"
-                        }
-                    ]
-                },
-                {
-                    "id": "center_tags",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "وسوم الوسط",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "required": false,
-                    "multichoice": true,
-                    "searchable": true,
-                    "source": "tags",
-                    "conditions": [
-                        {
-                            "id": "center_source_type",
-                            "operation": "=",
-                            "value": "tags"
                         }
                     ]
                 },
@@ -2880,11 +2846,6 @@
                             "key": "nukhba-banner-source-offers"
                         },
                         {
-                            "label": "منتجات بوسوم",
-                            "value": "tags",
-                            "key": "nukhba-banner-source-tags"
-                        },
-                        {
                             "label": "منتجات من ماركة",
                             "value": "brands",
                             "key": "nukhba-banner-source-brands"
@@ -2953,26 +2914,6 @@
                             "id": "source_type",
                             "operation": "=",
                             "value": "brands"
-                        }
-                    ]
-                },
-                {
-                    "id": "tags",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "الوسوم",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "required": false,
-                    "multichoice": true,
-                    "searchable": true,
-                    "source": "tags",
-                    "conditions": [
-                        {
-                            "id": "source_type",
-                            "operation": "=",
-                            "value": "tags"
                         }
                     ]
                 },
@@ -4066,6 +4007,7 @@
             },
             "icon": "sicon-star2",
             "path": "home.nukhba-top-three-products",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
             "fields": [
                 {
                     "type": "static",
