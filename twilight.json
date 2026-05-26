@@ -3210,6 +3210,150 @@
             ]
         },
         {
+            "key": "c4c8240d-17c1-4ca4-9f7d-100000000029",
+            "name": "nukhba-mosaic-right-featured",
+            "title": {
+                "en": "Right featured mosaic",
+                "ar": "موزاييك يمين مميز"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.nukhba-mosaic-right-featured",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "nukhba-mosaic-right-preview",
+                    "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1'></div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون الخلفية",
+                    "id": "section_bg_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون العنوان",
+                    "id": "title_color",
+                    "value": "#1f2937",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 5,
+                    "maxLength": 5,
+                    "label": "الصور",
+                    "item_label": "صورة",
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "items.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "أول 4 صور صغيرة والخامسة هي الصورة الكبيرة"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص البديل",
+                            "multilanguage": true,
+                            "id": "items.alt",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "items.url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
             "title": {
                 "en": "Brands",
