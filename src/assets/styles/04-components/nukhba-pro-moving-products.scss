@@ -1,13 +1,9 @@
 .nukhba-pro-products {
-  margin-top: .75rem !important;
-  padding: .45rem 0;
+  margin-top: 1px !important;
+  padding: 1px;
+  margin-bottom: -40px;
   overflow-x: clip;
   max-width: 100%;
-
-  @media (min-width: 640px) {
-    margin-top: 1rem !important;
-    padding: .55rem 0;
-  }
 
   .swiper-slide {
     height: auto;
