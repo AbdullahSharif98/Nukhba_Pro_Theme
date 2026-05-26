@@ -282,10 +282,16 @@ nukhba-three-zones-product-card {
 }
 
 .nukhba-three-zones-product-card__price-old {
-  color: #dc2626;
+  color: #111827;
   font-size: 1rem;
   font-weight: 800;
   text-decoration: line-through;
+}
+
+.nukhba-three-zones-product-card__price--sale {
+  .nukhba-three-zones-product-card__price-current {
+    color: #dc2626;
+  }
 }
 
 .nukhba-three-zones-product-card__price-note {

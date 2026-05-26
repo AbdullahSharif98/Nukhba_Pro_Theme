@@ -363,7 +363,7 @@ class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
             <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
           </div>
 
-          <div class="nukhba-three-zones-product-card__price">
+          <div class="nukhba-three-zones-product-card__price${oldPrice ? ' nukhba-three-zones-product-card__price--sale' : ''}">
             ${oldPrice ? `<small class="nukhba-three-zones-product-card__price-old">${this.getMoney(oldPrice)}</small>` : ''}
             <strong class="nukhba-three-zones-product-card__price-current">${this.getMoney(actualPrice)}</strong>
           </div>

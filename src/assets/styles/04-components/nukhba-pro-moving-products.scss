@@ -179,6 +179,11 @@ nukhba-pro-product-card {
   gap: .65rem;
 }
 
+.nukhba-pro-card__price-head,
+.nukhba-pro-card__price-foot {
+  flex-direction: row-reverse;
+}
+
 .nukhba-pro-card__price-head strong {
   font-size: 1.8rem;
   line-height: 1;
