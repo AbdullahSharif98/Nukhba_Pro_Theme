@@ -1,13 +1,7 @@
 .nukhba-pro-products {
-  margin-top: .75rem !important;
-  padding: .35rem 0;
+  padding: 1rem 0;
   overflow-x: clip;
   max-width: 100%;
-
-  @media (min-width: 640px) {
-    margin-top: 1rem !important;
-    padding: .5rem 0;
-  }
 
   .swiper-slide {
     height: auto;
@@ -17,14 +11,6 @@
   .swiper {
     overflow: hidden;
     max-width: 100%;
-  }
-}
-
-.nukhba-pro-products + .s-block {
-  margin-top: .75rem !important;
-
-  @media (min-width: 640px) {
-    margin-top: 1rem !important;
   }
 }
 
@@ -48,7 +34,7 @@
 }
 
 .nukhba-pro-products__heading {
-  margin-bottom: .85rem;
+  margin-bottom: 1.25rem;
 
   h2 {
     margin: 0 0 .35rem;
@@ -66,7 +52,7 @@
 nukhba-pro-product-card {
   display: block;
   height: 100%;
-  padding: .15rem;
+  padding: .3rem;
 }
 
 .nukhba-pro-card {

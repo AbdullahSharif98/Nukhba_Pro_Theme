@@ -53,22 +53,11 @@
         slider-id="nukhba-pro-moving-products-{{ position }}"
         product-card-component="nukhba-pro-product-card"
         slider-config='{
-          "loop": true,
-          "speed": 6500,
-          "slidesPerGroup": 1,
-          "watchSlidesProgress": true,
-          "allowTouchMove": true,
-          "autoplay": {
-            "delay": 1,
-            "disableOnInteraction": false,
-            "pauseOnMouseEnter": false,
-            "waitForTransition": false
-          },
-          "spaceBetween": 9,
+          "spaceBetween": 18,
           "breakpoints": {
-            "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 6 },
-            "640": { "slidesPerView": {{ tablet_per_view }}, "spaceBetween": 7 },
-            "992": { "slidesPerView": {{ desktop_per_view }}, "spaceBetween": 9 }
+            "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 12 },
+            "640": { "slidesPerView": {{ tablet_per_view }}, "spaceBetween": 14 },
+            "992": { "slidesPerView": {{ desktop_per_view }}, "spaceBetween": 18 }
           }
         }'
         data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
