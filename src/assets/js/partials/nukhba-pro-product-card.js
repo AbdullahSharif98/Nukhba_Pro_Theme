@@ -605,3 +605,91 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());
+
+function getNukhbaMovingProductsSwiper(slider) {
+  return slider?.swiper
+    || slider?.querySelector?.('.swiper')?.swiper
+    || slider?.shadowRoot?.querySelector?.('.swiper')?.swiper
+    || null;
+}
+
+function patchNukhbaMovingProductsSliders() {
+  document.querySelectorAll('salla-products-slider.nukhba-pro-products__slider').forEach((slider) => {
+    const swiper = getNukhbaMovingProductsSwiper(slider);
+    if (!swiper || slider.dataset.nukhbaMovingPatched === '1') {
+      return;
+    }
+
+    const slidesCount = swiper.slides?.length || 0;
+    const perView = Number(swiper.params?.slidesPerView) || 1;
+    const canLoop = slidesCount > perView;
+    const autoplayOptions = {
+      delay: 1,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+      waitForTransition: false,
+    };
+
+    Object.assign(swiper.params, {
+      loop: canLoop,
+      speed: 6500,
+      slidesPerGroup: 1,
+      watchSlidesProgress: true,
+      allowTouchMove: true,
+      autoplay: autoplayOptions,
+    });
+
+    if (swiper.originalParams) {
+      Object.assign(swiper.originalParams, {
+        loop: canLoop,
+        speed: 6500,
+        slidesPerGroup: 1,
+        watchSlidesProgress: true,
+        allowTouchMove: true,
+        autoplay: autoplayOptions,
+      });
+    }
+
+    const wrapper = swiper.wrapperEl
+      || slider.querySelector?.('.swiper-wrapper')
+      || slider.shadowRoot?.querySelector?.('.swiper-wrapper');
+
+    if (wrapper) {
+      wrapper.style.transitionTimingFunction = 'linear';
+    }
+
+    try {
+      swiper.autoplay?.stop?.();
+
+      if (canLoop && typeof swiper.loopDestroy === 'function' && typeof swiper.loopCreate === 'function') {
+        swiper.loopDestroy();
+        swiper.loopCreate();
+      }
+
+      swiper.update?.();
+      swiper.slideToLoop?.(swiper.realIndex || 0, 0, false);
+      swiper.autoplay?.start?.();
+      slider.dataset.nukhbaMovingPatched = '1';
+    } catch (error) {
+      slider.dataset.nukhbaMovingPatched = '';
+    }
+  });
+}
+
+function scheduleNukhbaMovingProductsSliderPatch(retries = 24) {
+  patchNukhbaMovingProductsSliders();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleNukhbaMovingProductsSliderPatch(retries - 1), 400);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleNukhbaMovingProductsSliderPatch(), { once: true });
+} else {
+  scheduleNukhbaMovingProductsSliderPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleNukhbaMovingProductsSliderPatch());
