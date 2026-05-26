@@ -1393,6 +1393,469 @@
             ]
         },
         {
+            "key": "c4c8240d-17c1-4ca4-9f7d-100000000036",
+            "name": "nukhba-pro-advanced-moving-products",
+            "title": {
+                "en": "Advanced Nukhba Pro moving products",
+                "ar": "منتجات متحركة متطورة نخبة برو"
+            },
+            "icon": "sicon-list-play",
+            "path": "home.nukhba-pro-advanced-moving-products",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "nukhba-pro-advanced-preview",
+                    "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-layout",
+                    "label": "وضع العرض",
+                    "id": "width_mode",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-pro-advanced-width-normal"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "العرض الطبيعي",
+                            "value": "normal",
+                            "key": "nukhba-pro-advanced-width-normal"
+                        },
+                        {
+                            "label": "عرض كامل",
+                            "value": "full",
+                            "key": "nukhba-pro-advanced-width-full"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "وصف قصير",
+                    "multilanguage": true,
+                    "id": "section_subtitle",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "نوع المنتجات",
+                    "id": "source_type",
+                    "format": "dropdown-list",
+                    "required": true,
+                    "selected": [
+                        {
+                            "label": "أحدث المنتجات",
+                            "value": "latest",
+                            "key": "nukhba-pro-advanced-source-latest"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "أحدث المنتجات",
+                            "value": "latest",
+                            "key": "nukhba-pro-advanced-source-latest"
+                        },
+                        {
+                            "label": "منتجات مختارة",
+                            "value": "selected",
+                            "key": "nukhba-pro-advanced-source-selected"
+                        },
+                        {
+                            "label": "منتجات من تصنيف",
+                            "value": "categories",
+                            "key": "nukhba-pro-advanced-source-categories"
+                        },
+                        {
+                            "label": "منتجات من ماركة",
+                            "value": "brands",
+                            "key": "nukhba-pro-advanced-source-brands"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "value": "offers",
+                            "key": "nukhba-pro-advanced-source-offers"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتجات المختارة",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": null,
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 36,
+                    "minLength": 1,
+                    "value": [],
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "selected"
+                        }
+                    ]
+                },
+                {
+                    "id": "categories",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "التصنيفات",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "categories"
+                        }
+                    ]
+                },
+                {
+                    "id": "brands",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "الماركات التجارية",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "searchable": true,
+                    "source": "brands",
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "brands"
+                        }
+                    ]
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "عدد المنتجات",
+                    "id": "products_limit",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 4,
+                    "maximum": 36,
+                    "value": 12
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-layout-grid-rearrange",
+                    "label": "عدد الظهور في الكمبيوتر",
+                    "id": "desktop_products_per_view",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 6,
+                    "value": 4
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-layout-grid-rearrange",
+                    "label": "عدد الظهور في الجوال",
+                    "id": "mobile_products_per_view",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 1,
+                    "maximum": 3,
+                    "value": 1
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الكمبيوتر",
+                    "id": "desktop_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 180,
+                    "maximum": 520,
+                    "value": 272
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الجوال",
+                    "id": "mobile_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 140,
+                    "maximum": 420,
+                    "value": 208
+                },
+                {
+                    "type": "static",
+                    "format": "line",
+                    "id": "nukhba-pro-advanced-line-1"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليمين",
+                    "multilanguage": true,
+                    "id": "right_label_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليمين",
+                    "id": "right_label_bg",
+                    "value": "#f30f0f",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليمين",
+                    "id": "right_label_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليسار",
+                    "multilanguage": true,
+                    "id": "left_label_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليسار",
+                    "id": "left_label_bg",
+                    "value": "#6b8f71",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليسار",
+                    "id": "left_label_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "static",
+                    "format": "line",
+                    "id": "nukhba-pro-advanced-line-2"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نصوص البطاقة",
+                    "id": "text_color",
+                    "value": "#1f2937",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون السعر الحالي",
+                    "id": "price_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون السعر قبل الخصم",
+                    "id": "old_price_color",
+                    "value": "#111827",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية الخصم",
+                    "id": "discount_bg_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص الخصم",
+                    "id": "discount_text_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص تحت السعر",
+                    "multilanguage": true,
+                    "id": "price_note",
+                    "value": "شامل الضريبة",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "بادج تمييز داخلي",
+                    "multilanguage": true,
+                    "id": "highlight_badge",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص تمييز داخلي",
+                    "multilanguage": true,
+                    "id": "highlight_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان التقسيط",
+                    "multilanguage": true,
+                    "id": "installment_title",
+                    "value": "قسطها على دفعات. اشتري الآن وادفع لاحقًا",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "id": "installment_images",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 4,
+                    "label": "شعارات التقسيط",
+                    "item_label": "شعار",
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "installment_images.image",
+                            "value": null,
+                            "required": true,
+                            "format": "image",
+                            "description": "المقاس الموصى به: 180×68 بكسل"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "النص البديل",
+                            "multilanguage": true,
+                            "id": "installment_images.alt",
+                            "value": null,
+                            "required": false,
+                            "format": "text"
+                        }
+                    ]
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 1",
+                    "multilanguage": true,
+                    "id": "chip_one",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 2",
+                    "multilanguage": true,
+                    "id": "chip_two",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 3",
+                    "multilanguage": true,
+                    "id": "chip_three",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 4",
+                    "multilanguage": true,
+                    "id": "chip_four",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-cart",
+                    "label": "نص زر السلة",
+                    "multilanguage": true,
+                    "id": "button_text",
+                    "value": null,
+                    "required": false,
+                    "format": "text"
+                }
+            ]
+        },
+        {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000022",
             "name": "nukhba-split-banners",
             "title": {

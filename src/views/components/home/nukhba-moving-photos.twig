@@ -38,9 +38,20 @@
       id="nukhba-moving-photos-{{ position }}"
       slider-config='{
         "loop": true,
+        "rewind": false,
+        "watchOverflow": false,
+        "loopAdditionalSlides": {{ (component.items|length ?: 1) + 4 }},
+        "loopedSlides": {{ component.items|length ?: 1 }},
         "spaceBetween": 12,
         "speed": {{ transition_speed }},
-        "autoplay": { "delay": {{ autoplay_delay }}, "disableOnInteraction": false },
+        "observer": true,
+        "observeParents": true,
+        "autoplay": {
+          "delay": {{ autoplay_delay }},
+          "disableOnInteraction": false,
+          "pauseOnMouseEnter": false,
+          "waitForTransition": false
+        },
         "breakpoints": {
           "0": { "slidesPerView": 1.15, "spaceBetween": 10 },
           "480": { "slidesPerView": 2.1, "spaceBetween": 10 },

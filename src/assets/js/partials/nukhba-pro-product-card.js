@@ -84,12 +84,23 @@ class NukhbaProProductCard extends HTMLElement {
     return this.escapeHTML(this.product?.image?.alt || this.product?.name || '');
   }
 
+  toEnglishDigits(value = '') {
+    return String(value)
+      .replace(/[٠-٩]/g, (digit) => '٠١٢٣٤٥٦٧٨٩'.indexOf(digit))
+      .replace(/[۰-۹]/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit));
+  }
+
+  shouldUseEnglishDigits() {
+    return this.getSetting('use-english-digits') === 'true';
+  }
+
   getMoney(price) {
     if (!price || price === 0) {
       return salla.config.get('store.settings.product.show_price_as_dash') ? '-' : '';
     }
 
-    return salla.money(price);
+    const formatted = salla.money(price);
+    return this.shouldUseEnglishDigits() ? this.toEnglishDigits(formatted) : formatted;
   }
 
   getActualPrice() {
@@ -270,6 +281,16 @@ class NukhbaProProductCard extends HTMLElement {
 
 if (!customElements.get('nukhba-pro-product-card')) {
   customElements.define('nukhba-pro-product-card', NukhbaProProductCard);
+}
+
+class NukhbaProAdvancedProductCard extends NukhbaProProductCard {
+  shouldUseEnglishDigits() {
+    return true;
+  }
+}
+
+if (!customElements.get('nukhba-pro-advanced-product-card')) {
+  customElements.define('nukhba-pro-advanced-product-card', NukhbaProAdvancedProductCard);
 }
 
 class NukhbaBannerProductCard extends NukhbaProProductCard {
@@ -624,20 +645,62 @@ function resolveSliderSwiper(slider) {
   return swiperElement?.swiper || null;
 }
 
-function forceClosedLoopForMovingProducts(slider) {
+function resolveOriginalSlidesCount(slider) {
+  if (!slider) {
+    return 0;
+  }
+
+  return slider.querySelectorAll('[slot="items"] > .swiper-slide, [slot="items"] .swiper-slide').length;
+}
+
+function ensureLoopRepatchObserver(slider, callback) {
+  if (!slider || slider.__nukhbaLoopObserver) {
+    return;
+  }
+
+  const root = slider.shadowRoot || slider;
+  if (!root || typeof MutationObserver === 'undefined') {
+    return;
+  }
+
+  const observer = new MutationObserver(() => {
+    callback?.();
+  });
+
+  observer.observe(root, { childList: true, subtree: true });
+  slider.__nukhbaLoopObserver = observer;
+}
+
+function forceClosedLoopForSlider(slider, {
+  datasetFlag,
+  defaultDelay = 2200,
+  repatch,
+} = {}) {
   const swiper = resolveSliderSwiper(slider);
-  if (!swiper || slider.dataset.nukhbaLoopPatched === 'true') {
+  if (!swiper) {
+    ensureLoopRepatchObserver(slider, repatch);
+    return false;
+  }
+
+  const patchedKey = `__${datasetFlag}Swiper`;
+  if (slider[patchedKey] === swiper) {
     return Boolean(swiper);
   }
 
-  slider.dataset.nukhbaLoopPatched = 'true';
+  slider[patchedKey] = swiper;
+  ensureLoopRepatchObserver(slider, repatch);
+
+  const originalSlidesCount = resolveOriginalSlidesCount(slider) || swiper.slides?.length || 1;
 
   swiper.params.loop = true;
   swiper.params.rewind = false;
   swiper.params.watchOverflow = false;
+  swiper.params.slidesPerGroup = 1;
+  swiper.params.loopedSlides = Math.max(swiper.params.loopedSlides || 0, originalSlidesCount);
+  swiper.params.loopAdditionalSlides = Math.max(swiper.params.loopAdditionalSlides || 0, originalSlidesCount + 2);
   swiper.params.autoplay = {
     ...(swiper.params.autoplay || {}),
-    delay: swiper.params.autoplay?.delay || 2200,
+    delay: swiper.params.autoplay?.delay || defaultDelay,
     disableOnInteraction: false,
     pauseOnMouseEnter: false,
     waitForTransition: false,
@@ -669,6 +732,10 @@ function forceClosedLoopForMovingProducts(slider) {
     }
   });
 
+  swiper.on?.('fromEdge', () => {
+    swiper.autoplay?.start?.();
+  });
+
   swiper.on?.('autoplayStop', () => {
     swiper.autoplay?.start?.();
   });
@@ -686,6 +753,14 @@ function forceClosedLoopForMovingProducts(slider) {
 
   swiper.autoplay?.start?.();
   return true;
+}
+
+function forceClosedLoopForMovingProducts(slider) {
+  return forceClosedLoopForSlider(slider, {
+    datasetFlag: 'nukhbaLoopPatched',
+    defaultDelay: 2200,
+    repatch: patchMovingProductsSlider,
+  });
 }
 
 function patchMovingProductsSlider() {
@@ -711,3 +786,35 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('theme::ready', () => scheduleMovingProductsSliderPatch());
+
+function forceClosedLoopForMovingPhotos(slider) {
+  return forceClosedLoopForSlider(slider, {
+    datasetFlag: 'nukhbaPhotosLoopPatched',
+    defaultDelay: 2000,
+    repatch: patchMovingPhotosSlider,
+  });
+}
+
+function patchMovingPhotosSlider() {
+  document.querySelectorAll('salla-slider.nukhba-moving-photos__slider').forEach((slider) => {
+    forceClosedLoopForMovingPhotos(slider);
+  });
+}
+
+function scheduleMovingPhotosSliderPatch(retries = 30) {
+  patchMovingPhotosSlider();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleMovingPhotosSliderPatch(retries - 1), 500);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleMovingPhotosSliderPatch(), { once: true });
+} else {
+  scheduleMovingPhotosSliderPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
