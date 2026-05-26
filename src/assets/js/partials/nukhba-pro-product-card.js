@@ -605,3 +605,109 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());
+
+function resolveSliderSwiper(slider) {
+  if (!slider) {
+    return null;
+  }
+
+  if (slider.swiper) {
+    return slider.swiper;
+  }
+
+  const root = slider.shadowRoot;
+  if (!root) {
+    return null;
+  }
+
+  const swiperElement = root.querySelector('.swiper, swiper-container, [part="swiper"]');
+  return swiperElement?.swiper || null;
+}
+
+function forceClosedLoopForMovingProducts(slider) {
+  const swiper = resolveSliderSwiper(slider);
+  if (!swiper || slider.dataset.nukhbaLoopPatched === 'true') {
+    return Boolean(swiper);
+  }
+
+  slider.dataset.nukhbaLoopPatched = 'true';
+
+  swiper.params.loop = true;
+  swiper.params.rewind = false;
+  swiper.params.watchOverflow = false;
+  swiper.params.autoplay = {
+    ...(swiper.params.autoplay || {}),
+    delay: swiper.params.autoplay?.delay || 2200,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    waitForTransition: false,
+  };
+
+  if (typeof swiper.loopDestroy === 'function') {
+    swiper.loopDestroy();
+  }
+
+  if (typeof swiper.loopCreate === 'function') {
+    swiper.loopCreate();
+  }
+
+  if (typeof swiper.update === 'function') {
+    swiper.update();
+  }
+
+  if (typeof swiper.slideToLoop === 'function') {
+    swiper.slideToLoop(swiper.realIndex || 0, 0, false);
+  } else if (typeof swiper.slideTo === 'function') {
+    swiper.slideTo(0, 0, false);
+  }
+
+  swiper.on?.('reachEnd', () => {
+    if (typeof swiper.slideToLoop === 'function') {
+      swiper.slideToLoop(0, 0, false);
+    } else if (typeof swiper.slideTo === 'function') {
+      swiper.slideTo(0, 0, false);
+    }
+  });
+
+  swiper.on?.('autoplayStop', () => {
+    swiper.autoplay?.start?.();
+  });
+
+  swiper.on?.('transitionEnd', () => {
+    if (swiper.isEnd) {
+      if (typeof swiper.slideToLoop === 'function') {
+        swiper.slideToLoop(0, 0, false);
+      } else if (typeof swiper.slideTo === 'function') {
+        swiper.slideTo(0, 0, false);
+      }
+      swiper.autoplay?.start?.();
+    }
+  });
+
+  swiper.autoplay?.start?.();
+  return true;
+}
+
+function patchMovingProductsSlider() {
+  document.querySelectorAll('salla-products-slider.nukhba-pro-products__slider').forEach((slider) => {
+    forceClosedLoopForMovingProducts(slider);
+  });
+}
+
+function scheduleMovingProductsSliderPatch(retries = 30) {
+  patchMovingProductsSlider();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleMovingProductsSliderPatch(retries - 1), 500);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleMovingProductsSliderPatch(), { once: true });
+} else {
+  scheduleMovingProductsSliderPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleMovingProductsSliderPatch());

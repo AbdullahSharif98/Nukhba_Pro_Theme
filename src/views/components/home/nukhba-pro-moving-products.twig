@@ -54,7 +54,9 @@
         product-card-component="nukhba-pro-product-card"
         slider-config='{
           "loop": true,
-          "autoplay": { "delay": 2200, "disableOnInteraction": false },
+          "rewind": false,
+          "watchOverflow": false,
+          "autoplay": { "delay": 2200, "disableOnInteraction": false, "pauseOnMouseEnter": false, "waitForTransition": false },
           "spaceBetween": 9,
           "breakpoints": {
             "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 6 },
