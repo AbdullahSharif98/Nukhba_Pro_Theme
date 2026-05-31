@@ -91,12 +91,29 @@
 
 @media (max-width: 639px) {
   .nukhba-split-banners {
-    grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr);
-    gap: .5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 
   .nukhba-split-banners__slider-side,
   .nukhba-split-banners__static-side {
     min-height: var(--nukhba-split-banners-height-mobile, 240px);
+  }
+
+  .nukhba-split-banners__slider-side {
+    width: 100%;
+  }
+
+  .nukhba-split-banners__static-side {
+    display: none;
+  }
+
+  .nukhba-split-banners__slider,
+  .nukhba-split-banners__slider .s-slider-container,
+  .nukhba-split-banners__slider .swiper,
+  .nukhba-split-banners__slider .swiper-wrapper,
+  .nukhba-split-banners__slider .swiper-slide,
+  .nukhba-split-banners__slide {
+    width: 100%;
   }
 }
