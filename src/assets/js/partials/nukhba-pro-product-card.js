@@ -755,38 +755,6 @@ function forceClosedLoopForSlider(slider, {
   return true;
 }
 
-function forceClosedLoopForMovingProducts(slider) {
-  return forceClosedLoopForSlider(slider, {
-    datasetFlag: 'nukhbaLoopProductsPatched',
-    defaultDelay: 2200,
-    repatch: patchMovingProductsSlider,
-  });
-}
-
-function patchMovingProductsSlider() {
-  document.querySelectorAll('salla-products-slider.nukhba-pro-products__slider').forEach((slider) => {
-    forceClosedLoopForMovingProducts(slider);
-  });
-}
-
-function scheduleMovingProductsSliderPatch(retries = 30) {
-  patchMovingProductsSlider();
-
-  if (retries <= 0) {
-    return;
-  }
-
-  setTimeout(() => scheduleMovingProductsSliderPatch(retries - 1), 500);
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => scheduleMovingProductsSliderPatch(), { once: true });
-} else {
-  scheduleMovingProductsSliderPatch();
-}
-
-document.addEventListener('theme::ready', () => scheduleMovingProductsSliderPatch());
-
 function forceClosedLoopForMovingPhotos(slider) {
   return forceClosedLoopForSlider(slider, {
     datasetFlag: 'nukhbaPhotosLoopPatched',

@@ -13,61 +13,39 @@
   component.chip_four ?: null
 ] %}
 {% set source_type = component.source_type ?: 'latest' %}
-{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
-{% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
-{% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set selected_products = component.products|default([])|map((item) => item.id ?: item.value ?: item) %}
+{% set selected_categories = component.categories|default([])|map((item) => item.id ?: item.value ?: item) %}
+{% set selected_brands = component.brands|default([])|map((item) => item.id ?: item.value ?: item) %}
 {% set slider_source = source_type == 'selected' ? 'selected' : (source_type == 'categories' ? 'categories' : (source_type == 'brands' ? 'brands' : source_type)) %}
-{% set slider_values = source_type == 'selected' ? selected_ids : (source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : '')) %}
+{% set slider_values = source_type == 'selected' ? selected_products : (source_type == 'categories' ? selected_categories : (source_type == 'brands' ? selected_brands : [])) %}
 {% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
-{% set has_products = (not needs_source_value) or slider_values %}
-{% set slider_limit = component.products_limit ?: 12 %}
-{% set desktop_per_view = component.desktop_products_per_view ?: 4 %}
-{% set mobile_per_view = component.mobile_products_per_view ?: 1 %}
-{% set tablet_per_view = desktop_per_view > 2 ? 2 : desktop_per_view %}
+{% set has_products = (not needs_source_value) or slider_values|length %}
+{% set slider_limit = component.products_limit ?: 32 %}
 {% set desktop_height = component.desktop_image_height ?: 272 %}
 {% set mobile_height = component.mobile_image_height ?: 208 %}
 {% set width_mode = component.width_mode ?: 'normal' %}
-{% set section_class = width_mode == 'full' ? 's-block nukhba-pro-products nukhba-pro-products--advanced nukhba-pro-products--full' : 's-block nukhba-pro-products nukhba-pro-products--advanced nukhba-pro-products--normal' %}
-{% set inner_class = width_mode == 'full' ? 'nukhba-pro-products__inner' : 'container nukhba-pro-products__inner' %}
+
 <section
-  class="{{ section_class }}"
+  class="s-block nukhba-pro-products nukhba-pro-products--reborn {{ width_mode == 'full' ? 'nukhba-pro-products--full' : 'nukhba-pro-products--normal' }}"
   style="
     --nukhba-pro-card-image-height: {{ desktop_height }}px;
     --nukhba-pro-card-image-height-mobile: {{ mobile_height }}px;
   ">
-  <div class="{{ inner_class }}">
-    {% if component.section_title or component.section_subtitle %}
-      <div class="nukhba-pro-products__heading">
-        {% if component.section_title %}
-          <h2>{{ component.section_title }}</h2>
-        {% endif %}
-        {% if component.section_subtitle %}
-          <p>{{ component.section_subtitle }}</p>
-        {% endif %}
-      </div>
-    {% endif %}
-
+  <div class="{{ width_mode == 'full' ? 'nukhba-pro-products__inner' : 'container nukhba-pro-products__inner' }}">
     {% if has_products %}
       <salla-products-slider
-        class="nukhba-pro-products__slider nukhba-pro-products__slider--advanced"
+        class="nukhba-pro-products-new__slider"
         source="{{ slider_source }}"
         limit="{{ slider_limit }}"
-        autoplay
-        slider-id="nukhba-pro-advanced-moving-products-{{ position }}"
-        product-card-component="nukhba-pro-advanced-product-card"
-        slider-config='{
-          "loop": true,
-          "rewind": false,
-          "watchOverflow": false,
-          "autoplay": { "delay": 2200, "disableOnInteraction": false, "pauseOnMouseEnter": false, "waitForTransition": false },
-          "spaceBetween": 9,
-          "breakpoints": {
-            "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 6 },
-            "640": { "slidesPerView": {{ tablet_per_view }}, "spaceBetween": 7 },
-            "992": { "slidesPerView": {{ desktop_per_view }}, "spaceBetween": 9 }
-          }
-        }'
-        data-use-english-digits="true"
+        slider-id="nukhba-pro-moving-products-new-{{ position }}"
+        product-card-component="nukhba-pro-product-card"
+        block-title="{{ component.section_title|default('أحدث المنتجات') }}"
+        {% if component.section_subtitle %}
+          block-subTitle="{{ component.section_subtitle }}"
+        {% endif %}
+        {% if component.display_all_url and component.display_all_url != '#' %}
+          display-all-url="{{ component.display_all_url }}"
+        {% endif %}
         data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
         data-right-label-bg="{{ component.right_label_bg|default('#f30f0f')|e('html_attr') }}"
         data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"
@@ -87,7 +65,7 @@
         data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
         data-button-text="{{ component.button_text|default('')|e('html_attr') }}"
         {% if needs_source_value %}
-          source-value="[{{ slider_values }}]"
+          source-value='{{ slider_values|json_encode }}'
         {% endif %}
       ></salla-products-slider>
     {% endif %}
