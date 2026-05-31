@@ -756,89 +756,11 @@ function forceClosedLoopForSlider(slider, {
 }
 
 function forceClosedLoopForMovingProducts(slider) {
-  const swiper = resolveSliderSwiper(slider);
-  if (!swiper) {
-    ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
-    return false;
-  }
-
-  const patchedKey = '__nukhbaLoopProductsSwiper';
-  if (slider[patchedKey] === swiper) {
-    return true;
-  }
-
-  slider[patchedKey] = swiper;
-  ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
-
-  const originalSlidesCount = resolveOriginalSlidesCount(slider) || swiper.slides?.length || 1;
-
-  swiper.params.loop = true;
-  swiper.params.rewind = false;
-  swiper.params.watchOverflow = false;
-  swiper.params.centeredSlides = true;
-  swiper.params.centeredSlidesBounds = true;
-  swiper.params.centerInsufficientSlides = true;
-  swiper.params.slidesPerGroup = 1;
-  swiper.params.observer = true;
-  swiper.params.observeParents = true;
-  swiper.params.loopedSlides = Math.max(swiper.params.loopedSlides || 0, originalSlidesCount);
-  swiper.params.loopAdditionalSlides = Math.max(swiper.params.loopAdditionalSlides || 0, originalSlidesCount + 2);
-  swiper.params.autoplay = {
-    ...(swiper.params.autoplay || {}),
-    delay: swiper.params.autoplay?.delay || 2200,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: false,
-    waitForTransition: false,
-  };
-
-  if (typeof swiper.loopDestroy === 'function') {
-    swiper.loopDestroy();
-  }
-
-  if (typeof swiper.loopCreate === 'function') {
-    swiper.loopCreate();
-  }
-
-  if (typeof swiper.update === 'function') {
-    swiper.update();
-  }
-
-  if (typeof swiper.slideToLoop === 'function') {
-    swiper.slideToLoop(swiper.realIndex || 0, 0, false);
-  } else if (typeof swiper.slideTo === 'function') {
-    swiper.slideTo(0, 0, false);
-  }
-
-  swiper.on?.('reachEnd', () => {
-    if (typeof swiper.slideToLoop === 'function') {
-      swiper.slideToLoop(0, 0, false);
-    } else if (typeof swiper.slideTo === 'function') {
-      swiper.slideTo(0, 0, false);
-    }
-    swiper.autoplay?.start?.();
+  return forceClosedLoopForSlider(slider, {
+    datasetFlag: 'nukhbaLoopProductsPatched',
+    defaultDelay: 2200,
+    repatch: patchMovingProductsSlider,
   });
-
-  swiper.on?.('transitionEnd', () => {
-    if (swiper.isEnd) {
-      if (typeof swiper.slideToLoop === 'function') {
-        swiper.slideToLoop(0, 0, false);
-      } else if (typeof swiper.slideTo === 'function') {
-        swiper.slideTo(0, 0, false);
-      }
-      swiper.autoplay?.start?.();
-    }
-  });
-
-  swiper.on?.('fromEdge', () => {
-    swiper.autoplay?.start?.();
-  });
-
-  swiper.on?.('autoplayStop', () => {
-    swiper.autoplay?.start?.();
-  });
-
-  swiper.autoplay?.start?.();
-  return true;
 }
 
 function patchMovingProductsSlider() {
