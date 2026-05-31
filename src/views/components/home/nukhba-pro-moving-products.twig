@@ -21,9 +21,9 @@
 {% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
 {% set has_products = (not needs_source_value) or slider_values %}
 {% set slider_limit = component.products_limit ?: 8 %}
-{% set desktop_per_view = component.desktop_products_per_view ?: 4 %}
-{% set mobile_per_view = component.mobile_products_per_view ?: 1 %}
-{% set tablet_per_view = desktop_per_view > 2 ? 2 : desktop_per_view %}
+{% set desktop_per_view = 4 %}
+{% set tablet_per_view = 2.15 %}
+{% set mobile_per_view = 1.12 %}
 {% set desktop_height = component.desktop_image_height ?: 272 %}
 {% set mobile_height = component.mobile_image_height ?: 208 %}
 <section
@@ -56,6 +56,13 @@
           "loop": true,
           "rewind": false,
           "watchOverflow": false,
+          "loopAdditionalSlides": {{ slider_limit + 4 }},
+          "loopedSlides": {{ slider_limit }},
+          "centeredSlides": true,
+          "centeredSlidesBounds": true,
+          "centerInsufficientSlides": true,
+          "observer": true,
+          "observeParents": true,
           "autoplay": { "delay": 2200, "disableOnInteraction": false, "pauseOnMouseEnter": false, "waitForTransition": false },
           "spaceBetween": 9,
           "breakpoints": {
