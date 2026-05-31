@@ -34,18 +34,18 @@
   white-space: nowrap;
 }
 
-.nukhba-inline-image-group__track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(180px, 1fr);
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: .35rem;
-  scrollbar-width: thin;
+.nukhba-inline-image-group__slider {
+  display: block;
+  margin-top: .75rem;
+}
+
+.nukhba-inline-image-group__slide {
+  height: auto;
 }
 
 .nukhba-inline-image-group__card {
   display: block;
+  height: 100%;
   color: var(--nukhba-inline-group-text, #1f2937);
 }
 
@@ -86,10 +86,42 @@
   }
 }
 
-@media (min-width: 1200px) {
-  .nukhba-inline-image-group__track {
-    grid-auto-columns: minmax(160px, 1fr);
-    overflow: visible;
+.nukhba-inline-image-group__slider::part(pagination) {
+  margin-top: .9rem;
+}
+
+.nukhba-inline-image-group__slider::part(bullet) {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 999px;
+  background: rgba(15, 59, 70, .18);
+  opacity: 1;
+}
+
+.nukhba-inline-image-group__slider::part(bullet-active) {
+  width: 1.8rem;
+  background: #0f3b46;
+}
+
+.nukhba-inline-image-group__slider::part(button-prev),
+.nukhba-inline-image-group__slider::part(button-next) {
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 1px solid rgba(15, 59, 70, .14);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f3b46;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, .08);
+}
+
+@media (min-width: 768px) {
+  .nukhba-inline-image-group__slider::part(button-prev),
+  .nukhba-inline-image-group__slider::part(button-next) {
+    display: none;
+  }
+
+  .nukhba-inline-image-group__slider::part(pagination) {
+    display: none;
   }
 }
 
@@ -101,9 +133,8 @@
     }
   }
 
-  .nukhba-inline-image-group__track {
-    grid-auto-columns: minmax(155px, 72vw);
-    gap: .85rem;
+  .nukhba-inline-image-group__slider {
+    margin-top: .55rem;
   }
 
   .nukhba-inline-image-group__image-wrap {
@@ -112,5 +143,11 @@
 
   .nukhba-inline-image-group__image-wrap img {
     height: 11rem;
+  }
+
+  .nukhba-inline-image-group__slider::part(button-prev),
+  .nukhba-inline-image-group__slider::part(button-next) {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }

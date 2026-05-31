@@ -3798,8 +3798,8 @@
             "key": "1c8bb29b-8c0c-43d6-b6e1-4cb1121f89d7",
             "name": "nukhba-top-three-products",
             "title": {
-                "ar": "أفضل 3 منتجات",
-                "en": "Nukhba Top Three Products"
+                "ar": "أفضل 4 منتجات",
+                "en": "Nukhba Top Four Products"
             },
             "icon": "sicon-star2",
             "path": "home.nukhba-top-three-products",
@@ -3809,7 +3809,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "nukhba-top-three-preview",
-                    "value": "<div class='p-4 bg-slate-950 rounded-lg text-white text-center'><div class='text-2xl font-bold mb-3'>أفضل 3 منتجات</div><div class='grid grid-cols-3 gap-2'><div class='rounded-lg bg-white/10 py-5'>1</div><div class='rounded-lg bg-white/10 py-5'>2</div><div class='rounded-lg bg-white/10 py-5'>3</div></div></div>"
+                    "value": "<div class='p-4 bg-slate-950 rounded-lg text-white text-center'><div class='text-2xl font-bold mb-3'>أفضل 4 منتجات</div><div class='grid grid-cols-4 gap-2'><div class='rounded-lg bg-white/10 py-5'>1</div><div class='rounded-lg bg-white/10 py-5'>2</div><div class='rounded-lg bg-white/10 py-5'>3</div><div class='rounded-lg bg-white/10 py-5'>4</div></div></div>"
                 },
                 {
                     "type": "string",
@@ -3929,6 +3929,22 @@
                     "icon": "sicon-keyboard_arrow_down",
                     "label": "منتج الرقم 3",
                     "id": "rank_three_products",
+                    "format": "dropdown-list",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 1,
+                    "minLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "منتج الرقم 4",
+                    "id": "rank_four_products",
                     "format": "dropdown-list",
                     "selected": [],
                     "options": [],

@@ -27,26 +27,47 @@
       </div>
     {% endif %}
 
-    <div class="nukhba-inline-image-group__track">
-      {% for item in component.items %}
-        <a
-          href="{{ item.url ?: '#' }}"
-          class="nukhba-inline-image-group__card"
-          aria-label="{{ (item.title ?: 'inline-image-group-' ~ loop.index) | e('html_attr') }}">
-          <div class="nukhba-inline-image-group__image-wrap">
-            <img
-              src="{{ item.image }}"
-              alt="{{ item.title ?: store.name }}"
-              loading="lazy"
-              width="360"
-              height="360" />
+    <salla-slider
+      type="carousel"
+      class="nukhba-inline-image-group__slider"
+      id="nukhba-inline-image-group-{{ position }}"
+      controls-outer
+      pagination
+      slider-config='{
+        "loop": false,
+        "rewind": true,
+        "watchOverflow": true,
+        "spaceBetween": 16,
+        "breakpoints": {
+          "0": { "slidesPerView": 1.15, "spaceBetween": 10 },
+          "480": { "slidesPerView": 2.15, "spaceBetween": 12 },
+          "768": { "slidesPerView": 3.1, "spaceBetween": 14 },
+          "1200": { "slidesPerView": 4, "spaceBetween": 16 }
+        }
+      }'>
+      <div slot="items">
+        {% for item in component.items %}
+          <div class="swiper-slide nukhba-inline-image-group__slide">
+            <a
+              href="{{ item.url ?: '#' }}"
+              class="nukhba-inline-image-group__card"
+              aria-label="{{ (item.title ?: 'inline-image-group-' ~ loop.index) | e('html_attr') }}">
+              <div class="nukhba-inline-image-group__image-wrap">
+                <img
+                  src="{{ item.image }}"
+                  alt="{{ item.title ?: store.name }}"
+                  loading="lazy"
+                  width="360"
+                  height="360" />
+              </div>
+              <div class="nukhba-inline-image-group__copy">
+                {% if item.overline %}<small>{{ item.overline }}</small>{% endif %}
+                {% if item.title %}<h3>{{ item.title }}</h3>{% endif %}
+              </div>
+            </a>
           </div>
-          <div class="nukhba-inline-image-group__copy">
-            {% if item.overline %}<small>{{ item.overline }}</small>{% endif %}
-            {% if item.title %}<h3>{{ item.title }}</h3>{% endif %}
-          </div>
-        </a>
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
   </div>
 </section>

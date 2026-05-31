@@ -3,18 +3,21 @@
 | component.rank_one_products  | Product[] | Product picker for rank 1                                      |
 | component.rank_two_products  | Product[] | Product picker for rank 2                                      |
 | component.rank_three_products| Product[] | Product picker for rank 3                                      |
+| component.rank_four_products | Product[] | Product picker for rank 4                                      |
 | position                     | int       | Component order in the homepage                                |
 #}
 
 {% set rank_one_item = component.rank_one_products|default([])|first %}
 {% set rank_two_item = component.rank_two_products|default([])|first %}
 {% set rank_three_item = component.rank_three_products|default([])|first %}
+{% set rank_four_item = component.rank_four_products|default([])|first %}
 
 {% set rank_one_id = rank_one_item ? (rank_one_item.id ?: rank_one_item.value ?: rank_one_item) : null %}
 {% set rank_two_id = rank_two_item ? (rank_two_item.id ?: rank_two_item.value ?: rank_two_item) : null %}
 {% set rank_three_id = rank_three_item ? (rank_three_item.id ?: rank_three_item.value ?: rank_three_item) : null %}
+{% set rank_four_id = rank_four_item ? (rank_four_item.id ?: rank_four_item.value ?: rank_four_item) : null %}
 
-{% set selected_ids = [rank_one_id, rank_two_id, rank_three_id]|filter(id => id)|join(',') %}
+{% set selected_ids = [rank_one_id, rank_two_id, rank_three_id, rank_four_id]|filter(id => id)|join(',') %}
 {% set has_products = selected_ids is not empty %}
 
 <section
@@ -41,7 +44,7 @@
       <salla-products-list
         class="nukhba-top-three-products__list"
         source="selected"
-        limit="3"
+        limit="4"
         source-value="[{{ selected_ids }}]"
         product-card-component="nukhba-top-three-product-card"
         slider-id="nukhba-top-three-products-{{ position }}"

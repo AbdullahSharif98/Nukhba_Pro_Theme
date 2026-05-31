@@ -569,7 +569,7 @@ function patchTopThreeProductLists() {
       [part="container"],
       [part="list"] {
         display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
         gap: 1.25rem !important;
         align-items: stretch !important;
       }
