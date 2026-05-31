@@ -93,6 +93,8 @@
   .nukhba-split-banners {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
+    width: 600px !important;
+    margin-right: 10px;
   }
 
   .nukhba-split-banners__slider-side,
