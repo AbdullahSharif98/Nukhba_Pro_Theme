@@ -63,11 +63,6 @@
           {% if component.center_title %}
             <h2>{{ component.center_title }}</h2>
           {% endif %}
-          {% if component.center_display_all_url %}
-            <a href="{{ component.center_display_all_url }}" class="nukhba-three-zones-showcase__display-all">
-              {{ component.center_display_all_text|default(trans('blocks.home.display_all')) }}
-            </a>
-          {% endif %}
         </header>
 
         {% if center_has_products %}
