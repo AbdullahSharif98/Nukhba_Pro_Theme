@@ -6,20 +6,14 @@
 | component.installment_images | object[]  | Installment logos                                |
 | position                     | int       | Sorting position                                 |
 #}
-{% set chip_values = [
-  component.chip_one ?: null,
-  component.chip_two ?: null,
-  component.chip_three ?: null,
-  component.chip_four ?: null
-] %}
 {% set source_type = component.source_type ?: 'latest' %}
-{% set selected_products = component.products|default([])|map((item) => item.id ?: item.value ?: item) %}
-{% set selected_categories = component.categories|default([])|map((item) => item.id ?: item.value ?: item) %}
-{% set selected_brands = component.brands|default([])|map((item) => item.id ?: item.value ?: item) %}
-{% set slider_source = source_type == 'selected' ? 'selected' : (source_type == 'categories' ? 'categories' : (source_type == 'brands' ? 'brands' : source_type)) %}
-{% set slider_values = source_type == 'selected' ? selected_products : (source_type == 'categories' ? selected_categories : (source_type == 'brands' ? selected_brands : [])) %}
+{% set selected_products = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set selected_categories = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set selected_brands = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set slider_source = source_type %}
+{% set slider_values = source_type == 'selected' ? selected_products : (source_type == 'categories' ? selected_categories : (source_type == 'brands' ? selected_brands : '')) %}
 {% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
-{% set has_products = (not needs_source_value) or slider_values|length %}
+{% set has_products = (not needs_source_value) or slider_values %}
 {% set slider_limit = component.products_limit ?: 32 %}
 {% set desktop_height = component.desktop_image_height ?: 272 %}
 {% set mobile_height = component.mobile_image_height ?: 208 %}
@@ -39,7 +33,6 @@
         limit="{{ slider_limit }}"
         autoplay
         slider-id="nukhba-pro-moving-products-new-{{ position }}"
-        product-card-component="nukhba-pro-product-card"
         block-title="{{ component.section_title|default('أحدث المنتجات') }}"
         {% if component.section_subtitle %}
           block-subTitle="{{ component.section_subtitle }}"
@@ -47,26 +40,8 @@
         {% if component.display_all_url and component.display_all_url != '#' %}
           display-all-url="{{ component.display_all_url }}"
         {% endif %}
-        data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
-        data-right-label-bg="{{ component.right_label_bg|default('#f30f0f')|e('html_attr') }}"
-        data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"
-        data-left-label-text="{{ component.left_label_text|default('')|e('html_attr') }}"
-        data-left-label-bg="{{ component.left_label_bg|default('#6b8f71')|e('html_attr') }}"
-        data-left-label-color="{{ component.left_label_color|default('#ffffff')|e('html_attr') }}"
-        data-text-color="{{ component.text_color|default('#1f2937')|e('html_attr') }}"
-        data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
-        data-old-price-color="{{ component.old_price_color|default('#111827')|e('html_attr') }}"
-        data-discount-bg-color="{{ component.discount_bg_color|default('#19763e')|e('html_attr') }}"
-        data-discount-text-color="{{ component.discount_text_color|default('#ffffff')|e('html_attr') }}"
-        data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
-        data-highlight-badge="{{ component.highlight_badge|default('')|e('html_attr') }}"
-        data-highlight-text="{{ component.highlight_text|default('')|e('html_attr') }}"
-        data-installment-title="{{ component.installment_title|default('')|e('html_attr') }}"
-        data-installment-logos="{{ component.installment_images|default([])|json_encode|e('html_attr') }}"
-        data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
-        data-button-text="{{ component.button_text|default('')|e('html_attr') }}"
         {% if needs_source_value %}
-          source-value='{{ slider_values|json_encode }}'
+          source-value="[{{ slider_values }}]"
         {% endif %}
       ></salla-products-slider>
     {% endif %}
