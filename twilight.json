@@ -1184,34 +1184,6 @@
                     "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
                 },
                 {
-                    "type": "items",
-                    "icon": "sicon-layout",
-                    "label": "وضع العرض",
-                    "id": "width_mode",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "selected": [
-                        {
-                            "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-pro-width-normal"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-pro-width-normal"
-                        },
-                        {
-                            "label": "عرض كامل",
-                            "value": "full",
-                            "key": "nukhba-pro-width-full"
-                        }
-                    ],
-                    "source": "Manual"
-                },
-                {
                     "type": "string",
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان القسم",
@@ -1220,16 +1192,6 @@
                     "value": "أحدث المنتجات",
                     "required": false,
                     "format": "text"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-typography",
-                    "label": "وصف قصير",
-                    "multilanguage": true,
-                    "id": "section_subtitle",
-                    "value": null,
-                    "required": false,
-                    "format": "textarea"
                 },
                 {
                     "type": "items",
@@ -1417,28 +1379,6 @@
                     "minimum": 4,
                     "maximum": 32,
                     "value": 32
-                },
-                {
-                    "type": "number",
-                    "icon": "sicon-pencil-ruler",
-                    "label": "ارتفاع الصورة في الكمبيوتر",
-                    "id": "desktop_image_height",
-                    "format": "integer",
-                    "required": false,
-                    "minimum": 180,
-                    "maximum": 520,
-                    "value": 272
-                },
-                {
-                    "type": "number",
-                    "icon": "sicon-pencil-ruler",
-                    "label": "ارتفاع الصورة في الجوال",
-                    "id": "mobile_image_height",
-                    "format": "integer",
-                    "required": false,
-                    "minimum": 140,
-                    "maximum": 420,
-                    "value": 208
                 }
             ]
         },
