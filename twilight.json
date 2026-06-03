@@ -236,6 +236,243 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "static",
+            "id": "static-line6-product-enhance",
+            "format": "line"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار شريط تنبيه أعلى السعر",
+            "description": null,
+            "id": "nukhba_product_notice_enabled",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "نص بادج التنبيه",
+            "multilanguage": true,
+            "id": "nukhba_product_notice_badge",
+            "value": "لفترة محدودة",
+            "required": false,
+            "format": "text",
+            "placeholder": "أدخل نص البادج"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "نص تنبيه صفحة المنتج",
+            "multilanguage": true,
+            "id": "nukhba_product_notice_text",
+            "value": "أضف 1,000.00 ر.س فقط واحصل على شحن مجاني لكل المملكة",
+            "required": false,
+            "format": "textarea",
+            "placeholder": "أدخل نص التنبيه"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون بطاقات صفحة المنتج",
+            "id": "nukhba_product_panel_bg",
+            "value": "#ffffff",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffffff"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-pencil-ruler",
+            "label": "استدارة بطاقات صفحة المنتج",
+            "id": "nukhba_product_panel_radius",
+            "value": "24px",
+            "required": false,
+            "format": "text",
+            "placeholder": "24px"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون السعر الحالي",
+            "id": "nukhba_product_price_color",
+            "value": "#e02020",
+            "required": false,
+            "format": "text",
+            "placeholder": "#e02020"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية بادج الخصم",
+            "id": "nukhba_product_sale_badge_bg",
+            "value": "#d73c2f",
+            "required": false,
+            "format": "text",
+            "placeholder": "#d73c2f"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون نص بادج الخصم",
+            "id": "nukhba_product_sale_badge_color",
+            "value": "#ffffff",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffffff"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية شريط التنبيه",
+            "id": "nukhba_product_notice_bg",
+            "value": "#fff6eb",
+            "required": false,
+            "format": "text",
+            "placeholder": "#fff6eb"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون إطار شريط التنبيه",
+            "id": "nukhba_product_notice_border",
+            "value": "#ffd6a3",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffd6a3"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار شريط مزايا المنتج السفلي",
+            "description": null,
+            "id": "nukhba_product_features_enabled",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية شريط المزايا",
+            "id": "nukhba_product_features_bg",
+            "value": "#ffffff",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffffff"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون حدود شريط المزايا",
+            "id": "nukhba_product_features_border",
+            "value": "#e5e7eb",
+            "required": false,
+            "format": "text",
+            "placeholder": "#e5e7eb"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون أيقونات شريط المزايا",
+            "id": "nukhba_product_features_icon",
+            "value": "#68a37d",
+            "required": false,
+            "format": "text",
+            "placeholder": "#68a37d"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "عنوان الميزة 1",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_1_title",
+            "value": "شحن سريع و مجاني",
+            "required": false,
+            "format": "text",
+            "placeholder": "عنوان الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "وصف الميزة 1",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_1_text",
+            "value": "داخل مدينة الرياض و جدة و الدمام",
+            "required": false,
+            "format": "text",
+            "placeholder": "وصف الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "عنوان الميزة 2",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_2_title",
+            "value": "استرجاع و استبدال",
+            "required": false,
+            "format": "text",
+            "placeholder": "عنوان الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "وصف الميزة 2",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_2_text",
+            "value": "استرجاع خلال 7 أيام و استبدال خلال 7 أيام",
+            "required": false,
+            "format": "text",
+            "placeholder": "وصف الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "عنوان الميزة 3",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_3_title",
+            "value": "ضمان سنتين من الوكيل",
+            "required": false,
+            "format": "text",
+            "placeholder": "عنوان الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "وصف الميزة 3",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_3_text",
+            "value": "على جميع منتجات المتجر",
+            "required": false,
+            "format": "text",
+            "placeholder": "وصف الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "عنوان الميزة 4",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_4_title",
+            "value": "دفع الكتروني آمن",
+            "required": false,
+            "format": "text",
+            "placeholder": "عنوان الميزة"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-typography",
+            "label": "وصف الميزة 4",
+            "multilanguage": true,
+            "id": "nukhba_product_feature_4_text",
+            "value": "فيزا - ماستركارد - أبل باي - مدى",
+            "required": false,
+            "format": "text",
+            "placeholder": "وصف الميزة"
         }
     ],
     "components": [
