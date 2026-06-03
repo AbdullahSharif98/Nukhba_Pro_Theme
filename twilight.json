@@ -473,6 +473,146 @@
             "required": false,
             "format": "text",
             "placeholder": "وصف الميزة"
+        },
+        {
+            "type": "static",
+            "id": "static-line7-category-enhance",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label7",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة التصنيف</h6></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية صفحة التصنيف",
+            "id": "nukhba_category_page_bg",
+            "value": "#f8fafc",
+            "required": false,
+            "format": "text",
+            "placeholder": "#f8fafc"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية بطاقات صفحة التصنيف",
+            "id": "nukhba_category_panel_bg",
+            "value": "#ffffff",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffffff"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون حدود بطاقات صفحة التصنيف",
+            "id": "nukhba_category_panel_border",
+            "value": "#e5e7eb",
+            "required": false,
+            "format": "text",
+            "placeholder": "#e5e7eb"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون عنوان صفحة التصنيف",
+            "id": "nukhba_category_title_color",
+            "value": "#0f172a",
+            "required": false,
+            "format": "text",
+            "placeholder": "#0f172a"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون أسعار بطاقات التصنيف",
+            "id": "nukhba_category_price_color",
+            "value": "#1f8b4c",
+            "required": false,
+            "format": "text",
+            "placeholder": "#1f8b4c"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "خلفية زر بطاقة التصنيف",
+            "id": "nukhba_category_button_bg",
+            "value": "#1f8b4c",
+            "required": false,
+            "format": "text",
+            "placeholder": "#1f8b4c"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-palette",
+            "label": "لون نص زر بطاقة التصنيف",
+            "id": "nukhba_category_button_color",
+            "value": "#ffffff",
+            "required": false,
+            "format": "text",
+            "placeholder": "#ffffff"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-pencil-ruler",
+            "label": "استدارة بطاقات التصنيف",
+            "id": "nukhba_category_panel_radius",
+            "value": "24px",
+            "required": false,
+            "format": "text",
+            "placeholder": "24px"
+        },
+        {
+            "id": "nukhba_category_card_image_fit",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "طريقة عرض صور بطاقات التصنيف",
+            "icon": "sicon-image",
+            "selected": [
+                {
+                    "label": "إظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "nukhba-category-image-fit-contain"
+                }
+            ],
+            "options": [
+                {
+                    "label": "تغطية المساحة كاملة (Cover)",
+                    "value": "cover",
+                    "key": "nukhba-category-image-fit-cover"
+                },
+                {
+                    "label": "إظهار الصورة كاملةً في المنتصف (Contain)",
+                    "value": "contain",
+                    "key": "nukhba-category-image-fit-contain"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "string",
+            "icon": "sicon-picture",
+            "label": "ارتفاع صور بطاقات التصنيف في الكمبيوتر",
+            "id": "nukhba_category_image_height_desktop",
+            "value": "260px",
+            "required": false,
+            "format": "text",
+            "placeholder": "260px"
+        },
+        {
+            "type": "string",
+            "icon": "sicon-smartphone",
+            "label": "ارتفاع صور بطاقات التصنيف في الجوال",
+            "id": "nukhba_category_image_height_mobile",
+            "value": "180px",
+            "required": false,
+            "format": "text",
+            "placeholder": "180px"
         }
     ],
     "components": [
