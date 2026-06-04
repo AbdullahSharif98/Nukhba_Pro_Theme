@@ -18,7 +18,6 @@
   source_value: source_values,
 } %}
 {% set title = component.section_title|default('أحدث المنتجات') %}
-{% set display_all_url = component.display_all_url %}
 {% set limit = component.products_limit ?: 32 %}
 
 <section id="nukhba-pro-moving-products-new-{{ position }}" class="s-block s-block--best-offers container overflow-hidden nukhba-pro-products nukhba-pro-products--reborn">
@@ -28,9 +27,6 @@
       limit="{{ limit }}"
       autoplay
       source-value="{{ products.source_value|json_encode }}"
-      {% if display_all_url and display_all_url != '#' %}
-        display-all-url="{{ display_all_url }}"
-      {% endif %}
       block-title="{{ title }}"
       slider-id="nukhba-pro-moving-products-new-slider-{{ position }}"
     ></salla-products-slider>
