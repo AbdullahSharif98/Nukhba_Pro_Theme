@@ -487,6 +487,12 @@ if (!customElements.get('nukhba-top-three-product-card')) {
   customElements.define('nukhba-top-three-product-card', NukhbaTopThreeProductCard);
 }
 
+function isSallaDesignEditor() {
+  const host = window.location.hostname || '';
+  const path = window.location.pathname || '';
+  return host.includes('salla.design') || path.includes('/themes/editor/');
+}
+
 function patchThreeZonesProductLists() {
   document.querySelectorAll('salla-products-list.nukhba-three-zones-showcase__product-list').forEach((list) => {
     const root = list.shadowRoot;
@@ -544,13 +550,15 @@ function scheduleThreeZonesProductListPatch(retries = 20) {
   setTimeout(() => scheduleThreeZonesProductListPatch(retries - 1), 400);
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => scheduleThreeZonesProductListPatch(), { once: true });
-} else {
-  scheduleThreeZonesProductListPatch();
-}
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleThreeZonesProductListPatch(), { once: true });
+  } else {
+    scheduleThreeZonesProductListPatch();
+  }
 
-document.addEventListener('theme::ready', () => scheduleThreeZonesProductListPatch());
+  document.addEventListener('theme::ready', () => scheduleThreeZonesProductListPatch());
+}
 
 function patchTopThreeProductLists() {
   document.querySelectorAll('salla-products-list.nukhba-top-three-products__list').forEach((list) => {
@@ -619,13 +627,15 @@ function scheduleTopThreeProductListPatch(retries = 20) {
   setTimeout(() => scheduleTopThreeProductListPatch(retries - 1), 400);
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => scheduleTopThreeProductListPatch(), { once: true });
-} else {
-  scheduleTopThreeProductListPatch();
-}
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleTopThreeProductListPatch(), { once: true });
+  } else {
+    scheduleTopThreeProductListPatch();
+  }
 
-document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());
+  document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());
+}
 
 function resolveSliderSwiper(slider) {
   if (!slider) {
@@ -779,10 +789,12 @@ function scheduleMovingPhotosSliderPatch(retries = 30) {
   setTimeout(() => scheduleMovingPhotosSliderPatch(retries - 1), 500);
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => scheduleMovingPhotosSliderPatch(), { once: true });
-} else {
-  scheduleMovingPhotosSliderPatch();
-}
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleMovingPhotosSliderPatch(), { once: true });
+  } else {
+    scheduleMovingPhotosSliderPatch();
+  }
 
-document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
+  document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
+}
