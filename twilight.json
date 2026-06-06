@@ -869,6 +869,45 @@
                     }
                 },
                 {
+                    "type": "int",
+                    "icon": "sicon-ruler",
+                    "label": "ارتفاع البانر في الكمبيوتر",
+                    "id": "banner_height_desktop",
+                    "value": 460,
+                    "required": false,
+                    "format": "number",
+                    "description": "الارتفاع بالبكسل"
+                },
+                {
+                    "type": "int",
+                    "icon": "sicon-smartphone",
+                    "label": "ارتفاع البانر في الجوال",
+                    "id": "banner_height_mobile",
+                    "value": 260,
+                    "required": false,
+                    "format": "number",
+                    "description": "الارتفاع بالبكسل"
+                },
+                {
+                    "type": "color",
+                    "icon": "sicon-paint-bucket",
+                    "label": "لون خلفية القسم",
+                    "id": "section_background_color",
+                    "format": "color",
+                    "value": "#ffffff",
+                    "required": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "تفعيل الظل الأسود على البانر",
+                    "id": "enable_banner_overlay",
+                    "format": "switch",
+                    "required": false,
+                    "value": false,
+                    "selected": false
+                },
+                {
                     "type": "string",
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان رئيسي",
@@ -982,6 +1021,92 @@
                             "value": "custom"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "4d69aa52-0c73-4701-8394-e225ff1b4001",
+            "title": {
+                "en": "Two side banners",
+                "ar": "بنرين بجانب بعض"
+            },
+            "icon": "sicon-image",
+            "path": "home.two-side-banners",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-banner.png?v=1.1",
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة البانر الأيمن",
+                    "id": "right_image",
+                    "format": "image",
+                    "required": true,
+                    "value": null,
+                    "description": "المقاس المناسب عريض"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط البانر الأيمن",
+                    "id": "right_url",
+                    "format": "url",
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-pen-2",
+                    "label": "النص البديل للبانر الأيمن",
+                    "id": "right_alt",
+                    "format": "text",
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة البانر الأيسر",
+                    "id": "left_image",
+                    "format": "image",
+                    "required": true,
+                    "value": null,
+                    "description": "المقاس المناسب عريض"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-link",
+                    "label": "رابط البانر الأيسر",
+                    "id": "left_url",
+                    "format": "url",
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-pen-2",
+                    "label": "النص البديل للبانر الأيسر",
+                    "id": "left_alt",
+                    "format": "text",
+                    "required": false,
+                    "value": null
+                },
+                {
+                    "type": "int",
+                    "icon": "sicon-ruler",
+                    "label": "الارتفاع في الكمبيوتر",
+                    "id": "desktop_height",
+                    "value": 320,
+                    "required": false,
+                    "format": "number"
+                },
+                {
+                    "type": "int",
+                    "icon": "sicon-smartphone",
+                    "label": "الارتفاع في الجوال",
+                    "id": "mobile_height",
+                    "value": 180,
+                    "required": false,
+                    "format": "number"
                 }
             ]
         },

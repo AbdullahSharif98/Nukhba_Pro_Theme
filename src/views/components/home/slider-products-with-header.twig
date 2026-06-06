@@ -8,7 +8,14 @@
 | component.products    | Product[] *Collection | @see views/pages/product.twig                                                |
 | position              | int                   | Sorting number start from zero                                               |
 #}
-<section class="s-block s-block--slider-with-bg s-block--full-bg">
+<section
+    class="s-block s-block--slider-with-bg s-block--full-bg {{ component.enable_banner_overlay ? 'has-banner-overlay' : 'no-banner-overlay' }}"
+    style="
+        --slider-with-bg-section-color: {{ component.section_background_color ?: '#ffffff' }};
+        --slider-with-bg-banner-height-mobile: {{ component.banner_height_mobile ?: 260 }}px;
+        --slider-with-bg-banner-height-desktop: {{ component.banner_height_desktop ?: 460 }}px;
+    "
+>
     <div class="slider-bg" style="background-image: url('{{ component.background }}');">
         <div class="container pt-8 sm:pt-20 relative">
             <div>
