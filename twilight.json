@@ -869,33 +869,35 @@
                     }
                 },
                 {
-                    "type": "int",
+                    "type": "number",
                     "icon": "sicon-ruler",
                     "label": "ارتفاع البانر في الكمبيوتر",
                     "id": "banner_height_desktop",
                     "value": 460,
                     "required": false,
-                    "format": "number",
+                    "format": "integer",
                     "description": "الارتفاع بالبكسل"
                 },
                 {
-                    "type": "int",
+                    "type": "number",
                     "icon": "sicon-smartphone",
                     "label": "ارتفاع البانر في الجوال",
                     "id": "banner_height_mobile",
                     "value": 260,
                     "required": false,
-                    "format": "number",
+                    "format": "integer",
                     "description": "الارتفاع بالبكسل"
                 },
                 {
-                    "type": "color",
+                    "type": "string",
                     "icon": "sicon-paint-bucket",
                     "label": "لون خلفية القسم",
                     "id": "section_background_color",
-                    "format": "color",
+                    "format": "text",
                     "value": "#ffffff",
-                    "required": false
+                    "required": false,
+                    "placeholder": "#ffffff",
+                    "description": "أدخل اللون بصيغة HEX مثل #ffffff"
                 },
                 {
                     "type": "boolean",
@@ -1045,13 +1047,73 @@
                     "description": "المقاس المناسب عريض"
                 },
                 {
-                    "type": "string",
+                    "type": "items",
                     "icon": "sicon-link",
                     "label": "رابط البانر الأيمن",
                     "id": "right_url",
-                    "format": "url",
+                    "value": null,
+                    "description": null,
                     "required": false,
-                    "value": null
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
                 },
                 {
                     "type": "string",
@@ -1073,13 +1135,73 @@
                     "description": "المقاس المناسب عريض"
                 },
                 {
-                    "type": "string",
+                    "type": "items",
                     "icon": "sicon-link",
                     "label": "رابط البانر الأيسر",
                     "id": "left_url",
-                    "format": "url",
+                    "value": null,
+                    "description": null,
                     "required": false,
-                    "value": null
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
                 },
                 {
                     "type": "string",
@@ -1091,22 +1213,22 @@
                     "value": null
                 },
                 {
-                    "type": "int",
+                    "type": "number",
                     "icon": "sicon-ruler",
                     "label": "الارتفاع في الكمبيوتر",
                     "id": "desktop_height",
                     "value": 320,
                     "required": false,
-                    "format": "number"
+                    "format": "integer"
                 },
                 {
-                    "type": "int",
+                    "type": "number",
                     "icon": "sicon-smartphone",
                     "label": "الارتفاع في الجوال",
                     "id": "mobile_height",
                     "value": 180,
                     "required": false,
-                    "format": "number"
+                    "format": "integer"
                 }
             ]
         },

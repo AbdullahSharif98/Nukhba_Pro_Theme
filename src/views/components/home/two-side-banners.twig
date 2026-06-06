@@ -6,8 +6,8 @@
 | component.left_url        | ?string |                                                                              |
 | component.right_image     | string  |                                                                              |
 | component.right_url       | ?string |                                                                              |
-| component.desktop_height  | int     |                                                                              |
-| component.mobile_height   | int     |                                                                              |
+| component.desktop_height  | ?number |                                                                              |
+| component.mobile_height   | ?number |                                                                              |
 #}
 <section
     class="s-block s-block--two-side-banners"
@@ -16,30 +16,40 @@
       --two-side-banner-height-desktop: {{ component.desktop_height ?: 320 }}px;
     "
 >
+    {% set right_banner_alt = component.right_alt ?: 'right-banner' %}
+    {% set left_banner_alt = component.left_alt ?: 'left-banner' %}
     <div class="two-side-banners">
         <a
             href="{{ component.right_url ?: '#' }}"
             class="two-side-banners__item"
-            aria-label="{{ component.right_alt ?: 'right-banner' }}"
+            aria-label="{{ right_banner_alt }}"
         >
-            <img
-                class="two-side-banners__image"
-                src="{{ component.right_image }}"
-                alt="{{ component.right_alt ?: 'right-banner' }}"
-                loading="lazy"
-            >
+            {% if component.right_image %}
+                <img
+                    class="two-side-banners__image"
+                    src="{{ component.right_image }}"
+                    alt="{{ right_banner_alt }}"
+                    loading="lazy"
+                >
+            {% else %}
+                <div class="two-side-banners__image bg-gray-100" aria-hidden="true"></div>
+            {% endif %}
         </a>
         <a
             href="{{ component.left_url ?: '#' }}"
             class="two-side-banners__item"
-            aria-label="{{ component.left_alt ?: 'left-banner' }}"
+            aria-label="{{ left_banner_alt }}"
         >
-            <img
-                class="two-side-banners__image"
-                src="{{ component.left_image }}"
-                alt="{{ component.left_alt ?: 'left-banner' }}"
-                loading="lazy"
-            >
+            {% if component.left_image %}
+                <img
+                    class="two-side-banners__image"
+                    src="{{ component.left_image }}"
+                    alt="{{ left_banner_alt }}"
+                    loading="lazy"
+                >
+            {% else %}
+                <div class="two-side-banners__image bg-gray-100" aria-hidden="true"></div>
+            {% endif %}
         </a>
     </div>
 </section>
