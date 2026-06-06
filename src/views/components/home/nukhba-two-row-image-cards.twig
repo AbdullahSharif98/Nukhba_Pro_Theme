@@ -1,0 +1,52 @@
+{#
+| component       | object   | Contains merchant settings for fields from twilight.json            |
+| component.items | object[] | Image cards                                                         |
+| position        | int      | Sorting number starts from zero                                     |
+#}
+<section
+  class="s-block nukhba-two-row-image-cards"
+  style="
+    --nukhba-two-row-bg: {{ component.section_bg_color|default('#ffffff') }};
+    --nukhba-two-row-card-bg: {{ component.card_bg_color|default('#dbe6ef') }};
+    --nukhba-two-row-title: {{ component.title_color|default('#0f172a') }};
+    --nukhba-two-row-text: {{ component.text_color|default('#1f2937') }};
+  ">
+  <div class="container">
+    {% if component.section_title %}
+      <div class="s-block__title">
+        <div class="right-side">
+          <h2>{{ component.section_title }}</h2>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="nukhba-two-row-image-cards__grid">
+      {% for item in component.items %}
+        <a
+          href="{{ item.url ?: '#' }}"
+          class="nukhba-two-row-image-cards__card"
+          aria-label="{{ (item.title ?: 'two-row-card-' ~ loop.index) | e('html_attr') }}">
+          <div class="nukhba-two-row-image-cards__copy">
+            {% if item.title %}
+              <h3>{{ item.title }}</h3>
+            {% endif %}
+            {% if item.description %}
+              <p>{{ item.description }}</p>
+            {% endif %}
+          </div>
+
+          {% if item.image %}
+            <div class="nukhba-two-row-image-cards__media">
+              <img
+                src="{{ item.image }}"
+                alt="{{ item.title ?: store.name }}"
+                loading="lazy"
+                width="720"
+                height="420" />
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

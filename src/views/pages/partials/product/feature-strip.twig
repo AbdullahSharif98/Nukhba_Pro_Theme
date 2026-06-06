@@ -1,0 +1,19 @@
+{% if enabled %}
+    <section class="nukhba-product-feature-strip">
+        <div class="container">
+            <div class="nukhba-product-feature-strip__grid">
+                {% for item in items %}
+                    <div class="nukhba-product-feature-strip__item">
+                        <div class="nukhba-product-feature-strip__icon">
+                            <i class="{{ item.icon }} {{ item.icon == 'sicon-shipping-fast' and theme.is_rtl ? 'flip-x' : '' }}"></i>
+                        </div>
+                        <div class="nukhba-product-feature-strip__copy">
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

@@ -1,0 +1,74 @@
+{#
+| component                    | object   | Contains merchant settings for fields from twilight.json            |
+| component.static_image       | string   | Static banner image                                                 |
+| component.static_image_url   | string   | Static banner url                                                   |
+| component.slider_banners     | object[] | Slider banners                                                      |
+| component.slider_banners[].image | string | Slider image                                                       |
+| component.slider_banners[].url   | string | Slider url                                                         |
+| position                     | int      | Sorting number starts from zero                                     |
+#}
+{% set desktop_height = component.desktop_height ?: 430 %}
+{% set mobile_height = component.mobile_height ?: 240 %}
+
+<section class="s-block">
+  <div
+    class="nukhba-split-banners"
+    style="--nukhba-split-banners-height: {{ desktop_height }}px; --nukhba-split-banners-height-mobile: {{ mobile_height }}px;">
+
+    {% if component.slider_banners|length %}
+      <div class="nukhba-split-banners__slider-side">
+        <salla-slider
+          type="carousel"
+          class="nukhba-split-banners__slider"
+          auto-play
+          pagination
+          id="nukhba-split-banners-{{ position }}"
+          slider-config='{
+            "spaceBetween": 0,
+            "slidesPerView": 1,
+            "breakpoints": {
+              "0": { "slidesPerView": 1, "spaceBetween": 0 },
+              "640": { "slidesPerView": 1, "spaceBetween": 0 },
+              "992": { "slidesPerView": 1, "spaceBetween": 0 }
+            }
+          }'>
+          <div slot="items">
+            {% for index, item in component.slider_banners %}
+              <div class="swiper-slide">
+                <a
+                  href="{{ item.url }}"
+                  aria-label="{{ (item.alt ?: 'split-slider-banner-' ~ index) | e('html_attr') }}"
+                  class="nukhba-split-banners__slide">
+                  <img
+                    loading="lazy"
+                    src="{{ item.image }}"
+                    alt="{{ item.alt ?: store.name }}"
+                    width="1400"
+                    height="{{ desktop_height }}"
+                  />
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </salla-slider>
+      </div>
+    {% endif %}
+
+    {% if component.static_image %}
+      <div class="nukhba-split-banners__static-side">
+        <a
+          href="{{ component.static_image_url }}"
+          aria-label="{{ (component.static_image_alt ?: 'split-static-banner') | e('html_attr') }}"
+          class="nukhba-split-banners__static-link">
+          <img
+            loading="lazy"
+            src="{{ component.static_image }}"
+            alt="{{ component.static_image_alt ?: store.name }}"
+            width="900"
+            height="{{ desktop_height }}"
+          />
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>

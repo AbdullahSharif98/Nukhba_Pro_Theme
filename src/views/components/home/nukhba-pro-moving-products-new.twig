@@ -1,0 +1,32 @@
+{#
+| component           | object    | Fields from twilight.json           |
+| component.products  | Product[] | Selected products                   |
+| component.categories| Category[]| Selected categories                 |
+| component.brands    | Brand[]   | Selected brands                     |
+| position            | int       | Sorting position                    |
+#}
+{% set source_type = component.source_type ?: 'latest' %}
+{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set products_source = source_type %}
+{% set products_value = source_type == 'selected' ? selected_ids : (source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : '')) %}
+{% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
+{% set has_products = (not needs_source_value) or products_value %}
+{% set title = component.section_title|default('أحدث المنتجات') %}
+{% set limit = component.products_limit ?: 32 %}
+
+<section id="nukhba-pro-moving-products-new-{{ position }}" class="s-block s-block--best-offers container overflow-hidden nukhba-pro-products nukhba-pro-products--reborn">
+  {% if has_products %}
+    <salla-products-slider
+      source="{{ products_source }}"
+      limit="{{ limit }}"
+      autoplay
+      {% if needs_source_value %}
+        source-value="[{{ products_value }}]"
+      {% endif %}
+      block-title="{{ title }}"
+      slider-id="nukhba-pro-moving-products-new-slider-{{ position }}"
+    ></salla-products-slider>
+  {% endif %}
+</section>

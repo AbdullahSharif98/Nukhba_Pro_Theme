@@ -59,6 +59,7 @@
     {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
 
     <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
+    <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'nukhba-pro-product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
     {% if theme.settings.get('enable_add_product_toast', true) %}
         <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
@@ -73,7 +74,6 @@
         window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
         window.enable_more_menu = "{{ theme.settings.get('enable_more_menu', true) }}"
         window.enable_add_product_toast = "{{ theme.settings.get('enable_add_product_toast', true) }}"
-        window.notify_when_available_in_card = "{{ theme.settings.get('notify_when_available_in_card', true) }}"
     </script>
     
     {% hook 'head:start' %}
@@ -108,7 +108,7 @@
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
     {% component 'header.header' %}
-    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
+    <main id="main-content" role="main">
     {% block content %}{% endblock %}
     </main>
     {% component 'footer.footer' %}

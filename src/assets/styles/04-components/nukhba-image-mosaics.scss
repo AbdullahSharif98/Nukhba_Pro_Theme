@@ -1,0 +1,206 @@
+.nukhba-image-mosaic {
+  padding: 1rem 0;
+
+  .container {
+    background: var(--nukhba-mosaic-bg, #ffffff);
+    border-radius: 1rem;
+    padding-block: .35rem;
+  }
+
+  .s-block__title h2 {
+    color: var(--nukhba-mosaic-title, #1f2937);
+  }
+}
+
+.nukhba-image-mosaic__layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.nukhba-image-mosaic__row,
+.nukhba-image-mosaic__grid-left {
+  display: grid;
+  gap: 1rem;
+}
+
+.nukhba-image-mosaic__row--top {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.nukhba-image-mosaic__row--bottom {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nukhba-image-mosaic__layout--right-featured {
+  grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr);
+  align-items: stretch;
+}
+
+.nukhba-image-mosaic__grid-left {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.nukhba-image-mosaic__tile {
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #f3f4f6;
+}
+
+.nukhba-image-mosaic__tile.is-small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .85rem;
+}
+
+.nukhba-image-mosaic__tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.nukhba-image-mosaic__tile.is-wide img {
+  height: 18rem;
+}
+
+.nukhba-image-mosaic__tile.is-small img {
+  height: 100%;
+  min-height: 10rem;
+  object-fit: contain;
+}
+
+.nukhba-image-mosaic__tile.is-featured img {
+  min-height: 100%;
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .nukhba-image-mosaic__grid-left {
+    grid-template-columns: 1fr;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three {
+    gap: .8rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__row {
+    gap: .8rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__row--top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__row--bottom {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nukhba-image-mosaic__layout--right-featured {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: .8rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__grid-left {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile {
+    border-radius: .9rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-wide img {
+    height: 9.75rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-small {
+    padding: .45rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-small img {
+    min-height: 4.9rem;
+    height: 4.9rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-wide img,
+  .nukhba-image-mosaic__tile.is-wide img {
+    height: 14rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-small {
+    padding: .55rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-small img {
+    height: 7.5rem;
+    min-height: 7.5rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-featured img {
+    height: 100%;
+    min-height: 15.8rem;
+  }
+
+  .nukhba-image-mosaic__tile.is-small img,
+  .nukhba-image-mosaic__tile.is-featured img {
+    height: 11rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .nukhba-image-mosaic__layout--top-two-bottom-three {
+    gap: .65rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__row {
+    gap: .65rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile {
+    border-radius: .8rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-wide img {
+    height: 8.6rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-small {
+    padding: .38rem;
+  }
+
+  .nukhba-image-mosaic__layout--top-two-bottom-three .nukhba-image-mosaic__tile.is-small img {
+    min-height: 4.05rem;
+    height: 4.05rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured {
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    gap: .65rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__grid-left {
+    gap: .65rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile {
+    border-radius: .9rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-small {
+    padding: .45rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-small img {
+    height: 6.1rem;
+    min-height: 6.1rem;
+  }
+
+  .nukhba-image-mosaic__layout--right-featured .nukhba-image-mosaic__tile.is-featured img {
+    min-height: 12.85rem;
+  }
+}

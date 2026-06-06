@@ -1,0 +1,79 @@
+{#
+| component            | object    | Fields from twilight.json                                      |
+| component.products   | Product[] | Selected products                                              |
+| component.categories | Category[]| Selected categories                                            |
+| component.brands     | Brand[]   | Selected brands                                                |
+| component.tags       | Tag[]     | Selected tags                                                  |
+| position             | int       | Sorting position                                               |
+#}
+{% set source_type = component.source_type ?: 'latest' %}
+{% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set tag_ids = component.tags|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
+{% set products_source = source_type in ['selected', 'categories', 'brands', 'tags'] ? source_type : source_type %}
+{% set products_value = source_type == 'selected' ? selected_ids : (source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : (source_type == 'tags' ? tag_ids : ''))) %}
+{% set needs_source_value = source_type in ['selected', 'categories', 'brands', 'tags'] %}
+{% set has_products = (not needs_source_value) or products_value %}
+{% set limit = component.products_limit ?: (component.layout_style == 'two_rows' ? 8 : 4) %}
+{% set desktop_height = component.desktop_height ?: 300 %}
+{% set mobile_height = component.mobile_height ?: 180 %}
+{% set banner_link = component.banner_url ?: '#' %}
+{% set has_banner_link = component.banner_url and component.banner_url != '#' %}
+{% set width_mode = component.width_mode ?: 'normal' %}
+{% set card_size = component.card_size ?: 'normal' %}
+
+<section
+  class="s-block nukhba-banner-products-showcase nukhba-banner-products-showcase--{{ component.layout_style ?: 'one_row' }} nukhba-banner-products-showcase--{{ width_mode == 'full' ? 'full' : 'normal' }} nukhba-banner-products-showcase--card-{{ card_size == 'small' ? 'small' : 'normal' }}"
+  style="--nukhba-banner-showcase-height: {{ desktop_height }}px; --nukhba-banner-showcase-height-mobile: {{ mobile_height }}px;">
+  <div class="{{ width_mode == 'normal' ? 'container ' : '' }}nukhba-banner-products-showcase__inner">
+    {% if has_banner_link %}
+      <a href="{{ banner_link }}" class="nukhba-banner-products-showcase__hero-link" aria-label="{{ (component.section_title ?: store.name)|e('html_attr') }}">
+    {% endif %}
+    <div class="nukhba-banner-products-showcase__hero" style="background-image:url('{{ component.background_image }}');">
+      <div class="nukhba-banner-products-showcase__hero-content">
+        {% if component.section_title %}
+          <h2>{{ component.section_title }}</h2>
+        {% endif %}
+        {% if component.section_subtitle %}
+          <p>{{ component.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% if has_banner_link %}
+      </a>
+    {% endif %}
+
+    {% if has_products %}
+      <div class="nukhba-banner-products-showcase__products">
+        {% if component.layout_style == 'two_rows' %}
+          <salla-products-list
+            class="nukhba-banner-products-showcase__list"
+            source="{{ products_source }}"
+            limit="{{ limit }}"
+            product-card-component="nukhba-banner-product-card"
+            data-layout-style="{{ component.layout_style ?: 'one_row' }}"
+            {% if needs_source_value %}
+              source-value="[{{ products_value }}]"
+            {% endif %}>
+          </salla-products-list>
+        {% else %}
+          <salla-products-slider
+            class="nukhba-banner-products-showcase__slider"
+            source="{{ products_source }}"
+            limit="{{ limit }}"
+            slider-id="nukhba-banner-products-showcase-{{ position }}"
+            product-card-component="nukhba-banner-product-card"
+            data-layout-style="{{ component.layout_style ?: 'one_row' }}"
+            {% if component.display_all_url %}
+              display-all-url="{{ component.display_all_url }}"
+            {% endif %}
+            {% if needs_source_value %}
+              source-value="[{{ products_value }}]"
+            {% endif %}>
+          </salla-products-slider>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
