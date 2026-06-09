@@ -11,6 +11,13 @@
     "cart": {
       "cart_options": "Cart Options"
     },
+    "products": {
+      "specifications_kicker": "Specifications",
+      "specifications_heading": "All technical details",
+      "description_kicker": "Product description",
+      "description_heading": "Everything you need to know about this product",
+      "show_details": "Show details"
+    },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",
       "edit_period_ended": "The period to edit the review has ended",

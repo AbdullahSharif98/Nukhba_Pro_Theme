@@ -229,7 +229,7 @@
                     <div class="nukhba-product-page__meta">
                         {% if product.sku %}
                             <div class="nukhba-product-page__sku">
-                                <span>SKU:</span>
+                                <span>{{ trans('pages.products.sku') }}:</span>
                                 <span class="text-unicode product-sku">{{ product.sku }}</span>
                             </div>
                         {% endif %}
@@ -479,8 +479,8 @@
     {% if product.has_metadata %}
         <section class="container nukhba-product-page__details">
             <div class="nukhba-product-page__section-heading">
-                <span class="nukhba-product-page__section-kicker">المواصفات</span>
-                <h2>كل التفاصيل التقنية</h2>
+                <span class="nukhba-product-page__section-kicker">{{ trans('pages.products.specifications_kicker') }}</span>
+                <h2>{{ trans('pages.products.specifications_heading') }}</h2>
             </div>
             <div class="nukhba-product-page__details-card">
                 <salla-metadata></salla-metadata>
@@ -491,11 +491,11 @@
     {% if product_desc_plain %}
         <section class="container nukhba-product-page__description-section">
             <div class="nukhba-product-page__section-heading">
-                <span class="nukhba-product-page__section-kicker">وصف المنتج</span>
-                <h2>كل ما تريد معرفته عن هذا المنتج</h2>
+                <span class="nukhba-product-page__section-kicker">{{ trans('pages.products.description_kicker') }}</span>
+                <h2>{{ trans('pages.products.description_heading') }}</h2>
             </div>
             <details class="nukhba-product-page__accordion" open>
-                <summary>عرض التفاصيل</summary>
+                <summary>{{ trans('pages.products.show_details') }}</summary>
                 <div class="product__description nukhba-product-page__accordion-content article--main">
                     {{ product.description|raw }}
                 </div>

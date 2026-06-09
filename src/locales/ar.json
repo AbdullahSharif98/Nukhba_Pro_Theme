@@ -11,6 +11,13 @@
     "cart": {
       "cart_options": "خيارات السلة"
     },
+    "products": {
+      "specifications_kicker": "المواصفات",
+      "specifications_heading": "كل التفاصيل التقنية",
+      "description_kicker": "وصف المنتج",
+      "description_heading": "كل ما تريد معرفته عن هذا المنتج",
+      "show_details": "عرض التفاصيل"
+    },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
       "edit_period_ended": "تم انتهاء المدة المحددة لتعديل التقييم",
