@@ -3,30 +3,112 @@
 | component.products  | Product[] | Selected products                   |
 | component.categories| Category[]| Selected categories                 |
 | component.brands    | Brand[]   | Selected brands                     |
+| component.installment_images | object[] | Installment logos             |
 | position            | int       | Sorting position                    |
 #}
+{% set chip_values = [
+  component.chip_one ?: null,
+  component.chip_two ?: null,
+  component.chip_three ?: null,
+  component.chip_four ?: null
+] %}
 {% set source_type = component.source_type ?: 'latest' %}
 {% set selected_ids = component.products|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
 {% set category_ids = component.categories|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
 {% set brand_ids = component.brands|default([])|map((item) => item.id ?: item.value ?: item)|join(',') %}
-{% set products_source = source_type %}
+{% set products_source = source_type == 'selected' ? 'selected' : (source_type == 'categories' ? 'categories' : (source_type == 'brands' ? 'brands' : source_type)) %}
 {% set products_value = source_type == 'selected' ? selected_ids : (source_type == 'categories' ? category_ids : (source_type == 'brands' ? brand_ids : '')) %}
 {% set needs_source_value = source_type in ['selected', 'categories', 'brands'] %}
 {% set has_products = (not needs_source_value) or products_value %}
 {% set title = component.section_title|default('أحدث المنتجات') %}
 {% set limit = component.products_limit ?: 32 %}
+{% set desktop_per_view = 4 %}
+{% set tablet_per_view = 2.15 %}
+{% set mobile_per_view = 1.12 %}
+{% set desktop_height = component.desktop_image_height ?: 272 %}
+{% set mobile_height = component.mobile_image_height ?: 208 %}
 
-<section id="nukhba-pro-moving-products-new-{{ position }}" class="s-block s-block--best-offers container overflow-hidden nukhba-pro-products nukhba-pro-products--reborn">
-  {% if has_products %}
-    <salla-products-slider
-      source="{{ products_source }}"
-      limit="{{ limit }}"
-      autoplay
-      {% if needs_source_value %}
-        source-value="[{{ products_value }}]"
-      {% endif %}
-      block-title="{{ title }}"
-      slider-id="nukhba-pro-moving-products-new-slider-{{ position }}"
-    ></salla-products-slider>
-  {% endif %}
+<section
+  id="nukhba-pro-moving-products-new-{{ position }}"
+  class="s-block nukhba-pro-products nukhba-pro-products--normal"
+  style="
+    --nukhba-pro-card-image-height: {{ desktop_height }}px;
+    --nukhba-pro-card-image-height-mobile: {{ mobile_height }}px;
+  ">
+  <div class="container nukhba-pro-products__inner">
+    {% if component.section_title or component.section_subtitle %}
+      <div class="nukhba-pro-products__heading">
+        {% if component.section_title %}
+          <h2>{{ component.section_title }}</h2>
+        {% endif %}
+        {% if component.section_subtitle %}
+          <p>{{ component.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if has_products %}
+      <salla-products-slider
+        class="nukhba-pro-products__slider"
+        source="{{ products_source }}"
+        limit="{{ limit }}"
+        autoplay
+        slider-id="nukhba-pro-moving-products-new-slider-{{ position }}"
+        product-card-component="nukhba-pro-product-card"
+        slider-config='{
+          "loop": false,
+          "rewind": true,
+          "watchOverflow": true,
+          "observer": true,
+          "observeParents": true,
+          "roundLengths": true,
+          "slidesPerGroup": 1,
+          "autoplay": { "delay": 2200, "disableOnInteraction": false, "pauseOnMouseEnter": false, "waitForTransition": false },
+          "spaceBetween": 9,
+          "breakpoints": {
+            "0": { "slidesPerView": {{ mobile_per_view }}, "spaceBetween": 6 },
+            "640": { "slidesPerView": {{ tablet_per_view }}, "spaceBetween": 7 },
+            "992": { "slidesPerView": {{ desktop_per_view }}, "spaceBetween": 9 }
+          }
+        }'
+        data-right-label-text="{{ component.right_label_text|default('')|e('html_attr') }}"
+        data-right-label-bg="{{ component.right_label_bg|default('#f30f0f')|e('html_attr') }}"
+        data-right-label-color="{{ component.right_label_color|default('#ffffff')|e('html_attr') }}"
+        data-left-label-text="{{ component.left_label_text|default('')|e('html_attr') }}"
+        data-left-label-bg="{{ component.left_label_bg|default('#6b8f71')|e('html_attr') }}"
+        data-left-label-color="{{ component.left_label_color|default('#ffffff')|e('html_attr') }}"
+        data-card-bg-color="{{ component.card_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-card-border-color="{{ component.card_border_color|default('#dfe3e8')|e('html_attr') }}"
+        data-media-bg-color="{{ component.media_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-text-color="{{ component.text_color|default('#1f2937')|e('html_attr') }}"
+        data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
+        data-old-price-color="{{ component.old_price_color|default('#111827')|e('html_attr') }}"
+        data-price-box-bg-color="{{ component.price_box_bg_color|default('#f5f6f7')|e('html_attr') }}"
+        data-discount-bg-color="{{ component.discount_bg_color|default('#19763e')|e('html_attr') }}"
+        data-discount-text-color="{{ component.discount_text_color|default('#ffffff')|e('html_attr') }}"
+        data-discount-label-text="{{ component.discount_label_text|default('خصم')|e('html_attr') }}"
+        data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
+        data-highlight-badge="{{ component.highlight_badge|default('')|e('html_attr') }}"
+        data-highlight-text="{{ component.highlight_text|default('')|e('html_attr') }}"
+        data-highlight-badge-bg-color="{{ component.highlight_badge_bg_color|default('#fff200')|e('html_attr') }}"
+        data-highlight-badge-text-color="{{ component.highlight_badge_text_color|default('#f32727')|e('html_attr') }}"
+        data-installment-title="{{ component.installment_title|default('')|e('html_attr') }}"
+        data-installment-bg-color="{{ component.installment_bg_color|default('#f5f6f7')|e('html_attr') }}"
+        data-installment-logo-bg-color="{{ component.installment_logo_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-installment-logos="{{ component.installment_images|default([])|json_encode|e('html_attr') }}"
+        data-chips-bg-color="{{ component.chips_bg_color|default('#eef8f2')|e('html_attr') }}"
+        data-chip-bg-color="{{ component.chip_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-chip-border-color="{{ component.chip_border_color|default('#91b59b')|e('html_attr') }}"
+        data-chip-text-color="{{ component.chip_text_color|default('#3d4c42')|e('html_attr') }}"
+        data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
+        data-button-text="{{ component.button_text|default('')|e('html_attr') }}"
+        data-button-bg-color="{{ component.button_bg_color|default('#19763e')|e('html_attr') }}"
+        data-button-border-color="{{ component.button_border_color|default('#19763e')|e('html_attr') }}"
+        data-button-text-color="{{ component.button_text_color|default('#ffffff')|e('html_attr') }}"
+        {% if needs_source_value %}
+          source-value="[{{ products_value }}]"
+        {% endif %}
+      ></salla-products-slider>
+    {% endif %}
+  </div>
 </section>

@@ -76,6 +76,15 @@ class NukhbaProProductCard extends HTMLElement {
       .replace(/>/g, '&gt;');
   }
 
+  buildStyle(styles = {}) {
+    const pairs = Object.entries(styles).filter(([, value]) => value !== null && value !== undefined && value !== '');
+    if (!pairs.length) return '';
+
+    return ` style="${pairs
+      .map(([key, value]) => `${key}:${this.escapeHTML(String(value))};`)
+      .join('')}"`;
+  }
+
   getImageUrl() {
     return this.product?.image?.url || this.product?.thumbnail || this.placeholder || '';
   }
@@ -156,25 +165,39 @@ class NukhbaProProductCard extends HTMLElement {
 
   getInstallmentLogosHTML() {
     const logos = this.getJSONSetting('installment-logos');
+    const wrapperStyle = this.buildStyle({
+      background: this.getSetting('installment-bg-color', '#f5f6f7'),
+    });
+    const logoStyle = this.buildStyle({
+      background: this.getSetting('installment-logo-bg-color', '#ffffff'),
+    });
     const items = logos
       .filter((logo) => logo?.image)
       .map((logo) => `
-        <span class="nukhba-pro-card__installment-logo">
+        <span class="nukhba-pro-card__installment-logo"${logoStyle}>
           <img src="${logo.image}" alt="${this.escapeHTML(logo.alt || this.product?.name || '')}" loading="lazy" width="90" height="34" />
         </span>
       `)
       .join('');
 
-    return items ? `<div class="nukhba-pro-card__installment-logos">${items}</div>` : '';
+    return items ? `<div class="nukhba-pro-card__installment-logos"${wrapperStyle}>${items}</div>` : '';
   }
 
   getChipsHTML() {
     const chips = this.getJSONSetting('chip-values');
     if (!chips.length) return '';
+    const wrapperStyle = this.buildStyle({
+      background: this.getSetting('chips-bg-color', '#eef8f2'),
+    });
+    const chipStyle = this.buildStyle({
+      background: this.getSetting('chip-bg-color', '#ffffff'),
+      'border-color': this.getSetting('chip-border-color', '#91b59b'),
+      color: this.getSetting('chip-text-color', '#3d4c42'),
+    });
 
     return `
-      <div class="nukhba-pro-card__chips">
-        ${chips.map((chip) => `<span>${this.escapeHTML(chip)}</span>`).join('')}
+      <div class="nukhba-pro-card__chips"${wrapperStyle}>
+        ${chips.map((chip) => `<span${chipStyle}>${this.escapeHTML(chip)}</span>`).join('')}
       </div>
     `;
   }
@@ -182,13 +205,17 @@ class NukhbaProProductCard extends HTMLElement {
   getHighlightHTML(textStyle) {
     const badge = this.getSetting('highlight-badge');
     const text = this.getSetting('highlight-text');
+    const badgeStyle = this.buildStyle({
+      background: this.getSetting('highlight-badge-bg-color', '#fff200'),
+      color: this.getSetting('highlight-badge-text-color', '#f32727'),
+    });
 
     if (!badge && !text) return '';
 
     return `
       <div class="nukhba-pro-card__highlight">
         ${text ? `<p${textStyle}>${this.escapeHTML(text)}</p>` : ''}
-        ${badge ? `<span class="nukhba-pro-card__highlight-badge">${this.escapeHTML(badge)}</span>` : ''}
+        ${badge ? `<span class="nukhba-pro-card__highlight-badge"${badgeStyle}>${this.escapeHTML(badge)}</span>` : ''}
       </div>
     `;
   }
@@ -214,22 +241,38 @@ class NukhbaProProductCard extends HTMLElement {
     const priceStyle = this.getStyleAttr(this.getSetting('price-color'));
     const oldPriceStyle = this.getStyleAttr(this.getSetting('old-price-color'));
     const discountStyle = ` style="background:${this.getSetting('discount-bg-color', '#19763e')};color:${this.getSetting('discount-text-color', '#ffffff')};"`;
+    const discountLabelText = this.getSetting('discount-label-text', 'خصم');
     const priceNote = this.getSetting('price-note') || (this.product?.starting_price ? this.startingPrice : '');
     const installmentTitle = this.getSetting('installment-title');
     const rightLabelText = this.getSetting('right-label-text');
     const leftLabelText = this.getSetting('left-label-text');
+    const cardStyle = this.buildStyle({
+      background: this.getSetting('card-bg-color', '#ffffff'),
+      'border-color': this.getSetting('card-border-color', '#dfe3e8'),
+    });
+    const mediaStyle = this.buildStyle({
+      background: this.getSetting('media-bg-color', this.getSetting('card-bg-color', '#ffffff')),
+    });
+    const priceBoxStyle = this.buildStyle({
+      background: this.getSetting('price-box-bg-color', '#f5f6f7'),
+    });
+    const buttonHostStyle = this.buildStyle({
+      '--nukhba-pro-card-button-bg': this.getSetting('button-bg-color', '#19763e'),
+      '--nukhba-pro-card-button-border': this.getSetting('button-border-color', this.getSetting('button-bg-color', '#19763e')),
+      '--nukhba-pro-card-button-color': this.getSetting('button-text-color', '#ffffff'),
+    });
 
     this.classList.add('nukhba-pro-product-card-entry');
     this.setAttribute('id', this.product.id);
 
     this.innerHTML = `
-      <article class="nukhba-pro-card">
+      <article class="nukhba-pro-card"${cardStyle}>
         <div class="nukhba-pro-card__labels">
           ${rightLabelText ? `<span class="nukhba-pro-card__label is-right" style="background:${this.getSetting('right-label-bg', '#f30f0f')};color:${this.getSetting('right-label-color', '#ffffff')};">${this.escapeHTML(rightLabelText)}</span>` : ''}
           ${leftLabelText ? `<span class="nukhba-pro-card__label is-left" style="background:${this.getSetting('left-label-bg', '#6b8f71')};color:${this.getSetting('left-label-color', '#ffffff')};">${this.escapeHTML(leftLabelText)}</span>` : ''}
         </div>
 
-        <a href="${this.product.url}" class="nukhba-pro-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+        <a href="${this.product.url}" class="nukhba-pro-card__media" aria-label="${this.escapeHTML(this.product.name)}"${mediaStyle}>
           <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="480" height="420" />
         </a>
 
@@ -240,9 +283,9 @@ class NukhbaProProductCard extends HTMLElement {
             <a href="${this.product.url}"${textStyle}>${this.escapeHTML(this.product.name)}</a>
           </h3>
 
-          <div class="nukhba-pro-card__price-box">
+          <div class="nukhba-pro-card__price-box"${priceBoxStyle}>
             <div class="nukhba-pro-card__price-head">
-              ${discountPercent ? `<span class="nukhba-pro-card__discount"${discountStyle}>%${discountPercent} خصم</span>` : ''}
+              ${discountPercent ? `<span class="nukhba-pro-card__discount"${discountStyle}>%${discountPercent} ${this.escapeHTML(discountLabelText)}</span>` : ''}
               <strong${priceStyle}>${this.getMoney(actualPrice)}</strong>
             </div>
             <div class="nukhba-pro-card__price-foot">
@@ -261,6 +304,7 @@ class NukhbaProProductCard extends HTMLElement {
             fill="solid"
             width="wide"
             class="nukhba-pro-card__button"
+            ${buttonHostStyle}
             product-id="${this.product.id}"
             product-status="${this.product.status}"
             product-type="${this.product.type}">
@@ -773,6 +817,111 @@ function forceClosedLoopForMovingPhotos(slider) {
   });
 }
 
+function ensureMovingProductsShadowStyle(slider) {
+  const root = slider?.shadowRoot;
+  if (!root || root.getElementById('nukhba-pro-moving-products-style')) {
+    return;
+  }
+
+  const style = document.createElement('style');
+  style.id = 'nukhba-pro-moving-products-style';
+  style.textContent = `
+    :host {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .swiper,
+    swiper-container,
+    [part="swiper"],
+    [part="container"],
+    [part="wrapper"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .swiper-slide {
+      min-width: 0 !important;
+      height: auto !important;
+    }
+  `;
+
+  root.appendChild(style);
+}
+
+function stabilizeMovingProductsSlider(slider) {
+  const swiper = resolveSliderSwiper(slider);
+  if (!swiper) {
+    ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
+    return false;
+  }
+
+  if (slider.__nukhbaMovingProductsSwiper === swiper) {
+    return true;
+  }
+
+  slider.__nukhbaMovingProductsSwiper = swiper;
+  ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
+  ensureMovingProductsShadowStyle(slider);
+
+  swiper.params.loop = false;
+  swiper.params.rewind = true;
+  swiper.params.watchOverflow = true;
+  swiper.params.centeredSlides = false;
+  swiper.params.slidesPerGroup = 1;
+  swiper.params.autoplay = {
+    ...(swiper.params.autoplay || {}),
+    delay: swiper.params.autoplay?.delay || 2200,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    waitForTransition: false,
+  };
+
+  if (typeof swiper.update === 'function') {
+    swiper.update();
+  }
+
+  if (typeof swiper.slideTo === 'function' && swiper.isEnd) {
+    swiper.slideTo(0, 0, false);
+  }
+
+  swiper.on?.('reachEnd', () => {
+    const delay = swiper.params.autoplay?.delay || 2200;
+    window.setTimeout(() => {
+      if (typeof swiper.slideTo === 'function') {
+        swiper.slideTo(0, 0, false);
+      }
+      swiper.autoplay?.start?.();
+    }, delay);
+  });
+
+  swiper.on?.('autoplayStop', () => {
+    swiper.autoplay?.start?.();
+  });
+
+  swiper.autoplay?.start?.();
+  return true;
+}
+
+function patchMovingProductsSlider() {
+  document.querySelectorAll('salla-products-slider.nukhba-pro-products__slider').forEach((slider) => {
+    stabilizeMovingProductsSlider(slider);
+  });
+}
+
+function scheduleMovingProductsSliderPatch(retries = 30) {
+  patchMovingProductsSlider();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleMovingProductsSliderPatch(retries - 1), 500);
+}
+
 function patchMovingPhotosSlider() {
   document.querySelectorAll('salla-slider.nukhba-moving-photos__slider').forEach((slider) => {
     forceClosedLoopForMovingPhotos(slider);
@@ -798,3 +947,11 @@ if (!isSallaDesignEditor()) {
 
   document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleMovingProductsSliderPatch(), { once: true });
+} else {
+  scheduleMovingProductsSliderPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleMovingProductsSliderPatch());
