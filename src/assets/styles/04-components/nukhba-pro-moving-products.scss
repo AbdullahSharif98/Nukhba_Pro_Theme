@@ -306,9 +306,9 @@ nukhba-pro-product-card {
 .nukhba-pro-card__button::part(button) {
   min-height: 2.95rem;
   border-radius: 12px;
-  border-color: #19763e;
-  background: #19763e;
-  color: #fff;
+  border-color: var(--nukhba-pro-card-button-border, #19763e);
+  background: var(--nukhba-pro-card-button-bg, #19763e);
+  color: var(--nukhba-pro-card-button-color, #fff);
   font-size: .95rem;
   font-weight: 800;
 }

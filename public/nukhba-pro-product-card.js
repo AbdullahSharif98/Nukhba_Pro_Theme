@@ -1,1 +1,844 @@
-(()=>{"use strict";function t(n){return t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},t(n)}function n(n){var e=function(n){if("object"!=t(n)||!n)return n;var e=n[Symbol.toPrimitive];if(void 0!==e){var r=e.call(n,"string");if("object"!=t(r))return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return String(n)}(n);return"symbol"==t(e)?e:e+""}function e(t,e,r){return(e=n(e))in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}function r(t,n){if(!(t instanceof n))throw new TypeError("Cannot call a class as a function")}function o(t,e){for(var r=0;r<e.length;r++){var o=e[r];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,n(o.key),o)}}function a(t,n,e){return n&&o(t.prototype,n),e&&o(t,e),Object.defineProperty(t,"prototype",{writable:!1}),t}function i(t){return i=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(t){return t.__proto__||Object.getPrototypeOf(t)},i(t)}function c(t,n){return c=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,n){return t.__proto__=n,t},c(t,n)}function s(t,n){if("function"!=typeof n&&null!==n)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(n&&n.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),Object.defineProperty(t,"prototype",{writable:!1}),n&&c(t,n)}function l(){try{var t=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}))}catch(t){}return(l=function(){return!!t})()}function u(t){var n="function"==typeof Map?new Map:void 0;return u=function(t){if(null===t||!function(t){try{return-1!==Function.toString.call(t).indexOf("[native code]")}catch(n){return"function"==typeof t}}(t))return t;if("function"!=typeof t)throw new TypeError("Super expression must either be null or a function");if(void 0!==n){if(n.has(t))return n.get(t);n.set(t,e)}function e(){return function(t,n,e){if(l())return Reflect.construct.apply(null,arguments);var r=[null];r.push.apply(r,n);var o=new(t.bind.apply(t,r));return e&&c(o,e.prototype),o}(t,arguments,i(this).constructor)}return e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),c(e,t)},u(t)}function d(t,n){var e=Object.keys(t);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);n&&(r=r.filter(function(n){return Object.getOwnPropertyDescriptor(t,n).enumerable})),e.push.apply(e,r)}return e}function p(t){for(var n=1;n<arguments.length;n++){var r=null!=arguments[n]?arguments[n]:{};n%2?d(Object(r),!0).forEach(function(n){e(t,n,r[n])}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):d(Object(r)).forEach(function(n){Object.defineProperty(t,n,Object.getOwnPropertyDescriptor(r,n))})}return t}function h(n,e,r){return e=i(e),function(n,e){if(e&&("object"==t(e)||"function"==typeof e))return e;if(void 0!==e)throw new TypeError("Derived constructors may only return object or undefined");return function(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}(n)}(n,g()?Reflect.construct(e,r||[],i(n).constructor):e.apply(n,r))}function g(){try{var t=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}))}catch(t){}return(g=function(){return!!t})()}var f=function(t){function n(){return r(this,n),h(this,n,arguments)}return s(n,t),a(n,[{key:"connectedCallback",value:function(){var t,n=this;if(!this.__initialized){if(this.product=this.product||this.parseProduct(),this.slider=this.closest("salla-products-slider, salla-products-list"),!this.product)return this.__retryCount=(this.__retryCount||0)+1,void(this.__retryCount<=20&&requestAnimationFrame(function(){return n.connectedCallback()}));this.__initialized=!0,"ready"===(null===(t=window.app)||void 0===t?void 0:t.status)?this.onReady():document.addEventListener("theme::ready",function(){return n.onReady()},{once:!0})}}},{key:"parseProduct",value:function(){var t=this.getAttribute("product");if(!t)return null;try{return JSON.parse(t)}catch(t){return null}}},{key:"onReady",value:function(){var t=this;this.placeholder=salla.url.asset(salla.config.get("theme.settings.placeholder")),this.isInWishlist=!salla.config.isGuest()&&salla.storage.get("salla::wishlist",[]).includes(Number(this.product.id)),salla.lang.onLoaded(function(){t.startingPrice=salla.lang.get("pages.products.starting_price"),t.addToCartText=salla.lang.get("pages.cart.add_to_cart"),t.bookNowText=salla.lang.get("pages.cart.book_now"),t.preOrderText=salla.lang.get("pages.products.pre_order_now"),t.outOfStockText=salla.lang.get("pages.products.out_of_stock"),t.donationText=salla.lang.get("pages.products.donation_exceed"),t.render()}),this.render()}},{key:"getSetting",value:function(t){var n,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"",r=null===(n=this.slider)||void 0===n?void 0:n.getAttribute("data-".concat(t));return null==r||""===r?e:r}},{key:"getJSONSetting",value:function(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],e=this.getSetting(t,"");if(!e)return n;try{var r=JSON.parse(e);return Array.isArray(r)?r:n}catch(t){return n}}},{key:"escapeHTML",value:function(){return String(arguments.length>0&&void 0!==arguments[0]?arguments[0]:"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}},{key:"getImageUrl",value:function(){var t,n;return(null===(t=this.product)||void 0===t||null===(t=t.image)||void 0===t?void 0:t.url)||(null===(n=this.product)||void 0===n?void 0:n.thumbnail)||this.placeholder||""}},{key:"getImageAlt",value:function(){var t,n;return this.escapeHTML((null===(t=this.product)||void 0===t||null===(t=t.image)||void 0===t?void 0:t.alt)||(null===(n=this.product)||void 0===n?void 0:n.name)||"")}},{key:"toEnglishDigits",value:function(){return String(arguments.length>0&&void 0!==arguments[0]?arguments[0]:"").replace(/[٠-٩]/g,function(t){return"٠١٢٣٤٥٦٧٨٩".indexOf(t)}).replace(/[۰-۹]/g,function(t){return"۰۱۲۳۴۵۶۷۸۹".indexOf(t)})}},{key:"shouldUseEnglishDigits",value:function(){return"true"===this.getSetting("use-english-digits")}},{key:"getMoney",value:function(t){if(!t||0===t)return salla.config.get("store.settings.product.show_price_as_dash")?"-":"";var n=salla.money(t);return this.shouldUseEnglishDigits()?this.toEnglishDigits(n):n}},{key:"getActualPrice",value:function(){var t,n,e,r;return(null===(t=this.product)||void 0===t?void 0:t.starting_price)||(null!==(n=this.product)&&void 0!==n&&n.is_on_sale?null===(e=this.product)||void 0===e?void 0:e.sale_price:null===(r=this.product)||void 0===r?void 0:r.price)}},{key:"getOldPrice",value:function(){var t,n;return null!==(t=this.product)&&void 0!==t&&t.is_on_sale&&null!==(n=this.product)&&void 0!==n&&n.regular_price?this.product.regular_price:null}},{key:"getDiscountPercent",value:function(){var t=this.getOldPrice(),n=this.getActualPrice();return!t||!n||t<=n?null:Math.round((t-n)/t*100)}},{key:"getButtonText",value:function(){var t,n,e,r,o,a;return this.getSetting("button-text")?this.getSetting("button-text"):null!==(t=this.product)&&void 0!==t&&t.add_to_cart_label?this.product.add_to_cart_label:null!==(n=this.product)&&void 0!==n&&n.has_preorder_campaign?this.preOrderText||"اطلب الآن":"sale"===(null===(e=this.product)||void 0===e?void 0:e.status)&&"booking"===(null===(r=this.product)||void 0===r?void 0:r.type)?this.bookNowText||"احجز الآن":"sale"===(null===(o=this.product)||void 0===o?void 0:o.status)?this.addToCartText||"إضافة إلى السلة":"donating"!==(null===(a=this.product)||void 0===a?void 0:a.type)?this.outOfStockText||"نفدت الكمية":this.donationText||"الحد الأقصى للتبرع"}},{key:"getStyleAttr",value:function(t){return t?' style="color:'.concat(t,';"'):""}},{key:"getInstallmentLogosHTML",value:function(){var t=this,n=this.getJSONSetting("installment-logos").filter(function(t){return null==t?void 0:t.image}).map(function(n){var e;return'\n        <span class="nukhba-pro-card__installment-logo">\n          <img src="'.concat(n.image,'" alt="').concat(t.escapeHTML(n.alt||(null===(e=t.product)||void 0===e?void 0:e.name)||""),'" loading="lazy" width="90" height="34" />\n        </span>\n      ')}).join("");return n?'<div class="nukhba-pro-card__installment-logos">'.concat(n,"</div>"):""}},{key:"getChipsHTML",value:function(){var t=this,n=this.getJSONSetting("chip-values");return n.length?'\n      <div class="nukhba-pro-card__chips">\n        '.concat(n.map(function(n){return"<span>".concat(t.escapeHTML(n),"</span>")}).join(""),"\n      </div>\n    "):""}},{key:"getHighlightHTML",value:function(t){var n=this.getSetting("highlight-badge"),e=this.getSetting("highlight-text");return n||e?'\n      <div class="nukhba-pro-card__highlight">\n        '.concat(e?"<p".concat(t,">").concat(this.escapeHTML(e),"</p>"):"","\n        ").concat(n?'<span class="nukhba-pro-card__highlight-badge">'.concat(this.escapeHTML(n),"</span>"):"","\n      </div>\n    "):""}},{key:"getWishlistButton",value:function(){return'\n      <button\n        class="nukhba-pro-card__wishlist '.concat(this.isInWishlist?"is-active":"",'"\n        type="button"\n        aria-label="wishlist"\n        data-id="').concat(this.product.id,'"\n        onclick="salla.wishlist.toggle(').concat(this.product.id,')">\n        <i class="sicon-heart"></i>\n      </button>\n    ')}},{key:"render",value:function(){var t,n=this.getActualPrice(),e=this.getOldPrice(),r=this.getDiscountPercent(),o=this.getStyleAttr(this.getSetting("text-color")),a=this.getStyleAttr(this.getSetting("price-color")),i=this.getStyleAttr(this.getSetting("old-price-color")),c=' style="background:'.concat(this.getSetting("discount-bg-color","#19763e"),";color:").concat(this.getSetting("discount-text-color","#ffffff"),';"'),s=this.getSetting("price-note")||(null!==(t=this.product)&&void 0!==t&&t.starting_price?this.startingPrice:""),l=this.getSetting("installment-title"),u=this.getSetting("right-label-text"),d=this.getSetting("left-label-text");this.classList.add("nukhba-pro-product-card-entry"),this.setAttribute("id",this.product.id),this.innerHTML='\n      <article class="nukhba-pro-card">\n        <div class="nukhba-pro-card__labels">\n          '.concat(u?'<span class="nukhba-pro-card__label is-right" style="background:'.concat(this.getSetting("right-label-bg","#f30f0f"),";color:").concat(this.getSetting("right-label-color","#ffffff"),';">').concat(this.escapeHTML(u),"</span>"):"","\n          ").concat(d?'<span class="nukhba-pro-card__label is-left" style="background:'.concat(this.getSetting("left-label-bg","#6b8f71"),";color:").concat(this.getSetting("left-label-color","#ffffff"),';">').concat(this.escapeHTML(d),"</span>"):"",'\n        </div>\n\n        <a href="').concat(this.product.url,'" class="nukhba-pro-card__media" aria-label="').concat(this.escapeHTML(this.product.name),'">\n          <img src="').concat(this.getImageUrl(),'" alt="').concat(this.getImageAlt(),'" loading="lazy" width="480" height="420" />\n        </a>\n\n        ').concat(this.getWishlistButton(),'\n\n        <div class="nukhba-pro-card__content">\n          <h3').concat(o,'>\n            <a href="').concat(this.product.url,'"').concat(o,">").concat(this.escapeHTML(this.product.name),'</a>\n          </h3>\n\n          <div class="nukhba-pro-card__price-box">\n            <div class="nukhba-pro-card__price-head">\n              ').concat(r?'<span class="nukhba-pro-card__discount"'.concat(c,">%").concat(r," خصم</span>"):"","\n              <strong").concat(a,">").concat(this.getMoney(n),'</strong>\n            </div>\n            <div class="nukhba-pro-card__price-foot">\n              ').concat(s?"<span".concat(o,">").concat(this.escapeHTML(s),"</span>"):"","\n              ").concat(e?"<small".concat(i,">").concat(this.getMoney(e),"</small>"):"","\n            </div>\n          </div>\n\n          ").concat(this.getHighlightHTML(o),"\n\n          ").concat(l?'<p class="nukhba-pro-card__installment-title"'.concat(o,">").concat(this.escapeHTML(l),"</p>"):"","\n          ").concat(this.getInstallmentLogosHTML(),"\n          ").concat(this.getChipsHTML(),'\n\n          <salla-add-product-button\n            fill="solid"\n            width="wide"\n            class="nukhba-pro-card__button"\n            product-id="').concat(this.product.id,'"\n            product-status="').concat(this.product.status,'"\n            product-type="').concat(this.product.type,'">\n            <i class="sicon-').concat("booking"===this.product.type?"calendar-time":"shopping-bag",'"></i>\n            <span>').concat(this.escapeHTML(this.getButtonText()),"</span>\n          </salla-add-product-button>\n        </div>\n      </article>\n    "),this.querySelectorAll(".nukhba-pro-card__wishlist").forEach(function(t){t.addEventListener("click",function(){t.classList.toggle("is-active")})})}}])}(u(HTMLElement));customElements.get("nukhba-pro-product-card")||customElements.define("nukhba-pro-product-card",f);var v=function(t){function n(){return r(this,n),h(this,n,arguments)}return s(n,t),a(n,[{key:"shouldUseEnglishDigits",value:function(){return!0}}])}(f);customElements.get("nukhba-pro-advanced-product-card")||customElements.define("nukhba-pro-advanced-product-card",v);var b=function(t){function n(){return r(this,n),h(this,n,arguments)}return s(n,t),a(n,[{key:"getLayoutStyle",value:function(){var t;return(null===(t=this.slider)||void 0===t?void 0:t.getAttribute("data-layout-style"))||"one_row"}},{key:"getActionIcon",value:function(){var t;return"booking"===(null===(t=this.product)||void 0===t?void 0:t.type)?"calendar-time":"shopping-bag"}},{key:"render",value:function(){var t=this.getActualPrice(),n=this.getOldPrice(),e="two_rows"===this.getLayoutStyle(),r=this.escapeHTML(this.getButtonText()),o=this.getActionIcon();this.classList.add("nukhba-banner-product-card-entry"),this.setAttribute("id",this.product.id),this.innerHTML='\n      <article class="nukhba-banner-product-card '.concat(e?"is-two-rows":"is-one-row",'">\n        <a href="').concat(this.product.url,'" class="nukhba-banner-product-card__media" aria-label="').concat(this.escapeHTML(this.product.name),'">\n          <img src="').concat(this.getImageUrl(),'" alt="').concat(this.getImageAlt(),'" loading="lazy" width="360" height="260" />\n        </a>\n\n        <div class="nukhba-banner-product-card__body">\n          <div class="nukhba-banner-product-card__title">\n            <a href="').concat(this.product.url,'">').concat(this.escapeHTML(this.product.name),'</a>\n          </div>\n\n          <div class="nukhba-banner-product-card__prices">\n            ').concat(n?'<small class="nukhba-banner-product-card__old-price">'.concat(this.getMoney(n),"</small>"):"",'\n            <strong class="nukhba-banner-product-card__price">').concat(this.getMoney(t),'</strong>\n          </div>\n\n          <salla-add-product-button\n            fill="').concat(e?"solid":"outline",'"\n            width="wide"\n            class="nukhba-banner-product-card__action"\n            product-id="').concat(this.product.id,'"\n            product-status="').concat(this.product.status,'"\n            product-type="').concat(this.product.type,'">\n            <i class="sicon-').concat(o,'"></i>\n            <span>').concat(r,"</span>\n          </salla-add-product-button>\n        </div>\n      </article>\n    ")}}])}(f);customElements.get("nukhba-banner-product-card")||customElements.define("nukhba-banner-product-card",b);var m=function(t){function n(){return r(this,n),h(this,n,arguments)}return s(n,t),a(n,[{key:"getBadge",value:function(t){var n=this.getSetting("".concat(t,"-badge-text"));if(!n)return"";var e=this.getSetting("".concat(t,"-badge-bg"),"right"===t?"#f30f0f":"#6b8f71"),r=this.getSetting("".concat(t,"-badge-color"),"#ffffff");return'<span class="nukhba-three-zones-product-card__label" style="background:'.concat(e,";color:").concat(r,';">').concat(this.escapeHTML(n),"</span>")}},{key:"render",value:function(){var t,n,e=this.getActualPrice(),r=this.getOldPrice(),o=null!==(t=this.product)&&void 0!==t&&t.starting_price&&this.startingPrice||"",a=this.escapeHTML(this.getButtonText()),i="booking"===(null===(n=this.product)||void 0===n?void 0:n.type)?"calendar-time":"shopping-bag";this.classList.add("nukhba-three-zones-product-card-entry"),this.setAttribute("id",this.product.id),this.innerHTML='\n      <article class="nukhba-three-zones-product-card__inner">\n        <div class="nukhba-three-zones-product-card__labels">\n          '.concat(this.getBadge("right"),"\n          ").concat(this.getBadge("left"),'\n        </div>\n\n        <a href="').concat(this.product.url,'" class="nukhba-three-zones-product-card__media" aria-label="').concat(this.escapeHTML(this.product.name),'">\n          <img src="').concat(this.getImageUrl(),'" alt="').concat(this.getImageAlt(),'" loading="lazy" width="420" height="320" />\n        </a>\n\n        <div class="nukhba-three-zones-product-card__content">\n          <div class="nukhba-three-zones-product-card__title">\n            <a href="').concat(this.product.url,'">').concat(this.escapeHTML(this.product.name),'</a>\n          </div>\n\n          <div class="nukhba-three-zones-product-card__price').concat(r?" nukhba-three-zones-product-card__price--sale":"",'">\n            ').concat(r?'<small class="nukhba-three-zones-product-card__price-old">'.concat(this.getMoney(r),"</small>"):"",'\n            <strong class="nukhba-three-zones-product-card__price-current">').concat(this.getMoney(e),"</strong>\n          </div>\n\n          ").concat(o?'<div class="nukhba-three-zones-product-card__price-note">'.concat(this.escapeHTML(o),"</div>"):"",'\n\n          <salla-add-product-button\n            fill="solid"\n            width="wide"\n            class="nukhba-three-zones-product-card__button"\n            product-id="').concat(this.product.id,'"\n            product-status="').concat(this.product.status,'"\n            product-type="').concat(this.product.type,'">\n            <i class="sicon-').concat(i,'"></i>\n            <span>').concat(a,"</span>\n          </salla-add-product-button>\n        </div>\n      </article>\n    ")}}])}(f);customElements.get("nukhba-three-zones-product-card")||customElements.define("nukhba-three-zones-product-card",m);var y=function(t){function n(){return r(this,n),h(this,n,arguments)}return s(n,t),a(n,[{key:"updateRank",value:function(){var t,n=Array.from((null===(t=this.parentElement)||void 0===t?void 0:t.querySelectorAll("nukhba-top-three-product-card"))||[]).indexOf(this)+1,e=this.querySelector(".nukhba-top-three-product-card__inner");n>0&&e&&(e.dataset.rank=String(n),this.dataset.rank=String(n))}},{key:"render",value:function(){var t,n,e,r,o,a,i=this,c=this.getActualPrice(),s=this.getOldPrice(),l=this.escapeHTML(this.getButtonText()),u="booking"===(null===(t=this.product)||void 0===t?void 0:t.type)?"calendar-time":"shopping-bag",d=(null===(n=this.product)||void 0===n||null===(n=n.rating)||void 0===n?void 0:n.average)||(null===(e=this.product)||void 0===e||null===(e=e.rating)||void 0===e?void 0:e.stars)||(null===(r=this.product)||void 0===r?void 0:r.rating_average),p=(null===(o=this.product)||void 0===o||null===(o=o.rating)||void 0===o?void 0:o.count)||(null===(a=this.product)||void 0===a?void 0:a.rating_count);this.classList.add("nukhba-top-three-product-card-entry"),this.setAttribute("id",this.product.id),this.innerHTML='\n      <article class="nukhba-top-three-product-card__inner">\n        '.concat(this.getWishlistButton().replace("nukhba-pro-card__wishlist","nukhba-top-three-product-card__wishlist"),'\n\n        <a href="').concat(this.product.url,'" class="nukhba-top-three-product-card__media" aria-label="').concat(this.escapeHTML(this.product.name),'">\n          <img src="').concat(this.getImageUrl(),'" alt="').concat(this.getImageAlt(),'" loading="lazy" width="420" height="420" />\n        </a>\n\n        <div class="nukhba-top-three-product-card__content">\n          <h3 class="nukhba-top-three-product-card__title">\n            <a href="').concat(this.product.url,'">').concat(this.escapeHTML(this.product.name),"</a>\n          </h3>\n\n          ").concat(d?'\n            <div class="nukhba-top-three-product-card__rating">\n              <i class="sicon-star2"></i>\n              <span>'.concat(this.escapeHTML(String(d)),"</span>\n              ").concat(p?"<small>(".concat(this.escapeHTML(String(p)),")</small>"):"","\n            </div>"):"",'\n\n          <div class="nukhba-top-three-product-card__prices">\n            <strong class="nukhba-top-three-product-card__price">').concat(this.getMoney(c),"</strong>\n            ").concat(s?'<small class="nukhba-top-three-product-card__old-price">'.concat(this.getMoney(s),"</small>"):"",'\n          </div>\n\n          <salla-add-product-button\n            fill="solid"\n            width="wide"\n            class="nukhba-top-three-product-card__button"\n            product-id="').concat(this.product.id,'"\n            product-status="').concat(this.product.status,'"\n            product-type="').concat(this.product.type,'">\n            <i class="sicon-').concat(u,'"></i>\n            <span>').concat(l,"</span>\n          </salla-add-product-button>\n        </div>\n      </article>\n    "),this.querySelectorAll(".nukhba-top-three-product-card__wishlist").forEach(function(t){t.addEventListener("click",function(){t.classList.toggle("is-active")})}),requestAnimationFrame(function(){return i.updateRank()})}}])}(f);function _(){var t=window.location.hostname||"",n=window.location.pathname||"";return t.includes("salla.design")||n.includes("/themes/editor/")}function k(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:20;document.querySelectorAll("salla-products-list.nukhba-three-zones-showcase__product-list").forEach(function(t){var n=t.shadowRoot;if(n&&!n.getElementById("nukhba-three-zones-grid-style")){var e=document.createElement("style");e.id="nukhba-three-zones-grid-style",e.textContent='\n      .s-products-list-wrapper,\n      .s-products-list-content,\n      .s-products-list-list,\n      [part="wrapper"],\n      [part="container"],\n      [part="list"] {\n        display: grid !important;\n        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;\n        grid-auto-flow: row !important;\n        gap: 1rem !important;\n        align-items: stretch !important;\n      }\n\n      .s-product-card-entry,\n      nukhba-three-zones-product-card {\n        width: 100% !important;\n        min-width: 0 !important;\n        max-width: none !important;\n        margin: 0 !important;\n      }\n\n      @media (max-width: 479px) {\n        .s-products-list-wrapper,\n        .s-products-list-content,\n        .s-products-list-list,\n        [part="wrapper"],\n        [part="container"],\n        [part="list"] {\n          grid-template-columns: 1fr !important;\n        }\n      }\n    ',n.appendChild(e)}}),t<=0||setTimeout(function(){return k(t-1)},400)}function w(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:20;document.querySelectorAll("salla-products-list.nukhba-top-three-products__list").forEach(function(t){var n=t.shadowRoot;if(n&&!n.getElementById("nukhba-top-three-grid-style")){var e=document.createElement("style");e.id="nukhba-top-three-grid-style",e.textContent='\n      .s-products-list-wrapper,\n      .s-products-list-content,\n      .s-products-list-list,\n      [part="wrapper"],\n      [part="container"],\n      [part="list"] {\n        display: grid !important;\n        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;\n        gap: 1.25rem !important;\n        align-items: stretch !important;\n      }\n\n      .s-product-card-entry,\n      nukhba-top-three-product-card {\n        width: 100% !important;\n        min-width: 0 !important;\n        max-width: none !important;\n        margin: 0 !important;\n      }\n\n      @media (max-width: 991px) {\n        .s-products-list-wrapper,\n        .s-products-list-content,\n        .s-products-list-list,\n        [part="wrapper"],\n        [part="container"],\n        [part="list"] {\n          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;\n        }\n      }\n\n      @media (max-width: 639px) {\n        .s-products-list-wrapper,\n        .s-products-list-content,\n        .s-products-list-list,\n        [part="wrapper"],\n        [part="container"],\n        [part="list"] {\n          grid-template-columns: 1fr !important;\n        }\n      }\n    ',n.appendChild(e)}}),t<=0||setTimeout(function(){return w(t-1)},400)}function S(t,n){if(t&&!t.__nukhbaLoopObserver){var e=t.shadowRoot||t;if(e&&"undefined"!=typeof MutationObserver){var r=new MutationObserver(function(){null==n||n()});r.observe(e,{childList:!0,subtree:!0}),t.__nukhbaLoopObserver=r}}}function T(){document.querySelectorAll("salla-slider.nukhba-moving-photos__slider").forEach(function(t){!function(t){(function(t){var n,e,r,o,a,i,c,s,l=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},u=l.datasetFlag,d=l.defaultDelay,h=void 0===d?2200:d,g=l.repatch,f=function(t){if(!t)return null;if(t.swiper)return t.swiper;var n=t.shadowRoot;if(!n)return null;var e=n.querySelector('.swiper, swiper-container, [part="swiper"]');return(null==e?void 0:e.swiper)||null}(t);if(!f)return S(t,g),!1;var v="__".concat(u,"Swiper");if(t[v]===f)return Boolean(f);t[v]=f,S(t,g);var b=function(t){return t?t.querySelectorAll('[slot="items"] > .swiper-slide, [slot="items"] .swiper-slide').length:0}(t)||(null===(n=f.slides)||void 0===n?void 0:n.length)||1;f.params.loop=!0,f.params.rewind=!1,f.params.watchOverflow=!1,f.params.slidesPerGroup=1,f.params.loopedSlides=Math.max(f.params.loopedSlides||0,b),f.params.loopAdditionalSlides=Math.max(f.params.loopAdditionalSlides||0,b+2),f.params.autoplay=p(p({},f.params.autoplay||{}),{},{delay:(null===(e=f.params.autoplay)||void 0===e?void 0:e.delay)||h,disableOnInteraction:!1,pauseOnMouseEnter:!1,waitForTransition:!1}),"function"==typeof f.loopDestroy&&f.loopDestroy(),"function"==typeof f.loopCreate&&f.loopCreate(),"function"==typeof f.update&&f.update(),"function"==typeof f.slideToLoop?f.slideToLoop(f.realIndex||0,0,!1):"function"==typeof f.slideTo&&f.slideTo(0,0,!1),null===(r=f.on)||void 0===r||r.call(f,"reachEnd",function(){"function"==typeof f.slideToLoop?f.slideToLoop(0,0,!1):"function"==typeof f.slideTo&&f.slideTo(0,0,!1)}),null===(o=f.on)||void 0===o||o.call(f,"fromEdge",function(){var t,n;null===(t=f.autoplay)||void 0===t||null===(n=t.start)||void 0===n||n.call(t)}),null===(a=f.on)||void 0===a||a.call(f,"autoplayStop",function(){var t,n;null===(t=f.autoplay)||void 0===t||null===(n=t.start)||void 0===n||n.call(t)}),null===(i=f.on)||void 0===i||i.call(f,"transitionEnd",function(){var t,n;f.isEnd&&("function"==typeof f.slideToLoop?f.slideToLoop(0,0,!1):"function"==typeof f.slideTo&&f.slideTo(0,0,!1),null===(t=f.autoplay)||void 0===t||null===(n=t.start)||void 0===n||n.call(t))}),null===(c=f.autoplay)||void 0===c||null===(s=c.start)||void 0===s||s.call(c)})(t,{datasetFlag:"nukhbaPhotosLoopPatched",defaultDelay:2e3,repatch:T})}(t)})}function L(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:30;T(),t<=0||setTimeout(function(){return L(t-1)},500)}customElements.get("nukhba-top-three-product-card")||customElements.define("nukhba-top-three-product-card",y),_()||("loading"===document.readyState?document.addEventListener("DOMContentLoaded",function(){return k()},{once:!0}):k(),document.addEventListener("theme::ready",function(){return k()})),_()||("loading"===document.readyState?document.addEventListener("DOMContentLoaded",function(){return w()},{once:!0}):w(),document.addEventListener("theme::ready",function(){return w()})),_()||("loading"===document.readyState?document.addEventListener("DOMContentLoaded",function(){return L()},{once:!0}):L(),document.addEventListener("theme::ready",function(){return L()}))})();
+class NukhbaProProductCard extends HTMLElement {
+  connectedCallback() {
+    if (this.__initialized) return;
+
+    this.product = this.product || this.parseProduct();
+    this.slider = this.closest('salla-products-slider, salla-products-list');
+
+    if (!this.product) {
+      this.__retryCount = (this.__retryCount || 0) + 1;
+      if (this.__retryCount <= 20) {
+        requestAnimationFrame(() => this.connectedCallback());
+      }
+      return;
+    }
+
+    this.__initialized = true;
+
+    if (window.app?.status === 'ready') {
+      this.onReady();
+    } else {
+      document.addEventListener('theme::ready', () => this.onReady(), { once: true });
+    }
+  }
+
+  parseProduct() {
+    const raw = this.getAttribute('product');
+    if (!raw) return null;
+
+    try {
+      return JSON.parse(raw);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  onReady() {
+    this.placeholder = salla.url.asset(salla.config.get('theme.settings.placeholder'));
+    this.isInWishlist = !salla.config.isGuest() && salla.storage.get('salla::wishlist', []).includes(Number(this.product.id));
+
+    salla.lang.onLoaded(() => {
+      this.startingPrice = salla.lang.get('pages.products.starting_price');
+      this.addToCartText = salla.lang.get('pages.cart.add_to_cart');
+      this.bookNowText = salla.lang.get('pages.cart.book_now');
+      this.preOrderText = salla.lang.get('pages.products.pre_order_now');
+      this.outOfStockText = salla.lang.get('pages.products.out_of_stock');
+      this.donationText = salla.lang.get('pages.products.donation_exceed');
+      this.render();
+    });
+
+    this.render();
+  }
+
+  getSetting(name, fallback = '') {
+    const value = this.slider?.getAttribute(`data-${name}`);
+    return value === null || value === undefined || value === '' ? fallback : value;
+  }
+
+  getJSONSetting(name, fallback = []) {
+    const raw = this.getSetting(name, '');
+    if (!raw) return fallback;
+
+    try {
+      const value = JSON.parse(raw);
+      return Array.isArray(value) ? value : fallback;
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  escapeHTML(value = '') {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  buildStyle(styles = {}) {
+    const pairs = Object.entries(styles).filter(([, value]) => value !== null && value !== undefined && value !== '');
+    if (!pairs.length) return '';
+
+    return ` style="${pairs
+      .map(([key, value]) => `${key}:${this.escapeHTML(String(value))};`)
+      .join('')}"`;
+  }
+
+  getImageUrl() {
+    return this.product?.image?.url || this.product?.thumbnail || this.placeholder || '';
+  }
+
+  getImageAlt() {
+    return this.escapeHTML(this.product?.image?.alt || this.product?.name || '');
+  }
+
+  toEnglishDigits(value = '') {
+    return String(value)
+      .replace(/[٠-٩]/g, (digit) => '٠١٢٣٤٥٦٧٨٩'.indexOf(digit))
+      .replace(/[۰-۹]/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(digit));
+  }
+
+  shouldUseEnglishDigits() {
+    return this.getSetting('use-english-digits') === 'true';
+  }
+
+  getMoney(price) {
+    if (!price || price === 0) {
+      return salla.config.get('store.settings.product.show_price_as_dash') ? '-' : '';
+    }
+
+    const formatted = salla.money(price);
+    return this.shouldUseEnglishDigits() ? this.toEnglishDigits(formatted) : formatted;
+  }
+
+  getActualPrice() {
+    return this.product?.starting_price || (this.product?.is_on_sale ? this.product?.sale_price : this.product?.price);
+  }
+
+  getOldPrice() {
+    return this.product?.is_on_sale && this.product?.regular_price ? this.product.regular_price : null;
+  }
+
+  getDiscountPercent() {
+    const oldPrice = this.getOldPrice();
+    const actualPrice = this.getActualPrice();
+
+    if (!oldPrice || !actualPrice || oldPrice <= actualPrice) {
+      return null;
+    }
+
+    return Math.round(((oldPrice - actualPrice) / oldPrice) * 100);
+  }
+
+  getButtonText() {
+    if (this.getSetting('button-text')) {
+      return this.getSetting('button-text');
+    }
+
+    if (this.product?.add_to_cart_label) {
+      return this.product.add_to_cart_label;
+    }
+
+    if (this.product?.has_preorder_campaign) {
+      return this.preOrderText || 'اطلب الآن';
+    }
+
+    if (this.product?.status === 'sale' && this.product?.type === 'booking') {
+      return this.bookNowText || 'احجز الآن';
+    }
+
+    if (this.product?.status === 'sale') {
+      return this.addToCartText || 'إضافة إلى السلة';
+    }
+
+    if (this.product?.type !== 'donating') {
+      return this.outOfStockText || 'نفدت الكمية';
+    }
+
+    return this.donationText || 'الحد الأقصى للتبرع';
+  }
+
+  getStyleAttr(color) {
+    return color ? ` style="color:${color};"` : '';
+  }
+
+  getInstallmentLogosHTML() {
+    const logos = this.getJSONSetting('installment-logos');
+    const wrapperStyle = this.buildStyle({
+      background: this.getSetting('installment-bg-color', '#f5f6f7'),
+    });
+    const logoStyle = this.buildStyle({
+      background: this.getSetting('installment-logo-bg-color', '#ffffff'),
+    });
+    const items = logos
+      .filter((logo) => logo?.image)
+      .map((logo) => `
+        <span class="nukhba-pro-card__installment-logo"${logoStyle}>
+          <img src="${logo.image}" alt="${this.escapeHTML(logo.alt || this.product?.name || '')}" loading="lazy" width="90" height="34" />
+        </span>
+      `)
+      .join('');
+
+    return items ? `<div class="nukhba-pro-card__installment-logos"${wrapperStyle}>${items}</div>` : '';
+  }
+
+  getChipsHTML() {
+    const chips = this.getJSONSetting('chip-values');
+    if (!chips.length) return '';
+    const wrapperStyle = this.buildStyle({
+      background: this.getSetting('chips-bg-color', '#eef8f2'),
+    });
+    const chipStyle = this.buildStyle({
+      background: this.getSetting('chip-bg-color', '#ffffff'),
+      'border-color': this.getSetting('chip-border-color', '#91b59b'),
+      color: this.getSetting('chip-text-color', '#3d4c42'),
+    });
+
+    return `
+      <div class="nukhba-pro-card__chips"${wrapperStyle}>
+        ${chips.map((chip) => `<span${chipStyle}>${this.escapeHTML(chip)}</span>`).join('')}
+      </div>
+    `;
+  }
+
+  getHighlightHTML(textStyle) {
+    const badge = this.getSetting('highlight-badge');
+    const text = this.getSetting('highlight-text');
+    const badgeStyle = this.buildStyle({
+      background: this.getSetting('highlight-badge-bg-color', '#fff200'),
+      color: this.getSetting('highlight-badge-text-color', '#f32727'),
+    });
+
+    if (!badge && !text) return '';
+
+    return `
+      <div class="nukhba-pro-card__highlight">
+        ${text ? `<p${textStyle}>${this.escapeHTML(text)}</p>` : ''}
+        ${badge ? `<span class="nukhba-pro-card__highlight-badge"${badgeStyle}>${this.escapeHTML(badge)}</span>` : ''}
+      </div>
+    `;
+  }
+
+  getWishlistButton() {
+    return `
+      <button
+        class="nukhba-pro-card__wishlist ${this.isInWishlist ? 'is-active' : ''}"
+        type="button"
+        aria-label="wishlist"
+        data-id="${this.product.id}"
+        onclick="salla.wishlist.toggle(${this.product.id})">
+        <i class="sicon-heart"></i>
+      </button>
+    `;
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const discountPercent = this.getDiscountPercent();
+    const textStyle = this.getStyleAttr(this.getSetting('text-color'));
+    const priceStyle = this.getStyleAttr(this.getSetting('price-color'));
+    const oldPriceStyle = this.getStyleAttr(this.getSetting('old-price-color'));
+    const discountStyle = ` style="background:${this.getSetting('discount-bg-color', '#19763e')};color:${this.getSetting('discount-text-color', '#ffffff')};"`;
+    const discountLabelText = this.getSetting('discount-label-text', 'خصم');
+    const priceNote = this.getSetting('price-note') || (this.product?.starting_price ? this.startingPrice : '');
+    const installmentTitle = this.getSetting('installment-title');
+    const rightLabelText = this.getSetting('right-label-text');
+    const leftLabelText = this.getSetting('left-label-text');
+    const cardStyle = this.buildStyle({
+      background: this.getSetting('card-bg-color', '#ffffff'),
+      'border-color': this.getSetting('card-border-color', '#dfe3e8'),
+    });
+    const mediaStyle = this.buildStyle({
+      background: this.getSetting('media-bg-color', this.getSetting('card-bg-color', '#ffffff')),
+    });
+    const priceBoxStyle = this.buildStyle({
+      background: this.getSetting('price-box-bg-color', '#f5f6f7'),
+    });
+    const buttonHostStyle = this.buildStyle({
+      '--nukhba-pro-card-button-bg': this.getSetting('button-bg-color', '#19763e'),
+      '--nukhba-pro-card-button-border': this.getSetting('button-border-color', this.getSetting('button-bg-color', '#19763e')),
+      '--nukhba-pro-card-button-color': this.getSetting('button-text-color', '#ffffff'),
+    });
+
+    this.classList.add('nukhba-pro-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-pro-card"${cardStyle}>
+        <div class="nukhba-pro-card__labels">
+          ${rightLabelText ? `<span class="nukhba-pro-card__label is-right" style="background:${this.getSetting('right-label-bg', '#f30f0f')};color:${this.getSetting('right-label-color', '#ffffff')};">${this.escapeHTML(rightLabelText)}</span>` : ''}
+          ${leftLabelText ? `<span class="nukhba-pro-card__label is-left" style="background:${this.getSetting('left-label-bg', '#6b8f71')};color:${this.getSetting('left-label-color', '#ffffff')};">${this.escapeHTML(leftLabelText)}</span>` : ''}
+        </div>
+
+        <a href="${this.product.url}" class="nukhba-pro-card__media" aria-label="${this.escapeHTML(this.product.name)}"${mediaStyle}>
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="480" height="420" />
+        </a>
+
+        ${this.getWishlistButton()}
+
+        <div class="nukhba-pro-card__content">
+          <h3${textStyle}>
+            <a href="${this.product.url}"${textStyle}>${this.escapeHTML(this.product.name)}</a>
+          </h3>
+
+          <div class="nukhba-pro-card__price-box"${priceBoxStyle}>
+            <div class="nukhba-pro-card__price-head">
+              ${discountPercent ? `<span class="nukhba-pro-card__discount"${discountStyle}>%${discountPercent} ${this.escapeHTML(discountLabelText)}</span>` : ''}
+              <strong${priceStyle}>${this.getMoney(actualPrice)}</strong>
+            </div>
+            <div class="nukhba-pro-card__price-foot">
+              ${priceNote ? `<span${textStyle}>${this.escapeHTML(priceNote)}</span>` : ''}
+              ${oldPrice ? `<small${oldPriceStyle}>${this.getMoney(oldPrice)}</small>` : ''}
+            </div>
+          </div>
+
+          ${this.getHighlightHTML(textStyle)}
+
+          ${installmentTitle ? `<p class="nukhba-pro-card__installment-title"${textStyle}>${this.escapeHTML(installmentTitle)}</p>` : ''}
+          ${this.getInstallmentLogosHTML()}
+          ${this.getChipsHTML()}
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-pro-card__button"
+            ${buttonHostStyle}
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${this.product.type === 'booking' ? 'calendar-time' : 'shopping-bag'}"></i>
+            <span>${this.escapeHTML(this.getButtonText())}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+
+    this.querySelectorAll('.nukhba-pro-card__wishlist').forEach((button) => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('is-active');
+      });
+    });
+  }
+}
+
+if (!customElements.get('nukhba-pro-product-card')) {
+  customElements.define('nukhba-pro-product-card', NukhbaProProductCard);
+}
+
+class NukhbaProAdvancedProductCard extends NukhbaProProductCard {
+  shouldUseEnglishDigits() {
+    return true;
+  }
+}
+
+if (!customElements.get('nukhba-pro-advanced-product-card')) {
+  customElements.define('nukhba-pro-advanced-product-card', NukhbaProAdvancedProductCard);
+}
+
+class NukhbaBannerProductCard extends NukhbaProProductCard {
+  getLayoutStyle() {
+    return this.slider?.getAttribute('data-layout-style') || 'one_row';
+  }
+
+  getActionIcon() {
+    return this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const isTwoRows = this.getLayoutStyle() === 'two_rows';
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.getActionIcon();
+
+    this.classList.add('nukhba-banner-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-banner-product-card ${isTwoRows ? 'is-two-rows' : 'is-one-row'}">
+        <a href="${this.product.url}" class="nukhba-banner-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="360" height="260" />
+        </a>
+
+        <div class="nukhba-banner-product-card__body">
+          <div class="nukhba-banner-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </div>
+
+          <div class="nukhba-banner-product-card__prices">
+            ${oldPrice ? `<small class="nukhba-banner-product-card__old-price">${this.getMoney(oldPrice)}</small>` : ''}
+            <strong class="nukhba-banner-product-card__price">${this.getMoney(actualPrice)}</strong>
+          </div>
+
+          <salla-add-product-button
+            fill="${isTwoRows ? 'solid' : 'outline'}"
+            width="wide"
+            class="nukhba-banner-product-card__action"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+  }
+}
+
+if (!customElements.get('nukhba-banner-product-card')) {
+  customElements.define('nukhba-banner-product-card', NukhbaBannerProductCard);
+}
+
+class NukhbaThreeZonesProductCard extends NukhbaProProductCard {
+  getBadge(name) {
+    const text = this.getSetting(`${name}-badge-text`);
+    if (!text) return '';
+
+    const bg = this.getSetting(`${name}-badge-bg`, name === 'right' ? '#f30f0f' : '#6b8f71');
+    const color = this.getSetting(`${name}-badge-color`, '#ffffff');
+    return `<span class="nukhba-three-zones-product-card__label" style="background:${bg};color:${color};">${this.escapeHTML(text)}</span>`;
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const priceNote = this.product?.starting_price ? (this.startingPrice || '') : '';
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
+
+    this.classList.add('nukhba-three-zones-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-three-zones-product-card__inner">
+        <div class="nukhba-three-zones-product-card__labels">
+          ${this.getBadge('right')}
+          ${this.getBadge('left')}
+        </div>
+
+        <a href="${this.product.url}" class="nukhba-three-zones-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="420" height="320" />
+        </a>
+
+        <div class="nukhba-three-zones-product-card__content">
+          <div class="nukhba-three-zones-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </div>
+
+          <div class="nukhba-three-zones-product-card__price${oldPrice ? ' nukhba-three-zones-product-card__price--sale' : ''}">
+            ${oldPrice ? `<small class="nukhba-three-zones-product-card__price-old">${this.getMoney(oldPrice)}</small>` : ''}
+            <strong class="nukhba-three-zones-product-card__price-current">${this.getMoney(actualPrice)}</strong>
+          </div>
+
+          ${priceNote ? `<div class="nukhba-three-zones-product-card__price-note">${this.escapeHTML(priceNote)}</div>` : ''}
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-three-zones-product-card__button"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+  }
+}
+
+if (!customElements.get('nukhba-three-zones-product-card')) {
+  customElements.define('nukhba-three-zones-product-card', NukhbaThreeZonesProductCard);
+}
+
+class NukhbaTopThreeProductCard extends NukhbaProProductCard {
+  updateRank() {
+    const cards = Array.from(this.parentElement?.querySelectorAll('nukhba-top-three-product-card') || []);
+    const rank = cards.indexOf(this) + 1;
+    const inner = this.querySelector('.nukhba-top-three-product-card__inner');
+
+    if (rank > 0 && inner) {
+      inner.dataset.rank = String(rank);
+      this.dataset.rank = String(rank);
+    }
+  }
+
+  render() {
+    const actualPrice = this.getActualPrice();
+    const oldPrice = this.getOldPrice();
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.product?.type === 'booking' ? 'calendar-time' : 'shopping-bag';
+    const ratingAverage = this.product?.rating?.average || this.product?.rating?.stars || this.product?.rating_average;
+    const ratingCount = this.product?.rating?.count || this.product?.rating_count;
+
+    this.classList.add('nukhba-top-three-product-card-entry');
+    this.setAttribute('id', this.product.id);
+
+    this.innerHTML = `
+      <article class="nukhba-top-three-product-card__inner">
+        ${this.getWishlistButton().replace('nukhba-pro-card__wishlist', 'nukhba-top-three-product-card__wishlist')}
+
+        <a href="${this.product.url}" class="nukhba-top-three-product-card__media" aria-label="${this.escapeHTML(this.product.name)}">
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="420" height="420" />
+        </a>
+
+        <div class="nukhba-top-three-product-card__content">
+          <h3 class="nukhba-top-three-product-card__title">
+            <a href="${this.product.url}">${this.escapeHTML(this.product.name)}</a>
+          </h3>
+
+          ${ratingAverage ? `
+            <div class="nukhba-top-three-product-card__rating">
+              <i class="sicon-star2"></i>
+              <span>${this.escapeHTML(String(ratingAverage))}</span>
+              ${ratingCount ? `<small>(${this.escapeHTML(String(ratingCount))})</small>` : ''}
+            </div>` : ''}
+
+          <div class="nukhba-top-three-product-card__prices">
+            <strong class="nukhba-top-three-product-card__price">${this.getMoney(actualPrice)}</strong>
+            ${oldPrice ? `<small class="nukhba-top-three-product-card__old-price">${this.getMoney(oldPrice)}</small>` : ''}
+          </div>
+
+          <salla-add-product-button
+            fill="solid"
+            width="wide"
+            class="nukhba-top-three-product-card__button"
+            product-id="${this.product.id}"
+            product-status="${this.product.status}"
+            product-type="${this.product.type}">
+            <i class="sicon-${buttonIcon}"></i>
+            <span>${buttonText}</span>
+          </salla-add-product-button>
+        </div>
+      </article>
+    `;
+
+    this.querySelectorAll('.nukhba-top-three-product-card__wishlist').forEach((button) => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('is-active');
+      });
+    });
+
+    requestAnimationFrame(() => this.updateRank());
+  }
+}
+
+if (!customElements.get('nukhba-top-three-product-card')) {
+  customElements.define('nukhba-top-three-product-card', NukhbaTopThreeProductCard);
+}
+
+function isSallaDesignEditor() {
+  const host = window.location.hostname || '';
+  const path = window.location.pathname || '';
+  return host.includes('salla.design') || path.includes('/themes/editor/');
+}
+
+function patchThreeZonesProductLists() {
+  document.querySelectorAll('salla-products-list.nukhba-three-zones-showcase__product-list').forEach((list) => {
+    const root = list.shadowRoot;
+    if (!root || root.getElementById('nukhba-three-zones-grid-style')) {
+      return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'nukhba-three-zones-grid-style';
+    style.textContent = `
+      .s-products-list-wrapper,
+      .s-products-list-content,
+      .s-products-list-list,
+      [part="wrapper"],
+      [part="container"],
+      [part="list"] {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-auto-flow: row !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+
+      .s-product-card-entry,
+      nukhba-three-zones-product-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+      }
+
+      @media (max-width: 479px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+
+    root.appendChild(style);
+  });
+}
+
+function scheduleThreeZonesProductListPatch(retries = 20) {
+  patchThreeZonesProductLists();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleThreeZonesProductListPatch(retries - 1), 400);
+}
+
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleThreeZonesProductListPatch(), { once: true });
+  } else {
+    scheduleThreeZonesProductListPatch();
+  }
+
+  document.addEventListener('theme::ready', () => scheduleThreeZonesProductListPatch());
+}
+
+function patchTopThreeProductLists() {
+  document.querySelectorAll('salla-products-list.nukhba-top-three-products__list').forEach((list) => {
+    const root = list.shadowRoot;
+    if (!root || root.getElementById('nukhba-top-three-grid-style')) {
+      return;
+    }
+
+    const style = document.createElement('style');
+    style.id = 'nukhba-top-three-grid-style';
+    style.textContent = `
+      .s-products-list-wrapper,
+      .s-products-list-content,
+      .s-products-list-list,
+      [part="wrapper"],
+      [part="container"],
+      [part="list"] {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 1.25rem !important;
+        align-items: stretch !important;
+      }
+
+      .s-product-card-entry,
+      nukhba-top-three-product-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0 !important;
+      }
+
+      @media (max-width: 991px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+      }
+
+      @media (max-width: 639px) {
+        .s-products-list-wrapper,
+        .s-products-list-content,
+        .s-products-list-list,
+        [part="wrapper"],
+        [part="container"],
+        [part="list"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    `;
+
+    root.appendChild(style);
+  });
+}
+
+function scheduleTopThreeProductListPatch(retries = 20) {
+  patchTopThreeProductLists();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleTopThreeProductListPatch(retries - 1), 400);
+}
+
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleTopThreeProductListPatch(), { once: true });
+  } else {
+    scheduleTopThreeProductListPatch();
+  }
+
+  document.addEventListener('theme::ready', () => scheduleTopThreeProductListPatch());
+}
+
+function resolveSliderSwiper(slider) {
+  if (!slider) {
+    return null;
+  }
+
+  if (slider.swiper) {
+    return slider.swiper;
+  }
+
+  const root = slider.shadowRoot;
+  if (!root) {
+    return null;
+  }
+
+  const swiperElement = root.querySelector('.swiper, swiper-container, [part="swiper"]');
+  return swiperElement?.swiper || null;
+}
+
+function resolveOriginalSlidesCount(slider) {
+  if (!slider) {
+    return 0;
+  }
+
+  return slider.querySelectorAll('[slot="items"] > .swiper-slide, [slot="items"] .swiper-slide').length;
+}
+
+function ensureLoopRepatchObserver(slider, callback) {
+  if (!slider || slider.__nukhbaLoopObserver) {
+    return;
+  }
+
+  const root = slider.shadowRoot || slider;
+  if (!root || typeof MutationObserver === 'undefined') {
+    return;
+  }
+
+  const observer = new MutationObserver(() => {
+    callback?.();
+  });
+
+  observer.observe(root, { childList: true, subtree: true });
+  slider.__nukhbaLoopObserver = observer;
+}
+
+function forceClosedLoopForSlider(slider, {
+  datasetFlag,
+  defaultDelay = 2200,
+  repatch,
+} = {}) {
+  const swiper = resolveSliderSwiper(slider);
+  if (!swiper) {
+    ensureLoopRepatchObserver(slider, repatch);
+    return false;
+  }
+
+  const patchedKey = `__${datasetFlag}Swiper`;
+  if (slider[patchedKey] === swiper) {
+    return Boolean(swiper);
+  }
+
+  slider[patchedKey] = swiper;
+  ensureLoopRepatchObserver(slider, repatch);
+
+  const originalSlidesCount = resolveOriginalSlidesCount(slider) || swiper.slides?.length || 1;
+
+  swiper.params.loop = true;
+  swiper.params.rewind = false;
+  swiper.params.watchOverflow = false;
+  swiper.params.slidesPerGroup = 1;
+  swiper.params.loopedSlides = Math.max(swiper.params.loopedSlides || 0, originalSlidesCount);
+  swiper.params.loopAdditionalSlides = Math.max(swiper.params.loopAdditionalSlides || 0, originalSlidesCount + 2);
+  swiper.params.autoplay = {
+    ...(swiper.params.autoplay || {}),
+    delay: swiper.params.autoplay?.delay || defaultDelay,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    waitForTransition: false,
+  };
+
+  if (typeof swiper.loopDestroy === 'function') {
+    swiper.loopDestroy();
+  }
+
+  if (typeof swiper.loopCreate === 'function') {
+    swiper.loopCreate();
+  }
+
+  if (typeof swiper.update === 'function') {
+    swiper.update();
+  }
+
+  if (typeof swiper.slideToLoop === 'function') {
+    swiper.slideToLoop(swiper.realIndex || 0, 0, false);
+  } else if (typeof swiper.slideTo === 'function') {
+    swiper.slideTo(0, 0, false);
+  }
+
+  swiper.on?.('reachEnd', () => {
+    if (typeof swiper.slideToLoop === 'function') {
+      swiper.slideToLoop(0, 0, false);
+    } else if (typeof swiper.slideTo === 'function') {
+      swiper.slideTo(0, 0, false);
+    }
+  });
+
+  swiper.on?.('fromEdge', () => {
+    swiper.autoplay?.start?.();
+  });
+
+  swiper.on?.('autoplayStop', () => {
+    swiper.autoplay?.start?.();
+  });
+
+  swiper.on?.('transitionEnd', () => {
+    if (swiper.isEnd) {
+      if (typeof swiper.slideToLoop === 'function') {
+        swiper.slideToLoop(0, 0, false);
+      } else if (typeof swiper.slideTo === 'function') {
+        swiper.slideTo(0, 0, false);
+      }
+      swiper.autoplay?.start?.();
+    }
+  });
+
+  swiper.autoplay?.start?.();
+  return true;
+}
+
+function forceClosedLoopForMovingPhotos(slider) {
+  return forceClosedLoopForSlider(slider, {
+    datasetFlag: 'nukhbaPhotosLoopPatched',
+    defaultDelay: 2000,
+    repatch: patchMovingPhotosSlider,
+  });
+}
+
+function patchMovingPhotosSlider() {
+  document.querySelectorAll('salla-slider.nukhba-moving-photos__slider').forEach((slider) => {
+    forceClosedLoopForMovingPhotos(slider);
+  });
+}
+
+function scheduleMovingPhotosSliderPatch(retries = 30) {
+  patchMovingPhotosSlider();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleMovingPhotosSliderPatch(retries - 1), 500);
+}
+
+if (!isSallaDesignEditor()) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => scheduleMovingPhotosSliderPatch(), { once: true });
+  } else {
+    scheduleMovingPhotosSliderPatch();
+  }
+
+  document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
+}
