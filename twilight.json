@@ -1020,20 +1020,20 @@
         },
         {
             "key": "c4c8240d-17c1-4ca4-9f7d-100000000050",
-            "name": "nukhba-pro-moving-products-new",
+            "name": "nukhba-pro-moving-products",
             "title": {
-                "en": "New Nukhba Pro moving products",
-                "ar": "منتجات متحركة نخبة برو جديدة"
+                "en": "Nukhba Pro moving products",
+                "ar": "منتجات متحركة نخبة برو"
             },
             "icon": "sicon-list-play",
-            "path": "home.nukhba-pro-moving-products-new",
+            "path": "home.nukhba-pro-moving-products",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
-                    "id": "nukhba-pro-new-preview",
-                    "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
+                    "id": "nukhba-pro-preview",
+                    "value": "<div class='space-y-2'><div class='text-center text-sm font-bold'>منتجات متحركة نخبة برو</div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
                 },
                 {
                     "type": "string",
