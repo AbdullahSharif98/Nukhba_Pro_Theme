@@ -1036,34 +1036,6 @@
                     "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1'></div>"
                 },
                 {
-                    "type": "items",
-                    "icon": "sicon-layout",
-                    "label": "وضع العرض",
-                    "id": "width_mode",
-                    "format": "dropdown-list",
-                    "required": false,
-                    "selected": [
-                        {
-                            "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-pro-width-normal"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "العرض الطبيعي",
-                            "value": "normal",
-                            "key": "nukhba-pro-width-normal"
-                        },
-                        {
-                            "label": "عرض كامل",
-                            "value": "full",
-                            "key": "nukhba-pro-width-full"
-                        }
-                    ],
-                    "source": "Manual"
-                },
-                {
                     "type": "string",
                     "icon": "sicon-format-text-alt",
                     "label": "عنوان القسم",

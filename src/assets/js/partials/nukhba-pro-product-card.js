@@ -817,6 +817,111 @@ function forceClosedLoopForMovingPhotos(slider) {
   });
 }
 
+function ensureMovingProductsShadowStyle(slider) {
+  const root = slider?.shadowRoot;
+  if (!root || root.getElementById('nukhba-pro-moving-products-style')) {
+    return;
+  }
+
+  const style = document.createElement('style');
+  style.id = 'nukhba-pro-moving-products-style';
+  style.textContent = `
+    :host {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .swiper,
+    swiper-container,
+    [part="swiper"],
+    [part="container"],
+    [part="wrapper"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .swiper-slide {
+      min-width: 0 !important;
+      height: auto !important;
+    }
+  `;
+
+  root.appendChild(style);
+}
+
+function stabilizeMovingProductsSlider(slider) {
+  const swiper = resolveSliderSwiper(slider);
+  if (!swiper) {
+    ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
+    return false;
+  }
+
+  if (slider.__nukhbaMovingProductsSwiper === swiper) {
+    return true;
+  }
+
+  slider.__nukhbaMovingProductsSwiper = swiper;
+  ensureLoopRepatchObserver(slider, patchMovingProductsSlider);
+  ensureMovingProductsShadowStyle(slider);
+
+  swiper.params.loop = false;
+  swiper.params.rewind = true;
+  swiper.params.watchOverflow = true;
+  swiper.params.centeredSlides = false;
+  swiper.params.slidesPerGroup = 1;
+  swiper.params.autoplay = {
+    ...(swiper.params.autoplay || {}),
+    delay: swiper.params.autoplay?.delay || 2200,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+    waitForTransition: false,
+  };
+
+  if (typeof swiper.update === 'function') {
+    swiper.update();
+  }
+
+  if (typeof swiper.slideTo === 'function' && swiper.isEnd) {
+    swiper.slideTo(0, 0, false);
+  }
+
+  swiper.on?.('reachEnd', () => {
+    const delay = swiper.params.autoplay?.delay || 2200;
+    window.setTimeout(() => {
+      if (typeof swiper.slideTo === 'function') {
+        swiper.slideTo(0, 0, false);
+      }
+      swiper.autoplay?.start?.();
+    }, delay);
+  });
+
+  swiper.on?.('autoplayStop', () => {
+    swiper.autoplay?.start?.();
+  });
+
+  swiper.autoplay?.start?.();
+  return true;
+}
+
+function patchMovingProductsSlider() {
+  document.querySelectorAll('salla-products-slider.nukhba-pro-products__slider').forEach((slider) => {
+    stabilizeMovingProductsSlider(slider);
+  });
+}
+
+function scheduleMovingProductsSliderPatch(retries = 30) {
+  patchMovingProductsSlider();
+
+  if (retries <= 0) {
+    return;
+  }
+
+  setTimeout(() => scheduleMovingProductsSliderPatch(retries - 1), 500);
+}
+
 function patchMovingPhotosSlider() {
   document.querySelectorAll('salla-slider.nukhba-moving-photos__slider').forEach((slider) => {
     forceClosedLoopForMovingPhotos(slider);
@@ -842,3 +947,11 @@ if (!isSallaDesignEditor()) {
 
   document.addEventListener('theme::ready', () => scheduleMovingPhotosSliderPatch());
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => scheduleMovingProductsSliderPatch(), { once: true });
+} else {
+  scheduleMovingProductsSliderPatch();
+}
+
+document.addEventListener('theme::ready', () => scheduleMovingProductsSliderPatch());
