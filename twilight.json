@@ -1046,6 +1046,34 @@
                     "format": "text"
                 },
                 {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "وصف قصير",
+                    "multilanguage": true,
+                    "id": "section_subtitle",
+                    "value": "",
+                    "required": false,
+                    "format": "textarea"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون عنوان القسم",
+                    "id": "section_title_color",
+                    "value": "#111827",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون الوصف القصير",
+                    "id": "section_subtitle_color",
+                    "value": "#6b7280",
+                    "required": false,
+                    "format": "text"
+                },
+                {
                     "type": "items",
                     "icon": "sicon-list",
                     "label": "نوع المنتجات",
@@ -1162,6 +1190,572 @@
                     "minimum": 4,
                     "maximum": 32,
                     "value": 32
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الكمبيوتر",
+                    "id": "desktop_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 180,
+                    "maximum": 500,
+                    "value": 272
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "ارتفاع الصورة في الجوال",
+                    "id": "mobile_image_height",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 140,
+                    "maximum": 420,
+                    "value": 208
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليمين",
+                    "multilanguage": true,
+                    "id": "right_label_text",
+                    "value": "عروض الميجا",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليمين",
+                    "id": "right_label_bg",
+                    "value": "#f30f0f",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليمين",
+                    "id": "right_label_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "ليبل أعلى اليسار",
+                    "multilanguage": true,
+                    "id": "left_label_text",
+                    "value": "تركيب مجاني",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية ليبل أعلى اليسار",
+                    "id": "left_label_bg",
+                    "value": "#6b8f71",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص ليبل أعلى اليسار",
+                    "id": "left_label_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة الليبل",
+                    "id": "label_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 999,
+                    "value": 999
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية البطاقة",
+                    "id": "card_bg_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون إطار البطاقة",
+                    "id": "card_border_color",
+                    "value": "#dfe3e8",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة البطاقة",
+                    "id": "card_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 80,
+                    "value": 20
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "ظل البطاقة",
+                    "id": "card_shadow",
+                    "value": "0 12px 32px rgba(15, 23, 42, .06)",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية مساحة الصورة",
+                    "id": "media_bg_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة مساحة الصورة",
+                    "id": "media_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 18
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-list",
+                    "label": "طريقة عرض الصورة",
+                    "id": "image_fit",
+                    "format": "dropdown-list",
+                    "required": false,
+                    "selected": [
+                        {
+                            "label": "Contain",
+                            "value": "contain",
+                            "key": "nukhba-pro-image-fit-contain"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "Contain",
+                            "value": "contain",
+                            "key": "nukhba-pro-image-fit-contain"
+                        },
+                        {
+                            "label": "Cover",
+                            "value": "cover",
+                            "key": "nukhba-pro-image-fit-cover"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نصوص البطاقة",
+                    "id": "text_color",
+                    "value": "#1f2937",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون السعر الحالي",
+                    "id": "price_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون السعر قبل الخصم",
+                    "id": "old_price_color",
+                    "value": "#111827",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية صندوق السعر",
+                    "id": "price_box_bg_color",
+                    "value": "#f5f6f7",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة صندوق السعر",
+                    "id": "price_box_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 14
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية الخصم",
+                    "id": "discount_bg_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص الخصم",
+                    "id": "discount_text_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "نص الخصم",
+                    "multilanguage": true,
+                    "id": "discount_label_text",
+                    "value": "خصم",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة بادج الخصم",
+                    "id": "discount_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 12
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص تحت السعر",
+                    "multilanguage": true,
+                    "id": "price_note",
+                    "value": "شامل الضريبة",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-ticket",
+                    "label": "بادج تمييز داخلي",
+                    "multilanguage": true,
+                    "id": "highlight_badge",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص تمييز داخلي",
+                    "multilanguage": true,
+                    "id": "highlight_text",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية بادج التمييز الداخلي",
+                    "id": "highlight_badge_bg_color",
+                    "value": "#fff200",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص بادج التمييز الداخلي",
+                    "id": "highlight_badge_text_color",
+                    "value": "#f32727",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة بادج التمييز",
+                    "id": "highlight_badge_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 10
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان التقسيط",
+                    "multilanguage": true,
+                    "id": "installment_title",
+                    "value": "قسطها على دفعات. اشتري الآن وادفع لاحقًا",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية صندوق التقسيط",
+                    "id": "installment_bg_color",
+                    "value": "#f5f6f7",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة صندوق التقسيط",
+                    "id": "installment_box_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 14
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية شعارات التقسيط",
+                    "id": "installment_logo_bg_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة شعارات التقسيط",
+                    "id": "installment_logo_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 12
+                },
+                {
+                    "id": "installment_images",
+                    "key": "2c8240d0-17c1-4ca4-9f7d-100000000051",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "شعارات التقسيط",
+                    "item_label": "شعار",
+                    "icon": "sicon-list-add",
+                    "value": [],
+                    "fields": [
+                        {
+                            "id": "installment_images.image",
+                            "key": "2c8240d0-17c1-4ca4-9f7d-100000000052",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة",
+                            "description": "المقاس الموصى به 180×68 بكسل",
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "installment_images.alt",
+                            "key": "2c8240d0-17c1-4ca4-9f7d-100000000053",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص البديل",
+                            "placeholder": "وصف الشعار",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": true,
+                            "required": false
+                        }
+                    ],
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 6
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية صندوق المزايا",
+                    "id": "chips_bg_color",
+                    "value": "#eef8f2",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة صندوق المزايا",
+                    "id": "chips_box_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 14
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية الميزة",
+                    "id": "chip_bg_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون إطار الميزة",
+                    "id": "chip_border_color",
+                    "value": "#91b59b",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص الميزة",
+                    "id": "chip_text_color",
+                    "value": "#3d4c42",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة الميزة",
+                    "id": "chip_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 999,
+                    "value": 999
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 1",
+                    "multilanguage": true,
+                    "id": "chip_one",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 2",
+                    "multilanguage": true,
+                    "id": "chip_two",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 3",
+                    "multilanguage": true,
+                    "id": "chip_three",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "ميزة 4",
+                    "multilanguage": true,
+                    "id": "chip_four",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-cart",
+                    "label": "نص زر السلة",
+                    "multilanguage": true,
+                    "id": "button_text",
+                    "value": "",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "خلفية زر السلة",
+                    "id": "button_bg_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون إطار زر السلة",
+                    "id": "button_border_color",
+                    "value": "#19763e",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-palette",
+                    "label": "لون نص زر السلة",
+                    "id": "button_text_color",
+                    "value": "#ffffff",
+                    "required": false,
+                    "format": "text"
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "استدارة زر السلة",
+                    "id": "button_radius",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 60,
+                    "value": 12
+                },
+                {
+                    "type": "number",
+                    "icon": "sicon-pencil-ruler",
+                    "label": "سمك إطار زر السلة",
+                    "id": "button_border_width",
+                    "format": "integer",
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 8,
+                    "value": 1
                 }
             ]
         },

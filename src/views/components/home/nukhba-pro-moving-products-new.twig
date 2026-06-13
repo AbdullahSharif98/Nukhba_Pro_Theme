@@ -39,10 +39,10 @@
     {% if component.section_title or component.section_subtitle %}
       <div class="nukhba-pro-products__heading">
         {% if component.section_title %}
-          <h2>{{ component.section_title }}</h2>
+          <h2{% if component.section_title_color %} style="color: {{ component.section_title_color }};"{% endif %}>{{ component.section_title }}</h2>
         {% endif %}
         {% if component.section_subtitle %}
-          <p>{{ component.section_subtitle }}</p>
+          <p{% if component.section_subtitle_color %} style="color: {{ component.section_subtitle_color }};"{% endif %}>{{ component.section_subtitle }}</p>
         {% endif %}
       </div>
     {% endif %}
@@ -79,32 +79,46 @@
         data-left-label-color="{{ component.left_label_color|default('#ffffff')|e('html_attr') }}"
         data-card-bg-color="{{ component.card_bg_color|default('#ffffff')|e('html_attr') }}"
         data-card-border-color="{{ component.card_border_color|default('#dfe3e8')|e('html_attr') }}"
+        data-card-radius="{{ component.card_radius|default(20)|e('html_attr') }}"
+        data-card-shadow="{{ component.card_shadow|default('0 12px 32px rgba(15, 23, 42, .06)')|e('html_attr') }}"
+        data-label-radius="{{ component.label_radius|default(999)|e('html_attr') }}"
         data-media-bg-color="{{ component.media_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-media-radius="{{ component.media_radius|default(18)|e('html_attr') }}"
+        data-image-fit="{{ component.image_fit|default('contain')|e('html_attr') }}"
         data-text-color="{{ component.text_color|default('#1f2937')|e('html_attr') }}"
         data-price-color="{{ component.price_color|default('#19763e')|e('html_attr') }}"
         data-old-price-color="{{ component.old_price_color|default('#111827')|e('html_attr') }}"
         data-price-box-bg-color="{{ component.price_box_bg_color|default('#f5f6f7')|e('html_attr') }}"
+        data-price-box-radius="{{ component.price_box_radius|default(14)|e('html_attr') }}"
         data-discount-bg-color="{{ component.discount_bg_color|default('#19763e')|e('html_attr') }}"
         data-discount-text-color="{{ component.discount_text_color|default('#ffffff')|e('html_attr') }}"
         data-discount-label-text="{{ component.discount_label_text|default('خصم')|e('html_attr') }}"
+        data-discount-radius="{{ component.discount_radius|default(12)|e('html_attr') }}"
         data-price-note="{{ component.price_note|default('')|e('html_attr') }}"
         data-highlight-badge="{{ component.highlight_badge|default('')|e('html_attr') }}"
         data-highlight-text="{{ component.highlight_text|default('')|e('html_attr') }}"
         data-highlight-badge-bg-color="{{ component.highlight_badge_bg_color|default('#fff200')|e('html_attr') }}"
         data-highlight-badge-text-color="{{ component.highlight_badge_text_color|default('#f32727')|e('html_attr') }}"
+        data-highlight-badge-radius="{{ component.highlight_badge_radius|default(10)|e('html_attr') }}"
         data-installment-title="{{ component.installment_title|default('')|e('html_attr') }}"
         data-installment-bg-color="{{ component.installment_bg_color|default('#f5f6f7')|e('html_attr') }}"
+        data-installment-box-radius="{{ component.installment_box_radius|default(14)|e('html_attr') }}"
         data-installment-logo-bg-color="{{ component.installment_logo_bg_color|default('#ffffff')|e('html_attr') }}"
+        data-installment-logo-radius="{{ component.installment_logo_radius|default(12)|e('html_attr') }}"
         data-installment-logos="{{ component.installment_images|default([])|json_encode|e('html_attr') }}"
         data-chips-bg-color="{{ component.chips_bg_color|default('#eef8f2')|e('html_attr') }}"
+        data-chips-box-radius="{{ component.chips_box_radius|default(14)|e('html_attr') }}"
         data-chip-bg-color="{{ component.chip_bg_color|default('#ffffff')|e('html_attr') }}"
         data-chip-border-color="{{ component.chip_border_color|default('#91b59b')|e('html_attr') }}"
         data-chip-text-color="{{ component.chip_text_color|default('#3d4c42')|e('html_attr') }}"
+        data-chip-radius="{{ component.chip_radius|default(999)|e('html_attr') }}"
         data-chip-values="{{ chip_values|filter(v => v)|json_encode|e('html_attr') }}"
         data-button-text="{{ component.button_text|default('')|e('html_attr') }}"
         data-button-bg-color="{{ component.button_bg_color|default('#19763e')|e('html_attr') }}"
         data-button-border-color="{{ component.button_border_color|default('#19763e')|e('html_attr') }}"
         data-button-text-color="{{ component.button_text_color|default('#ffffff')|e('html_attr') }}"
+        data-button-radius="{{ component.button_radius|default(12)|e('html_attr') }}"
+        data-button-border-width="{{ component.button_border_width|default(1)|e('html_attr') }}"
         {% if needs_source_value %}
           source-value="[{{ products_value }}]"
         {% endif %}

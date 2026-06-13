@@ -167,15 +167,17 @@ class NukhbaProProductCard extends HTMLElement {
     const logos = this.getJSONSetting('installment-logos');
     const wrapperStyle = this.buildStyle({
       background: this.getSetting('installment-bg-color', '#f5f6f7'),
+      'border-radius': `${this.getSetting('installment-box-radius', 14)}px`,
     });
     const logoStyle = this.buildStyle({
       background: this.getSetting('installment-logo-bg-color', '#ffffff'),
+      'border-radius': `${this.getSetting('installment-logo-radius', 12)}px`,
     });
     const items = logos
-      .filter((logo) => logo?.image)
+      .filter((logo) => logo?.image || logo?.['installment_images.image'])
       .map((logo) => `
         <span class="nukhba-pro-card__installment-logo"${logoStyle}>
-          <img src="${logo.image}" alt="${this.escapeHTML(logo.alt || this.product?.name || '')}" loading="lazy" width="90" height="34" />
+          <img src="${logo.image || logo['installment_images.image']}" alt="${this.escapeHTML(logo.alt || logo['installment_images.alt'] || this.product?.name || '')}" loading="lazy" width="90" height="34" />
         </span>
       `)
       .join('');
@@ -188,11 +190,13 @@ class NukhbaProProductCard extends HTMLElement {
     if (!chips.length) return '';
     const wrapperStyle = this.buildStyle({
       background: this.getSetting('chips-bg-color', '#eef8f2'),
+      'border-radius': `${this.getSetting('chips-box-radius', 14)}px`,
     });
     const chipStyle = this.buildStyle({
       background: this.getSetting('chip-bg-color', '#ffffff'),
       'border-color': this.getSetting('chip-border-color', '#91b59b'),
       color: this.getSetting('chip-text-color', '#3d4c42'),
+      'border-radius': `${this.getSetting('chip-radius', 999)}px`,
     });
 
     return `
@@ -208,6 +212,7 @@ class NukhbaProProductCard extends HTMLElement {
     const badgeStyle = this.buildStyle({
       background: this.getSetting('highlight-badge-bg-color', '#fff200'),
       color: this.getSetting('highlight-badge-text-color', '#f32727'),
+      'border-radius': `${this.getSetting('highlight-badge-radius', 10)}px`,
     });
 
     if (!badge && !text) return '';
@@ -240,7 +245,6 @@ class NukhbaProProductCard extends HTMLElement {
     const textStyle = this.getStyleAttr(this.getSetting('text-color'));
     const priceStyle = this.getStyleAttr(this.getSetting('price-color'));
     const oldPriceStyle = this.getStyleAttr(this.getSetting('old-price-color'));
-    const discountStyle = ` style="background:${this.getSetting('discount-bg-color', '#19763e')};color:${this.getSetting('discount-text-color', '#ffffff')};"`;
     const discountLabelText = this.getSetting('discount-label-text', 'خصم');
     const priceNote = this.getSetting('price-note') || (this.product?.starting_price ? this.startingPrice : '');
     const installmentTitle = this.getSetting('installment-title');
@@ -249,18 +253,37 @@ class NukhbaProProductCard extends HTMLElement {
     const cardStyle = this.buildStyle({
       background: this.getSetting('card-bg-color', '#ffffff'),
       'border-color': this.getSetting('card-border-color', '#dfe3e8'),
+      'border-radius': `${this.getSetting('card-radius', 20)}px`,
+      'box-shadow': this.getSetting('card-shadow', '0 12px 32px rgba(15, 23, 42, .06)'),
     });
     const mediaStyle = this.buildStyle({
       background: this.getSetting('media-bg-color', this.getSetting('card-bg-color', '#ffffff')),
+      'border-radius': `${this.getSetting('media-radius', 18)}px`,
+    });
+    const imageStyle = this.buildStyle({
+      'object-fit': this.getSetting('image-fit', 'contain'),
+      'border-radius': `${this.getSetting('media-radius', 18)}px`,
     });
     const priceBoxStyle = this.buildStyle({
       background: this.getSetting('price-box-bg-color', '#f5f6f7'),
+      'border-radius': `${this.getSetting('price-box-radius', 14)}px`,
     });
     const buttonHostStyle = this.buildStyle({
       '--nukhba-pro-card-button-bg': this.getSetting('button-bg-color', '#19763e'),
       '--nukhba-pro-card-button-border': this.getSetting('button-border-color', this.getSetting('button-bg-color', '#19763e')),
       '--nukhba-pro-card-button-color': this.getSetting('button-text-color', '#ffffff'),
+      '--nukhba-pro-card-button-radius': `${this.getSetting('button-radius', 12)}px`,
+      '--nukhba-pro-card-button-border-width': `${this.getSetting('button-border-width', 1)}px`,
     });
+    const discountStyle = this.buildStyle({
+      background: this.getSetting('discount-bg-color', '#19763e'),
+      color: this.getSetting('discount-text-color', '#ffffff'),
+      'border-radius': `${this.getSetting('discount-radius', 12)}px`,
+    });
+    const buttonText = this.escapeHTML(this.getButtonText());
+    const buttonIcon = this.product.status === 'sale'
+      ? `<i class="sicon-${this.product.type === 'booking' ? 'calendar-time' : 'shopping-bag'}"></i>`
+      : '';
 
     this.classList.add('nukhba-pro-product-card-entry');
     this.setAttribute('id', this.product.id);
@@ -268,12 +291,12 @@ class NukhbaProProductCard extends HTMLElement {
     this.innerHTML = `
       <article class="nukhba-pro-card"${cardStyle}>
         <div class="nukhba-pro-card__labels">
-          ${rightLabelText ? `<span class="nukhba-pro-card__label is-right" style="background:${this.getSetting('right-label-bg', '#f30f0f')};color:${this.getSetting('right-label-color', '#ffffff')};">${this.escapeHTML(rightLabelText)}</span>` : ''}
-          ${leftLabelText ? `<span class="nukhba-pro-card__label is-left" style="background:${this.getSetting('left-label-bg', '#6b8f71')};color:${this.getSetting('left-label-color', '#ffffff')};">${this.escapeHTML(leftLabelText)}</span>` : ''}
+          ${rightLabelText ? `<span class="nukhba-pro-card__label is-right" style="background:${this.getSetting('right-label-bg', '#f30f0f')};color:${this.getSetting('right-label-color', '#ffffff')};border-radius:${this.getSetting('label-radius', 999)}px;">${this.escapeHTML(rightLabelText)}</span>` : ''}
+          ${leftLabelText ? `<span class="nukhba-pro-card__label is-left" style="background:${this.getSetting('left-label-bg', '#6b8f71')};color:${this.getSetting('left-label-color', '#ffffff')};border-radius:${this.getSetting('label-radius', 999)}px;">${this.escapeHTML(leftLabelText)}</span>` : ''}
         </div>
 
         <a href="${this.product.url}" class="nukhba-pro-card__media" aria-label="${this.escapeHTML(this.product.name)}"${mediaStyle}>
-          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="480" height="420" />
+          <img src="${this.getImageUrl()}" alt="${this.getImageAlt()}" loading="lazy" width="480" height="420"${imageStyle} />
         </a>
 
         ${this.getWishlistButton()}
@@ -300,17 +323,20 @@ class NukhbaProProductCard extends HTMLElement {
           ${this.getInstallmentLogosHTML()}
           ${this.getChipsHTML()}
 
-          <salla-add-product-button
-            fill="solid"
-            width="wide"
-            class="nukhba-pro-card__button"
-            ${buttonHostStyle}
-            product-id="${this.product.id}"
-            product-status="${this.product.status}"
-            product-type="${this.product.type}">
-            <i class="sicon-${this.product.type === 'booking' ? 'calendar-time' : 'shopping-bag'}"></i>
-            <span>${this.escapeHTML(this.getButtonText())}</span>
-          </salla-add-product-button>
+          <div class="nukhba-pro-card__footer">
+            <salla-add-product-button
+              fill="solid"
+              width="wide"
+              loader-position="center"
+              class="nukhba-pro-card__button"
+              ${buttonHostStyle}
+              product-id="${this.product.id}"
+              product-status="${this.product.status}"
+              product-type="${this.product.type}">
+              ${buttonIcon}
+              <span>${buttonText}</span>
+            </salla-add-product-button>
+          </div>
         </div>
       </article>
     `;

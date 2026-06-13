@@ -72,10 +72,10 @@ nukhba-pro-product-card {
   flex-direction: column;
   min-height: 100%;
   border: 1px solid #dfe3e8;
-  border-radius: 20px;
+  border-radius: var(--nukhba-pro-card-radius, 20px);
   background: #fff;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, .06);
+  box-shadow: var(--nukhba-pro-card-shadow, 0 12px 32px rgba(15, 23, 42, .06));
 }
 
 .nukhba-pro-card__labels {
@@ -96,7 +96,7 @@ nukhba-pro-product-card {
   min-height: 2rem;
   max-width: calc(50% - .25rem);
   padding: .25rem .8rem;
-  border-radius: 999px;
+  border-radius: var(--nukhba-pro-card-label-radius, 999px);
   font-size: .82rem;
   font-weight: 800;
   line-height: 1.1;
@@ -107,13 +107,16 @@ nukhba-pro-product-card {
   display: block;
   padding: 2.6rem .9rem .55rem;
   background: #fff;
+  border-radius: var(--nukhba-pro-card-media-radius, 18px);
+  overflow: hidden;
 }
 
 .nukhba-pro-card__media img {
   display: block;
   width: 100%;
   height: calc(var(--nukhba-pro-card-image-height, 272px) * .7);
-  object-fit: contain;
+  object-fit: var(--nukhba-pro-card-image-fit, contain);
+  border-radius: var(--nukhba-pro-card-media-radius, 18px);
 }
 
 .nukhba-pro-card__wishlist {
@@ -163,12 +166,12 @@ nukhba-pro-product-card {
 .nukhba-pro-card__price-box,
 .nukhba-pro-card__installment-logos,
 .nukhba-pro-card__chips {
-  border-radius: 14px;
   background: #f5f6f7;
 }
 
 .nukhba-pro-card__price-box {
   padding: .75rem;
+  border-radius: var(--nukhba-pro-card-price-box-radius, 14px);
 }
 
 .nukhba-pro-card__price-head,
@@ -209,7 +212,7 @@ nukhba-pro-product-card {
   align-items: center;
   justify-content: center;
   padding: .32rem .72rem;
-  border-radius: 12px;
+  border-radius: var(--nukhba-pro-card-discount-radius, 12px);
   background: #19763e;
   color: #fff;
   font-size: .78rem;
@@ -234,7 +237,7 @@ nukhba-pro-product-card {
   justify-content: center;
   min-height: 1.8rem;
   padding: .12rem .6rem;
-  border-radius: 10px;
+  border-radius: var(--nukhba-pro-card-highlight-badge-radius, 10px);
   background: #fff200;
   color: #f32727;
   font-size: .86rem;
@@ -255,6 +258,7 @@ nukhba-pro-product-card {
   gap: .42rem;
   flex-wrap: wrap;
   padding: .55rem .65rem;
+  border-radius: var(--nukhba-pro-card-installment-box-radius, 14px);
 }
 
 .nukhba-pro-card__installment-logo {
@@ -264,7 +268,7 @@ nukhba-pro-product-card {
   min-width: 4.15rem;
   min-height: 1.7rem;
   padding: .1rem;
-  border-radius: .75rem;
+  border-radius: var(--nukhba-pro-card-installment-logo-radius, .75rem);
   background: #fff;
 }
 
@@ -283,6 +287,7 @@ nukhba-pro-product-card {
   flex-wrap: wrap;
   padding: .55rem;
   background: #eef8f2;
+  border-radius: var(--nukhba-pro-card-chips-box-radius, 14px);
 }
 
 .nukhba-pro-card__chips span {
@@ -292,20 +297,29 @@ nukhba-pro-product-card {
   min-height: 1.7rem;
   padding: .16rem .62rem;
   border: 1px solid #91b59b;
-  border-radius: 999px;
+  border-radius: var(--nukhba-pro-card-chip-radius, 999px);
   background: #fff;
   color: #3d4c42;
   font-size: .8rem;
   font-weight: 700;
 }
 
-.nukhba-pro-card__button {
+.nukhba-pro-card__footer {
   margin-top: .1rem;
 }
 
+.nukhba-pro-card__button {
+  display: block;
+  width: 100%;
+}
+
 .nukhba-pro-card__button::part(button) {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
   min-height: 2.95rem;
-  border-radius: 12px;
+  border-radius: var(--nukhba-pro-card-button-radius, 12px);
+  border-width: var(--nukhba-pro-card-button-border-width, 1px);
   border-color: var(--nukhba-pro-card-button-border, #19763e);
   background: var(--nukhba-pro-card-button-bg, #19763e);
   color: var(--nukhba-pro-card-button-color, #fff);
