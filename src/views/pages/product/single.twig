@@ -85,6 +85,12 @@
 {% block content %}
     {% set product_desc = product.description|default('')|replace({"&nbsp;":" "}) %}
     {% set product_desc_plain = product_desc|striptags|trim %}
+    {% set product_sku_label = trans('pages.products.sku') %}
+    {% set product_specs_label = trans('pages.products.specifications') %}
+    {% set product_technical_details_label = trans('pages.products.technical_details') %}
+    {% set product_description_label = trans('pages.products.description') %}
+    {% set product_description_intro_label = trans('pages.products.description_details') %}
+    {% set product_show_details_label = trans('pages.products.show_details') %}
     {% set product_notice_enabled = theme.settings.get('nukhba_product_notice_enabled', true) %}
     {% set product_notice_badge = theme.settings.get('nukhba_product_notice_badge', 'لفترة محدودة') %}
     {% set product_notice_text = theme.settings.get('nukhba_product_notice_text', 'أضف 1,000.00 ر.س فقط واحصل على شحن مجاني لكل المملكة') %}
@@ -229,7 +235,7 @@
                     <div class="nukhba-product-page__meta">
                         {% if product.sku %}
                             <div class="nukhba-product-page__sku">
-                                <span>SKU:</span>
+                                <span>{{ product_sku_label == 'pages.products.sku' ? 'SKU:' : product_sku_label }}</span>
                                 <span class="text-unicode product-sku">{{ product.sku }}</span>
                             </div>
                         {% endif %}
@@ -479,8 +485,8 @@
     {% if product.has_metadata %}
         <section class="container nukhba-product-page__details">
             <div class="nukhba-product-page__section-heading">
-                <span class="nukhba-product-page__section-kicker">المواصفات</span>
-                <h2>كل التفاصيل التقنية</h2>
+                <span class="nukhba-product-page__section-kicker">{{ product_specs_label == 'pages.products.specifications' ? 'المواصفات' : product_specs_label }}</span>
+                <h2>{{ product_technical_details_label == 'pages.products.technical_details' ? 'كل التفاصيل التقنية' : product_technical_details_label }}</h2>
             </div>
             <div class="nukhba-product-page__details-card">
                 <salla-metadata></salla-metadata>
@@ -491,11 +497,11 @@
     {% if product_desc_plain %}
         <section class="container nukhba-product-page__description-section">
             <div class="nukhba-product-page__section-heading">
-                <span class="nukhba-product-page__section-kicker">وصف المنتج</span>
-                <h2>كل ما تريد معرفته عن هذا المنتج</h2>
+                <span class="nukhba-product-page__section-kicker">{{ product_description_label == 'pages.products.description' ? 'وصف المنتج' : product_description_label }}</span>
+                <h2>{{ product_description_intro_label == 'pages.products.description_details' ? 'كل ما تريد معرفته عن هذا المنتج' : product_description_intro_label }}</h2>
             </div>
             <details class="nukhba-product-page__accordion" open>
-                <summary>عرض التفاصيل</summary>
+                <summary>{{ product_show_details_label == 'pages.products.show_details' ? 'عرض التفاصيل' : product_show_details_label }}</summary>
                 <div class="product__description nukhba-product-page__accordion-content article--main">
                     {{ product.description|raw }}
                 </div>
