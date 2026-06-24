@@ -9,6 +9,8 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
+    <div class="s-blocks-wrapper s-information-page !mt-0">{% hook 'information_page.information_page' %}</div>
+
     <div class="container">
 
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
