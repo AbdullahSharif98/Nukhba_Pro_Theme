@@ -238,6 +238,60 @@ class NukhbaProProductCard extends HTMLElement {
     `;
   }
 
+  needsProductPageRedirect() {
+    return Boolean(
+      this.product?.status !== 'sale'
+      || this.product?.type === 'booking'
+      || this.product?.type === 'donating'
+      || this.product?.has_options
+      || this.product?.is_require_shipping
+    );
+  }
+
+  bindAddToCartFallback() {
+    const addButton = this.querySelector('.nukhba-pro-card__button');
+    if (!addButton || addButton.__nukhbaFallbackBound) return;
+
+    addButton.__nukhbaFallbackBound = true;
+
+    const tryBindFallback = () => {
+      const nativeButton = addButton.shadowRoot?.querySelector('button, [part="button"]');
+      if (nativeButton) return;
+
+      addButton.classList.add('is-fallback-active');
+      addButton.setAttribute('role', 'button');
+      addButton.setAttribute('tabindex', '0');
+
+      const activate = async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (this.needsProductPageRedirect()) {
+          window.location.href = this.product.url;
+          return;
+        }
+
+        if (typeof salla?.cart?.quickAdd === 'function') {
+          await salla.cart.quickAdd(this.product.id);
+          return;
+        }
+
+        window.location.href = this.product.url;
+      };
+
+      addButton.addEventListener('click', activate);
+      addButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          activate(event);
+        }
+      });
+    };
+
+    requestAnimationFrame(() => {
+      setTimeout(tryBindFallback, 120);
+    });
+  }
+
   render() {
     const actualPrice = this.getActualPrice();
     const oldPrice = this.getOldPrice();
@@ -330,6 +384,10 @@ class NukhbaProProductCard extends HTMLElement {
               loader-position="center"
               class="nukhba-pro-card__button"
               ${buttonHostStyle}
+              ${this.product?.can_quick_buy ? 'quick-buy' : ''}
+              ${this.product?.is_require_shipping ? 'required-shipping' : ''}
+              ${this.product?.has_preorder_campaign ? 'has-pre-order' : ''}
+              ${this.product?.base_currency_price ? `amount="${this.product.base_currency_price}"` : ''}
               product-id="${this.product.id}"
               product-status="${this.product.status}"
               product-type="${this.product.type}">
@@ -346,6 +404,8 @@ class NukhbaProProductCard extends HTMLElement {
         button.classList.toggle('is-active');
       });
     });
+
+    this.bindAddToCartFallback();
   }
 }
 
